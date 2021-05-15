@@ -263,7 +263,6 @@ extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
-  rgb_matrix_indicators_user();
 }
 
 #define C_____ C_NONE
@@ -792,16 +791,15 @@ const uint8_t PROGMEM ledind_map[L_MAX] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   // {{{
-  layer_state_t layers = layer_state | default_layer_state;
   /* check top layer first */
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
-    if (layers & (1UL << layer)) {
+    if (state & (1UL << layer)) {
       uint8_t inds = ledind_map[layer];
-      if (inds != 0 || layer == 0) {
-        ML_LED_1(inds & 0b0001);
-        ML_LED_2(inds & 0b0010);
-        ML_LED_3(inds & 0b0100);
-        ML_LED_4(inds & 0b1000);
+      if (inds || layer == 0) {
+        ML_LED_1((inds & 0b0001) != 0);
+        ML_LED_2((inds & 0b0010) != 0);
+        ML_LED_3((inds & 0b0100) != 0);
+        ML_LED_4((inds & 0b1000) != 0);
         break;
       }
     }
