@@ -798,7 +798,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
     if (layers & (1UL << layer)) {
       uint8_t inds = ledind_map[layer];
-      if (inds || layer == 0) {
+      if (inds != 0 || layer == 0) {
         ML_LED_1(inds & 0b0001);
         ML_LED_2(inds & 0b0010);
         ML_LED_3(inds & 0b0100);
