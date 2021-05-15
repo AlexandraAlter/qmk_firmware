@@ -18,11 +18,10 @@
 typedef enum layer_t {
   // {{{
   L_BASE = 0,
-  L_G_BA,  // gaming base
   L_DVK,   // dvorak
+  L_QRTY,  // qwerty
   L_VELO,  // velotype
   L_PLO,   // plover
-  L_QRTY,  // qwerty
   L_MUS,   // music
   L_SYMS,  // symbols
   L_NAVI,  // navigation
@@ -30,6 +29,7 @@ typedef enum layer_t {
   L_SHRT,  // shortcuts
   L_MOUS,  // mouse
   L_OH,    // one hand
+  L_G_BA,  // gaming arrow
   L_G_NU,  // gaming numpad
   L_MEDI,  // media
   // layers 16+ below this point
@@ -263,6 +263,7 @@ extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
+  rgb_matrix_indicators_user();
 }
 
 #define C_____ C_NONE
@@ -649,8 +650,6 @@ void set_led_color(int led, color_t col) {
   // }}}
 }
 
-#define MATRIX_FIRST_RIGHT_ROW (MATRIX_ROWS / 2)
-
 // inverted_rows is used to write a left-side LED map onto the right hand side
 void set_board_colors(const color_t *colors, led_mode_t led_mode, bool mask_left, bool mask_right) {
   // {{{
@@ -662,7 +661,7 @@ void set_board_colors(const color_t *colors, led_mode_t led_mode, bool mask_left
   bool inverted_cols = false;
 
   if (led_mode != LM_RIGHT) {
-    for (int row_ind = 0; row_ind < MATRIX_FIRST_RIGHT_ROW; row_ind++) {
+    for (int row_ind = 0; row_ind < (MATRIX_ROWS / 2); row_ind++) {
       for (int col_ind = 0; col_ind < MATRIX_COLS; col_ind++) {
         int real_row_ind = row_ind;
         int real_col_ind = inverted_cols ? MATRIX_COLS - col_ind - 1 : col_ind;
@@ -692,7 +691,7 @@ void set_board_colors(const color_t *colors, led_mode_t led_mode, bool mask_left
   }
 
   if (led_mode != LM_LEFT) {
-    for (int row_ind = MATRIX_FIRST_RIGHT_ROW ; row_ind < MATRIX_ROWS; row_ind++) {
+    for (int row_ind = (MATRIX_ROWS / 2) ; row_ind < MATRIX_ROWS; row_ind++) {
       for (int col_ind = 0; col_ind < MATRIX_COLS; col_ind++) {
         int real_row_ind = row_ind;
         int real_col_ind = inverted_cols ? MATRIX_COLS - col_ind - 1 : col_ind;
