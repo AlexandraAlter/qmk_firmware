@@ -5,6 +5,7 @@
 #include "keymap_plover.h"
 #include "keymap_velotype.h"
 
+// {{{ convenience macros
 // clang-format off
 #define LAYOUT_moonlander_mirrored( \
     k00, k01, k02, k03, k04, k05, k06, \
@@ -23,6 +24,7 @@ LAYOUT_moonlander( \
     k50, k51, k52, k53,                               k53, k52, k51, k50 \
 )
 // clang-format on
+// }}} convenience macros
 
 typedef enum layer_t {
   // {{{
@@ -71,6 +73,13 @@ typedef enum custom_keycode_t {
 #define KA_ESC  LGUI_T(KC_ESC)
 #define KA_BSPC LCTL_T(KC_BSPC)
 #define KA_LBRC LALT_T(KC_LBRC)
+
+#define KA_LEFT LALT_T(KC_LEFT)
+#define KA_RGHT LALT_T(KC_RGHT)
+
+#define KA_UP   LALT_T(KC_UP)
+#define KA_DOWN LALT_T(KC_DOWN)
+
 #define KA_SLSH RGUI_T(KC_SLSH)
 #define KA_MINS RCTL_T(KC_MINS)
 #define KA_RBRC RALT_T(KC_RBRC)
@@ -422,39 +431,12 @@ const uint8_t PROGMEM color_map[C_MAX][3] = {
 
 // LED configuration that declares all of the LEDs
 typedef enum led_maps_both_t {
-  // {{{
   LEDS_VELO,
   LEDS_PLO,
   LEDS_PLOS,
   LEDS_GBA,
   LEDS_MOUS,
-  // }}}
 } led_maps_both_t;
-
-// LED configuration that declares only left LEDs
-// used by mirrored layers too
-typedef enum led_maps_left_t {
-  // {{{
-  LEDS_BASE,
-  LEDS_DVK,
-  LEDS_QRTY,
-  LEDS_MUS,
-  LEDS_SYMS,
-  LEDS_NAVI,
-  LEDS_NUM,
-  LEDS_SHRT,
-  LEDS_MEDI,
-  LEDS_LAY,
-  LEDS_CONF,
-  // }}}
-} led_maps_left_t;
-
-// LED configuration that declares only right LEDs
-typedef enum led_maps_right_t {
-  // {{{
-  LEDS_GNU,
-  // }}}
-} led_maps_right_t;
 
 const color_t PROGMEM ledmap_both[][DRIVER_LED_TOTAL] = {
   /* {{{ template
@@ -523,7 +505,23 @@ const color_t PROGMEM ledmap_both[][DRIVER_LED_TOTAL] = {
   }, // }}}
 };
 
-// also used for mirrored maps
+// LED configuration that declares only left LEDs
+// used by mirrored layers too
+typedef enum led_maps_left_t {
+  LEDS_BASE,
+  LEDS_DVK,
+  LEDS_QRTY,
+  LEDS_MUS,
+  LEDS_SYMS,
+  LEDS_NAVI,
+  LEDS_NUM,
+  LEDS_SHRT,
+  LEDS_MEDI,
+  LEDS_LAY,
+  LEDS_CONF,
+} led_maps_left_t;
+
+// used by mirrored layers too
 const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   /* {{{ template
    * the last row holds the thumb keys
@@ -636,6 +634,11 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   }, // }}}
 };
 
+// LED configuration that declares only right LEDs
+typedef enum led_maps_right_t {
+  LEDS_GNU,
+} led_maps_right_t;
+
 const color_t PROGMEM ledmap_right[][DRIVER_LED_TOTAL / 2] = {
   /* {{{ template
    * the last row holds the thumb keys
@@ -669,8 +672,8 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
   // {{{
   [L_BASE]  = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_BASE],  },
   [L_DVK]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_DVK],   },
-  [L_QRTY]  = { .mode = LM_MIRROR, .colors = ledmap_both[LEDS_QRTY],  },
-  [L_VELO]  = { .mode = LM_BOTH,   .colors = ledmap_left[LEDS_VELO],  },
+  [L_QRTY]  = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_QRTY],  },
+  [L_VELO]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_VELO],  },
   [L_PLO]   = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_PLO],   },
   [L_PLOS]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_PLOS],  },
   [L_GBA]   = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_GBA],   },
