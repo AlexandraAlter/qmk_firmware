@@ -479,6 +479,8 @@ void matrix_init_kb(void) {
         rgb_matrix_set_flags(LED_FLAG_NONE);
     }
 #endif
+
+    matrix_init_user();
 }
 
 void eeconfig_init_kb(void) {  // EEPROM is getting reset!
