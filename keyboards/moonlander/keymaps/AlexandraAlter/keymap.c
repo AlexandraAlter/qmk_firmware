@@ -58,13 +58,13 @@ typedef enum custom_keycode_t { // {{{
   TO_GAME,
 } custom_keycode_t; // }}}
 
-#define ZSA_LCOL TOGGLE_LAYER_COLOR
-#define ZSA_LED  LED_LEVEL
+#define ZSA_COL TOGGLE_LAYER_COLOR
+#define ZSA_LED LED_LEVEL
 
 #define KA_GESC LGUI_T(KC_ESC)
 
 #define KA_CBS  LCTL_T(KC_BSPC)
-#define KA_LSFT KC_LSFT
+#define KA_LSFT KC_LSPO
 #define KA_LBRC RCTL_T(KC_LBRC)
 #define KA_ML1  KC_LALT
 #define KA_ML2  KC_RALT
@@ -76,7 +76,7 @@ typedef enum custom_keycode_t { // {{{
 #define KA_MR2  KC_RALT
 #define KA_MR1  KC_LALT
 #define KA_RBRC RCTL_T(KC_RBRC)
-#define KA_RSFT KC_RSFT
+#define KA_RSFT KC_RSPC
 #define KA_CDEL RCTL_T(KC_DEL)
 
 #define KA_LT1 LT(L_SYMS, KC_SPC)
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KA_GESC, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    _______,     _______, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_GESC,
     KA_CBS,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_CBS,
     KA_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KA_LSFT,
-    KA_LBRC, KA_MR1,  KA_MR2,  KA_LEFT, KA_RGHT,      _______,             _______,      KA_RGHT, KA_LEFT, KA_MR2,  KA_MR1,  KA_LBRC,
+    XXXXXXX, KA_MR1,  KA_MR2,  KA_LEFT, KA_RGHT,      _______,             _______,      KA_RGHT, KA_LEFT, KA_MR2,  KA_MR1,  XXXXXXX,
                                         KA_OHT1, KA_OHT2, KA_OHT3,     KA_OHT3, KA_OHT2, KA_OHT1
   ), // }}}
 
@@ -197,7 +197,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
     _______, _______, _______, _______, _______, _______,                       KC_P0,   KC_P7,   KC_P8,   KC_P9,   KC_LALT, KC_RSFT,
     _______, _______, _______, _______, _______,      _______,             _______,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,
-                                        _______, _______, _______,     XXXXXXX,  KC_PDOT,  KC_PENT
+                                        _______, _______, _______,     XXXXXXX, KC_PDOT, KC_PENT
   ), // }}}
 
   [L_MUS] = LAYOUT_moonlander( // {{{ music
