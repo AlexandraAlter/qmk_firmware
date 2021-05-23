@@ -760,7 +760,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = { // {{{
   [L_QRTY]  = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_QRTY], .inds = 0b0001, },
   [L_STEN]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_STEN], .inds = 0b0010, },
   [L_VELO]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_VELO], .inds = 0b0010, },
-  [L_VELX]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_VELO], .inds = 0b0010, },
+  [L_VELX]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_VELX], .inds = 0b0010, },
   [L_GBA]   = { .mode = LM_LEFT,   .colors = ledmap_left[LEDS_GBA],  .inds = 0b0000, },
   [L_OH]    = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OH],   .inds = 0b0000, },
   [L_OHF]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OH],   .inds = 0b1100, },
