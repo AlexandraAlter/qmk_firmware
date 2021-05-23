@@ -730,7 +730,7 @@ const color_t PROGMEM ledmap_right[][DRIVER_LED_TOTAL / 2] = {
   ), */ // }}}
 
   // {{{ gaming numpad
-  [L_GNU] = LEDS_moonlander_right(
+  [LEDS_GNU] = LEDS_moonlander_right(
     C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_4, C_RU_4, C_RU_4,
     C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
     C_____, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
