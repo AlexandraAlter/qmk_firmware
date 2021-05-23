@@ -303,11 +303,11 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_MOUS] = LAYOUT_moonlander( // {{{ mouse
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KA_L1,   XXXXXXX, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, KA_R1,
-    KA_L2,   KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX,     XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, KA_R2,
-    KA_L3,   XXXXXXX, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KC_ACL0, KC_ACL1,      _______,             _______,      KA_R8,   KA_R7,   KA_R6,   KA_R5,   KA_R4,
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R1,
+    KA_L2,   XXXXXXX, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, KA_R2,
+    KA_L3,   KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX,     XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, KA_R3,
+    KA_L4,   XXXXXXX, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R4,
+    KA_L5,   KA_L6,   KA_L7,   KC_ACL0, KC_ACL1,      _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         KC_BTN1, KC_BTN2, KC_BTN3,     KC_ACL0, KC_ACL1, KC_ACL2
   ), // }}}
 
@@ -321,20 +321,20 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_NAVI] = LAYOUT_moonlander( // {{{ navigation
-    KC_CAPS, KC_INS,  KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, KC_PAUS, KC_SLCK, KC_PSCR, KC_INS,  KC_CAPS,
-    KA_L1,   KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, XXXXXXX,     XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TAB,  KA_R1,
-    KA_L2,   KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_ENT,      KC_ENT,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ESC,  KA_R2,
-    KA_L3,   XXXXXXX, KC_BSPC, XXXXXXX, KC_DEL,  XXXXXXX,                       XXXXXXX, KC_BSPC, XXXXXXX, KC_DEL,  XXXXXXX, KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KA_L8,        _______,             _______,      KA_R8,   KA_R7,   KA_R6,   KA_R5,   KA_R4,
+    KA_L1,   KC_CAPS, KC_INS,  KC_PSCR, KC_SLCK, KC_PAUS, LAYERS,      LAYERS,  KC_PAUS, KC_SLCK, KC_PSCR, KC_INS,  KC_CAPS, KA_R1,
+    KA_L2,   KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, XXXXXXX,     XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TAB,  KA_R2,
+    KA_L3,   KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_ENT,      KC_ENT,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ESC,  KA_R3,
+    KA_L4,   XXXXXXX, KC_BSPC, XXXXXXX, KC_DEL,  XXXXXXX,                       XXXXXXX, KC_BSPC, XXXXXXX, KC_DEL,  XXXXXXX, KA_R4,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_NUM] = LAYOUT_moonlander( // {{{ numpad
-    KC_NLCK, KC_A,    KC_B,    KC_C,    KC_D,    KC_E,    LAYERS,      LAYERS,  KC_A,    KC_B,    KC_C,    KC_D,    KC_E,    KC_F,
-    KA_L1,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F,        KC_NLCK, KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KA_R1,
-    KA_L2,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PENT,     KC_PENT, KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KA_R2,
-    KA_L3,   KC_PEQL, KC_P7,   KC_P8,   KC_P9,   KC_P0,                         KC_P0,   KC_P7,   KC_P8,   KC_P9,   KC_PEQL, KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KC_PCMM, KC_PDOT,      _______,             _______,      KC_PDOT, KC_PCMM, KA_R6,   KA_R5,   KA_R4,
+    KC_A,    KC_B,    KC_C,    KC_D,    KC_E,    KC_F,    LAYERS,      LAYERS,  KC_A,    KC_B,    KC_C,    KC_D,    KC_E,    KC_F,
+    KA_L2,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_NLCK,     KC_NLCK, KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KA_R2,
+    KA_L3,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PENT,     KC_PENT, KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KA_R3,
+    KA_L4,   KC_PEQL, KC_P7,   KC_P8,   KC_P9,   KC_P0,                         KC_P0,   KC_P7,   KC_P8,   KC_P9,   KC_PEQL, KA_R4,
+    KA_L5,   KA_L6,   KA_L7,   KC_PCMM, KC_PDOT,      _______,             _______,      KC_PDOT, KC_PCMM, KA_R7,   KA_R6,   KA_R5,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
