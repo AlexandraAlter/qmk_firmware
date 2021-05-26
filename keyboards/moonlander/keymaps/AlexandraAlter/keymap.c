@@ -840,7 +840,7 @@ void rgb_matrix_indicators_user(void) { // {{{
 
   bool left_leds_set = false, right_leds_set = false;
   layer_state_t layers = layer_state | default_layer_state;
-  /* check top layer first */
+
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
     if (layers & (1UL << layer)) {
       const layer_led_config_t *led_config = &ledmap[layer];
@@ -913,34 +913,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
   return true;
 } // }}}
 
-layer_state_t layer_state_set_user(layer_state_t state) { // {{{
-  /* check top layer first */
+layer_state_t layer_state_set_user(layer_state_t layer_state) { // {{{
+  layer_state_t layers = layer_state | default_layer_state;
+
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
-    if (state & (1UL << layer)) {
+    if (layers & (1UL << layer)) {
       uint8_t inds = ledmap[layer].inds;
-      if (inds || layer == 0) {
-        ML_LED_1((inds & 0b001) != 0);
-        ML_LED_2((inds & 0b010) != 0);
-        ML_LED_3((inds & 0b100) != 0);
-        break;
-      }
+      ML_LED_4((inds & 0b001) != 0);
+      ML_LED_5((inds & 0b010) != 0);
+      ML_LED_6((inds & 0b100) != 0);
+      break;
     }
   }
 
-  return state;
+  return layer_state;
 } // }}}
 
 bool led_update_user(led_t led_state) { // {{{
-  ML_LED_4(led_state.num_lock);
-  ML_LED_5(led_state.caps_lock);
-  ML_LED_6(led_state.scroll_lock);
+  ML_LED_1(led_state.caps_lock);
+  ML_LED_2(!led_state.num_lock);
+  ML_LED_3(led_state.scroll_lock);
   if (led_state.compose) {
-    ML_LED_4(true);
-    ML_LED_6(true);
+    ML_LED_1(true);
+    ML_LED_3(true);
   }
   if (led_state.kana) {
-    ML_LED_5(true);
-    ML_LED_6(true);
+    ML_LED_2(true);
+    ML_LED_3(true);
   }
   return true;
 } // }}}
