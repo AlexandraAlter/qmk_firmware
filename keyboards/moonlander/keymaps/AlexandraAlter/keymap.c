@@ -212,11 +212,6 @@ typedef enum custom_keycode_t { // {{{
 #define KA_OHT2 LT(L_OHS,  KC_TAB)
 #define KA_OHT3 LT(L_NAVI, KC_ENT)
 // }}}
-
-// {{{ dvorak modifiers
-#define KA_LD1 L1(KC_GRV)
-#define KA_RD1 R1(KC_EQL)
-// }}}
 // }}}
 
 const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
@@ -240,11 +235,11 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_DVK] = LAYOUT_moonlander( // {{{ dvorak
-    KA_LD1,  _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, KA_RD1,
-    _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    TG(L_OH),    TG(L_OH),KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    _______,
-    _______, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    _______,
-    _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
-    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+    L1(KC_GRV), _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, R1(KC_EQL),
+    _______,    KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    TG(L_OH),    TG(L_OH),KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    R2(KC_SLSH),
+    _______,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    R3(KC_MINS),
+    _______,    KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
+    L5(KC_DEL), _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
@@ -276,11 +271,11 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_QRTY] = LAYOUT_moonlander( // {{{ qwerty
-    _______, _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, _______,
-    _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,     _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
-    _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______,     _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, _______,
-    _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                          KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+    L1(KC_GRV), _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, R1(KC_EQL),
+    _______,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,     _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    R2(KC_MINS),
+    _______,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______,     _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, R3(KC_QUOT),
+    _______,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                          KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
+    _______,    _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
@@ -350,8 +345,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_SYMS] = LAYOUT_moonlander( // {{{ symbols
     KA_L1,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   LAYERS,      LAYERS,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KA_R1,
     KA_L2,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_F11,      KC_F12,  KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KA_R2,
-    KA_L3,   KC_GRV,  KC_QUOT, KC_SCLN, US_EURO, KC_LBRC, XXXXXXX,     XXXXXXX, KC_RBRC, KC_BSLS, KC_MINS, KC_SLSH, KC_EQL,  KA_R3,
-    KA_L4,   KC_TILD, KC_DQUO, KC_COLN, US_PND,  KC_LCBR,                       KC_RCBR, KC_PIPE, KC_UNDS, KC_QUES, KC_PLUS, KA_R4,
+    KA_L3,   KC_GRV,  KC_QUOT, KC_BSLS, KC_LBRC, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_RBRC, KC_SLSH, KC_MINS, KC_EQL,  KA_R3,
+    KA_L4,   KC_TILD, KC_DQUO, KC_PIPE, KC_LCBR, XXXXXXX,                       XXXXXXX, KC_RCBR, KC_QUES, KC_UNDS, KC_PLUS, KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
@@ -395,8 +390,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_CONF] = LAYOUT_moonlander_mirrored( // {{{ config
     RESET,   AU_TOG,  NK_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, ABORT,
     XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUD, RGB_HUI, KC_WAKE, KC_SLEP,
-    XXXXXXX, XXXXXXX, XXXXXXX, RGB_VAD, RGB_VAI, KC_WAKE, KC_PWR,
-    XXXXXXX, XXXXXXX, XXXXXXX, RGB_SAD, RGB_SAI, KC_WAKE,
+    XXXXXXX, XXXXXXX, XXXXXXX, RGB_VAD, RGB_VAI, XXXXXXX, KC_PWR,
+    XXXXXXX, XXXXXXX, XXXXXXX, RGB_SAD, RGB_SAI, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, RGB_SPD, RGB_SPI,      RGB_TOG,
                                         RGB_TLC, RGB_MOD, RGB_SLD
   ), // }}}
@@ -695,9 +690,9 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   [LEDS_SYMS] = LEDS_moonlander_left( // {{{ symbols
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_5,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_3,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2,
-    C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_____,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____, C_____,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____,
+    C_SU_4, C_SU_4, C_SU_4, C_SU_3, C_SU_3,     C_____,
                                     C_____, C_____, C_____
   ), // }}}
 
@@ -740,8 +735,8 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   [LEDS_CONF] = LEDS_moonlander_left( // {{{ config
     C_SU_1, C_SU_2, C_SU_2, C_____, C_____, C_____, C_SU_5,
     C_____, C_____, C_____, C_DS_2, C_DS_2, C_SU_2, C_SU_1,
-    C_____, C_____, C_____, C_DS_2, C_DS_2, C_SU_2, C_SU_1,
-    C_____, C_____, C_____, C_DS_2, C_DS_2, C_SU_2,
+    C_____, C_____, C_____, C_DS_2, C_DS_2, C_____, C_SU_1,
+    C_____, C_____, C_____, C_DS_2, C_DS_2, C_____,
     C_____, C_____, C_____, C_DS_2, C_DS_2,     C_DS_2,
                                     C_DS_2, C_DS_2, C_DS_2
   ), // }}}
