@@ -20,13 +20,13 @@
 #include "keymap_steno.h"
 
 // Row 1
-#define VL_PL    STN_N3
-#define VL_KL    STN_N4
-#define VL_IL    STN_N5
-#define VL_APO   STN_N6
-#define VL_OR    STN_N7
-#define VL_KR    STN_N8
-#define VL_PR    STN_N9
+#define VL_PL   STN_N3
+#define VL_KL   STN_N4
+#define VL_IL   STN_N5
+#define VL_APO  STN_N6
+#define VL_OR   STN_N7
+#define VL_KR   STN_N8
+#define VL_PR   STN_N9
 
 // Row 2
 #define VL_FL   STN_S1
