@@ -663,7 +663,7 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   [LEDS_VELX] = LEDS_moonlander_left( // {{{ velotype without footpedal
     C_MA_4, C_____, C_____, C_____, C_____, C_____, C_MA_5,
     C_____, C_____, C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_____,
-    C_MA_3, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_____,
+    C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_____,
     C_MA_2, C_MA_1, C_MA_2, C_MA_2, C_MA_2, C_MA_2,
     C_MA_3, C_MA_3, C_MA_3, C_MA_2, C_MA_2,     C_MA_3,
                                     C_MA_2, C_MA_1, C_MA_3
