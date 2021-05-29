@@ -68,5 +68,5 @@
 #define VL_H    STN_N1
 #define VL_NOS  STN_DR
 
-// spare: N2, NB, NC
+// spare: N2, NA, NB, NC
 
