@@ -345,8 +345,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_SYMS] = LAYOUT_moonlander( // {{{ symbols
     KA_L1,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   LAYERS,      LAYERS,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KA_R1,
     KA_L2,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_F11,      KC_F12,  KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KA_R2,
-    KA_L3,   KC_GRV,  KC_QUOT, KC_BSLS, KC_LBRC, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_RBRC, KC_SLSH, KC_MINS, KC_EQL,  KA_R3,
-    KA_L4,   KC_TILD, KC_DQUO, KC_PIPE, KC_LCBR, XXXXXXX,                       XXXXXXX, KC_RCBR, KC_QUES, KC_UNDS, KC_PLUS, KA_R4,
+    KA_L3,   KC_GRV,  KC_QUOT, KC_BSLS, KC_COMM, KC_LBRC, XXXXXXX,     XXXXXXX, KC_RBRC, KC_DOT,  KC_SLSH, KC_MINS, KC_EQL,  KA_R3,
+    KA_L4,   KC_TILD, KC_DQUO, KC_PIPE, KC_LABK, KC_LCBR,                       KC_RCBR, KC_RABK, KC_QUES, KC_UNDS, KC_PLUS, KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
@@ -690,8 +690,8 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   [LEDS_SYMS] = LEDS_moonlander_left( // {{{ symbols
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_5,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_3,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____, C_____,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2,
     C_SU_4, C_SU_4, C_SU_4, C_SU_3, C_SU_3,     C_____,
                                     C_____, C_____, C_____
   ), // }}}
