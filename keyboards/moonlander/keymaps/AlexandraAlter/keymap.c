@@ -248,7 +248,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    R3(KC_MINS),
     _______,    KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
     L5(KC_DEL), _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
-                                        _______, _______, _______,     _______, _______, _______
+                                           _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_OH] = LAYOUT_moonlander( // {{{ one-handed dvorak
