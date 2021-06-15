@@ -414,9 +414,6 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 };
 
-extern bool g_suspend_state;
-extern rgb_config_t rgb_matrix_config;
-
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
@@ -845,7 +842,7 @@ void set_led_color(int led, color_t col) { // {{{
     rgb_matrix_set_color(led, 0, 0, 0);
   } else {
     RGB rgb = hsv_to_rgb(hsv);
-    float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+    float f = (float)rgb_matrix_get_val() / UINT8_MAX;
     rgb_matrix_set_color(led, f * rgb.r, f * rgb.g, f * rgb.b);
   }
 } // }}}
@@ -859,7 +856,7 @@ void set_led_colors(int first_led, int last_led, const color_t *colors) { // {{{
 } // }}}
 
 void rgb_matrix_indicators_user(void) { // {{{
-  if (g_suspend_state || keyboard_config.disable_layer_led) return;
+  if (rgb_matrix_get_suspend_state() || keyboard_config.disable_layer_led) return;
 
   int first_l_led = 0;
   int last_l_led = (DRIVER_LED_TOTAL / 2) - 1;
