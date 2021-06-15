@@ -42,7 +42,7 @@
 #define VL_FR   STN_TR
 
 // Row 3
-#define VL_ZL   STN_RE2
+#define VL_ZL   STN_FN
 #define VL_SL   STN_S2
 #define VL_CL   STN_KL
 #define VL_RL   STN_WL
@@ -58,18 +58,18 @@
 // Row 4
 #define VL_LL   STN_A
 #define VL_NL   STN_O
-#define VL_YL   STN_N2
-#define VL_YR   STN_NB
+#define VL_YL   STN_RE1
+#define VL_YR   STN_RE2
 #define VL_NR   STN_E
 #define VL_LR   STN_U
 
 // Row 5
 #define VL_SYML STN_N1
-#define VL_SH   STN_FN
+#define VL_SH   STN_NB
 #define VL_SYMR STN_NC
 
 // Row 6 (Palms)
-#define VL_H    STN_RE1
+#define VL_H    STN_N2
 #define VL_NOS  STN_DR
 
 // Alternates

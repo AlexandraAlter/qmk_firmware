@@ -101,7 +101,7 @@ typedef enum layer_t {
   L_BASE, // base
   L_DVK,  // dvorak
   L_QRTY, // qwerty
-  L_STEN, // stenotype
+  L_STEN, // stenotype / palantype
   L_VELO, // velotype
   L_VELX, // velotype without footpedal
   L_GBA,  // gaming base
@@ -287,13 +287,13 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
-  [L_STEN] = LAYOUT_moonlander( // {{{ stenotype
+  [L_STEN] = LAYOUT_moonlander( // {{{ stenotype / palantype
     STN_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, STN_PWR,
     STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  XXXXXXX,     XXXXXXX, STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
-    STN_RE1, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, XXXXXXX,     XXXXXXX, STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    STN_RE2, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      _______,             _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                        STN_A,   STN_O,   STN_FN,      STN_FN,  STN_E,   STN_U
+    STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, XXXXXXX,     XXXXXXX, STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+    XXXXXXX, STN_FN,  STN_FN,  STN_FN,  STN_FN,       _______,             _______,      STN_PWR, STN_PWR, STN_PWR, STN_PWR, XXXXXXX,
+                                        STN_A,   STN_O,   STN_RE1,     STN_RE2, STN_E,   STN_U
   ), // }}}
 
   [L_VELO] = LAYOUT_moonlander( // {{{ velotype
@@ -351,10 +351,10 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_NUM] = LAYOUT_moonlander( // {{{ numpad
-    KA_L1,   _______, _______, _______, KC_DLR,  _______, LAYERS,      LAYERS,  _______, _______, _______, KC_LPRN, KC_RPRN, KA_R1,
-    KA_L2,   _______, KC_A,    KC_B,    KC_C,    KC_COLN, KA_L11,      KC_NLCK, KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KA_R2,
-    KA_L3,   _______, KC_D,    KC_E,    KC_F,    KC_SCLN, KA_L10,      KC_PENT, KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KA_R3,
-    KA_L4,   _______, _______, KC_PCMM, KC_PDOT, KC_X,                          KC_P0,   KC_P7,   KC_P8,   KC_P9,   KC_PEQL, KA_R4,
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, KC_DLR,  XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, KC_LPRN, KC_RPRN, KA_R1,
+    KA_L2,   XXXXXXX, KC_A,    KC_B,    KC_C,    KC_COLN, KA_L11,      KC_NLCK, KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KA_R2,
+    KA_L3,   XXXXXXX, KC_D,    KC_E,    KC_F,    KC_SCLN, KA_L10,      KC_PENT, KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KA_R3,
+    KA_L4,   XXXXXXX, XXXXXXX, KC_PCMM, KC_PDOT, KC_X,                          KC_P0,   KC_P7,   KC_P8,   KC_P9,   KC_PEQL, KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KC_PDOT, KC_PCMM, KA_R7,   KA_R6,   KA_R5,
                                         _______, _______, _______,     _______, KC_PENT, KC_P0
   ), // }}}
@@ -577,7 +577,7 @@ const color_t PROGMEM ledmap_both[][DRIVER_LED_TOTAL] = {
     C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_____,    C_____, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3,
     C_RA_4, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_2, C_____,    C_____, C_RA_2, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_1,
     C_RA_4, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_2,                    C_RA_2, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_1,
-    C_____, C_____, C_____, C_____, C_____,     C_RA_5,            C_RA_5,     C_____, C_____, C_____, C_____, C_____,
+    C_____, C_RA_4, C_RA_4, C_RA_4, C_RA_4,     C_RA_5,            C_RA_5,     C_RA_4, C_RA_4, C_RA_4, C_RA_4, C_____,
                                     C_RA_1, C_RA_1, C_RA_4,    C_RA_4, C_RA_1, C_RA_1
   ), // }}}
 
