@@ -300,11 +300,11 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_STEN] = LAYOUT_moonlander( // {{{ stenotype / palantype / chording
-    STN_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, STN_PWR,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  XXXXXXX,     XXXXXXX, STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
     STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, STN_N2,      STN_NB,  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    MO_NAVI, STN_N1,  STN_N1,  STN_N1,  STN_N1,       STN_RE1,             STN_RE2,      STN_NC,  STN_NC,  STN_NC,  STN_NC,  MO_NAVI,
+    MO_NAVI, STN_PWR, STN_PWR, STN_N1,  STN_N1,       STN_RE1,             STN_RE2,      STN_NC,  STN_NC,  STN_DR,  STN_DR,  MO_NAVI,
                                         STN_A,   STN_O,   STN_RE1,     STN_RE2, STN_E,   STN_U
   ), // }}}
 
@@ -562,11 +562,11 @@ const color_t PROGMEM ledmap_both[][DRIVER_LED_TOTAL] = {
   ), */ // }}}
 
   [LEDS_STEN] = LEDS_moonlander_both( // {{{ stenotype / palantype / chording
-    C_MA_4, C_____, C_____, C_____, C_____, C_____, C_MA_5,    C_MA_5, C_____, C_____, C_____, C_____, C_____, C_MA_4,
+    C_____, C_____, C_____, C_____, C_____, C_____, C_MA_5,    C_MA_5, C_____, C_____, C_____, C_____, C_____, C_____,
     C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_____,    C_____, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3,
-    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_4,    C_MA_4, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_3,    C_MA_3, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
     C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2,                    C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
-    C_MA_5, C_MA_4, C_MA_4, C_MA_4, C_MA_4,     C_MA_4,            C_MA_4,     C_MA_4, C_MA_4, C_MA_4, C_MA_4, C_MA_5,
+    C_MA_5, C_MA_4, C_MA_4, C_MA_3, C_MA_3,     C_MA_4,            C_MA_4,     C_MA_3, C_MA_3, C_MA_1, C_MA_1, C_MA_5,
                                     C_MA_1, C_MA_1, C_MA_4,    C_MA_4, C_MA_1, C_MA_1
   ), // }}}
 
