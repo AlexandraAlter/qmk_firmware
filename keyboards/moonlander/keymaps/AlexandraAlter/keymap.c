@@ -713,9 +713,9 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
   ), // }}}
 
   [LEDS_LAY] = LEDS_moonlander_left( // {{{ layer switching
-    C_SU_5, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_1, C_____,
-    C_____, C_SU_1, C_SU_1, C_____, C_____, C_____, C_____,
-    C_SU_4, C_____, C_SU_1, C_____, C_____, C_____, C_____,
+    C_SU_5, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_5,
+    C_____, C_____, C_____, C_____, C_____, C_____, C_____,
+    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____,
     C_____, C_____, C_____, C_____, C_____, C_____,
     C_____, C_____, C_____, C_____, C_____,     C_____,
                                     C_____, C_____, C_____
