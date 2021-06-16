@@ -2,7 +2,6 @@
 #include "version.h"
 #include "keymap_us_international.h"
 #include "keymap_steno.h"
-#include "keymap_steno_velotype.h"
 
 // {{{ convenience macros
 // clang-format off
@@ -101,9 +100,7 @@ typedef enum layer_t {
   L_BASE, // base
   L_DVK,  // dvorak
   L_QRTY, // qwerty
-  L_STEN, // stenotype / palantype
-  L_VELO, // velotype
-  L_VELX, // velotype without footpedal
+  L_STEN, // stenotype / palantype / chording
   L_GBA,  // gaming base
   L_OH,   // one-handed dvorak
   L_OHF,  // one-handed dvorak flipped
@@ -134,8 +131,18 @@ typedef enum custom_keycode_t { // {{{
 // {{{ key macros
 #define RGB_TLC TOGGLE_LAYER_COLOR
 
-#define LAYERS TG(L_LAY)
-#define ABORT  TO(L_BASE)
+// {{{ layer changes
+#define LAYERS  TG(L_LAY)
+#define ABORT   TO(L_BASE)
+
+#define TO_DVK  TO(L_DVK)
+#define TO_QRTY TO(L_QRTY)
+#define TO_STEN TO(L_STEN)
+#define TO_MUS  TO(L_MUS)
+
+#define MO_NAVI MO(L_NAVI)
+#define MO_CONF MO(L_CONF)
+// }}}
 
 // {{{ left basic modifiers
 #define L1(kc)  LALT_T(kc)
@@ -166,8 +173,8 @@ typedef enum custom_keycode_t { // {{{
 #define KA_L9M KC_LALT
 
 #define KA_LT1 LT(L_SYMS, KC_SPC)
-#define KA_LT2 LT(L_NAVI, KC_TAB)
-#define KA_LT3 LT(L_SHRT, KC_ENT)
+#define KA_LT2 LT(L_NAVI, KC_ENT)
+#define KA_LT3 LT(L_SHRT, KC_TAB)
 #define KA_LTA TG(L_MOUS)
 // }}}
 
@@ -201,7 +208,7 @@ typedef enum custom_keycode_t { // {{{
 
 #define KA_RT1 LT(L_SYMS, KC_SPC)
 #define KA_RT2 LT(L_NUM,  KC_ENT)
-#define KA_RT3 LT(L_SHRT, KC_APP)
+#define KA_RT3 LT(L_SHRT, KC_TAB)
 #define KA_RTA TG(L_NUM)
 // }}}
 
@@ -211,14 +218,19 @@ typedef enum custom_keycode_t { // {{{
 
 #define KA_OHT1 LT(L_OHF,  KC_SPC)
 #define KA_OHT2 LT(L_OHS,  KC_TAB)
-#define KA_OHT3 LT(L_NAVI,  KC_ENT)
+#define KA_OHT3 LT(L_NAVI, KC_ENT)
 // }}}
 
 // {{{ shortcuts
 #define KA_UNDO LCTL(KC_Z)
+#define KA_REDO LCTL(KC_Y)
+
 #define KA_CUT  LCTL(KC_X)
 #define KA_COPY LCTL(KC_C)
 #define KA_PSTE LCTL(KC_V)
+
+#define KA_QUIT LCTL(KC_Q)
+#define KA_CLOS LCTL(KC_W)
 // }}}
 // }}}
 
@@ -239,7 +251,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L10,      KA_R10,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R3,
     KA_L4,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        KA_LTA,              KA_RTA,       KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
-                                        KA_LT1,  KA_LT2,  KA_LT3,      KA_RT3,  KA_RT2, KA_RT1
+                                        KA_LT1,  KA_LT2,  KA_LT3,      KA_RT3,  KA_RT2,  KA_RT1
   ), // }}}
 
   [L_DVK] = LAYOUT_moonlander( // {{{ dvorak
@@ -287,31 +299,14 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
-  [L_STEN] = LAYOUT_moonlander( // {{{ stenotype / palantype
+  // TODO fix LEDs
+  [L_STEN] = LAYOUT_moonlander( // {{{ stenotype / palantype / chording
     STN_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, STN_PWR,
     STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  XXXXXXX,     XXXXXXX, STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
-    STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, XXXXXXX,     XXXXXXX, STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, STN_N2,      STN_NB,  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    XXXXXXX, STN_FN,  STN_FN,  STN_FN,  STN_FN,       _______,             _______,      STN_PWR, STN_PWR, STN_PWR, STN_PWR, XXXXXXX,
+    MO_NAVI, STN_N1,  STN_N1,  STN_N1,  STN_N1,       STN_RE1,             STN_RE2,      STN_NC,  STN_NC,  STN_NC,  STN_NC,  MO_NAVI,
                                         STN_A,   STN_O,   STN_RE1,     STN_RE2, STN_E,   STN_U
-  ), // }}}
-
-  [L_VELO] = LAYOUT_moonlander( // {{{ velotype
-    STN_PWR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   LAYERS,      LAYERS,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  STN_PWR,
-    XXXXXXX, XXXXXXX, VL_PL,   VL_KL,   VL_IL,   VL_APOL, XXXXXXX,     XXXXXXX, VL_APOR, VL_OR,   VL_KR,   VL_PR,   KC_F11,  KC_F12,
-    VL_ZL,   VL_FL,   VL_TL,   VL_JL,   VL_OL,   VL_UL,   XXXXXXX,     XXXXXXX, VL_UR,   VL_IR,   VL_JR,   VL_TR,   VL_FR,   VL_ZR,
-    VL_ZL,   VL_SL,   VL_CL,   VL_RL,   VL_EL,   VL_AL,                         VL_AR,   VL_ER,   VL_RR,   VL_CR,   VL_SR,   VL_ZR,
-    VL_SYML, VL_FN,   VL_SUPR, VL_CTRL, VL_ALT,       _______,             _______,      VL_DOWN, VL_UP,   VL_LEFT, VL_RGHT, VL_SYMR,
-                                        VL_LL,   VL_NL,   VL_YL,       VL_YR,   VL_NR,   VL_LR
-  ), // }}}
-
-  [L_VELX] = LAYOUT_moonlander( // {{{ velotype without footpedal
-    STN_PWR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   LAYERS,      LAYERS,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  STN_PWR,
-    XXXXXXX, XXXXXXX, VL_PL,   VL_KL,   VL_IL,   VL_APOL, XXXXXXX,     XXXXXXX, VL_APOR, VL_OR,   VL_KR,   VL_PR,   KC_F11,  KC_F12,
-    VL_SH,   VL_FL,   VL_TL,   VL_JL,   VL_OL,   VL_UL,   VL_YL,       VL_YR,   VL_UR,   VL_IR,   VL_JR,   VL_TR,   VL_FR,   VL_SH,
-    VL_ZL,   VL_SL,   VL_CL,   VL_RL,   VL_EL,   VL_AL,                         VL_AR,   VL_ER,   VL_RR,   VL_CR,   VL_SR,   VL_ZR,
-    VL_SYML, VL_FN,   VL_SUPR, VL_CTRL, VL_ALT,       VL_H,                VL_NOS,       VL_DOWN, VL_UP,   VL_LEFT, VL_RGHT, VL_SYMR,
-                                        VL_LL,   VL_NL,   VL_H,        VL_NOS,  VL_NR,   VL_LR
   ), // }}}
 
   [L_GBA] = LAYOUT_moonlander( // {{{ gaming base
@@ -365,14 +360,14 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L3,   KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KA_L10,      KA_R10,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ESC,  KA_R3,
     KA_L4,   XXXXXXX, KC_BSPC, XXXXXXX, KC_DEL,  KC_ENT,                        KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  XXXXXXX, KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
-                                        _______, _______, _______,     _______, _______, _______
+                                        KC_SPC,  KC_ENT,  KC_TAB,      KC_TAB,  KC_ENT,  KC_TAB
   ), // }}}
 
   [L_SHRT] = LAYOUT_moonlander_mirrored( // {{{ shortcuts
     KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,
-    KA_L2,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L11,
-    KA_L3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L10,
-    KA_L4,   KA_UNDO, KA_CUT,  KA_COPY, KA_PSTE, XXXXXXX,
+    KA_L2,   KA_QUIT, KA_CLOS, XXXXXXX, XXXXXXX, XXXXXXX, KA_L11,
+    KA_L3,   KA_REDO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L10,
+    KA_L4,   KA_UNDO, KA_CUT,  KA_COPY, KA_PSTE, KC_APP, 
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,
                                         _______, _______, _______
   ), // }}}
@@ -380,19 +375,19 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_MOUS] = LAYOUT_moonlander( // {{{ mouse
     KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R1,
     KA_L2,   XXXXXXX, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, KA_R2,
-    KA_L3,   KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX,     XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, KA_R3,
-    KA_L4,   XXXXXXX, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R4,
-    KA_L5,   KA_L6,   KA_L7,   KC_ACL0, KC_ACL1,      _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
+    KA_L3,   KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX,     XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, KA_R3,
+    KA_L4,   KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R4,
+    KA_L5,   KA_L6,   KA_L7,   XXXXXXX, KC_ACL0,      _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         KC_BTN1, KC_BTN2, KC_BTN3,     KC_ACL0, KC_ACL1, KC_ACL2
   ), // }}}
 
   [L_LAY] = LAYOUT_moonlander_mirrored( // {{{ layer switching
-    ABORT,      TO(L_DVK),  TO(L_STEN), TO_GAME,    XXXXXXX,    TO(L_MUS),    LAYERS,
-    XXXXXXX,    TO(L_QRTY), TO(L_VELO), XXXXXXX,    XXXXXXX,    XXXXXXX,      XXXXXXX,
-    MO(L_CONF), XXXXXXX,    TO(L_VELX), XXXXXXX,    XXXXXXX,    XXXXXXX,      XXXXXXX,
-    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,           XXXXXXX,
-                                                    XXXXXXX,    XXXXXXX,      XXXXXXX
+    ABORT,   TO_DVK,  TO_QRTY, TO_STEN, TO_GAME, TO_MUS,  LAYERS,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    MO_CONF, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,
+                                        XXXXXXX, XXXXXXX, XXXXXXX
   ), // }}}
 
   [L_MEDI] = LAYOUT_moonlander_mirrored( // {{{ media
@@ -550,8 +545,6 @@ const uint8_t PROGMEM color_map[C_MAX][3] = { // {{{
 // LED configuration that declares all of the LEDs
 typedef enum led_maps_both_t {
   LEDS_STEN,
-  LEDS_VELO,
-  LEDS_VELX,
   LEDS_NUM,
   LEDS_MOUS,
 } led_maps_both_t;
@@ -569,31 +562,13 @@ const color_t PROGMEM ledmap_both[][DRIVER_LED_TOTAL] = {
                                     C_____, C_____, C_____,    C_____, C_____, C_____
   ), */ // }}}
 
-  [LEDS_STEN] = LEDS_moonlander_both( // {{{ stenotype
-    C_RA_4, C_____, C_____, C_____, C_____, C_____, C_RA_5,    C_RA_5, C_____, C_____, C_____, C_____, C_____, C_RA_4,
-    C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_____,    C_____, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3, C_RA_3,
-    C_RA_4, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_2, C_____,    C_____, C_RA_2, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_1,
-    C_RA_4, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_2,                    C_RA_2, C_RA_1, C_RA_1, C_RA_1, C_RA_1, C_RA_1,
-    C_____, C_RA_4, C_RA_4, C_RA_4, C_RA_4,     C_RA_5,            C_RA_5,     C_RA_4, C_RA_4, C_RA_4, C_RA_4, C_____,
-                                    C_RA_1, C_RA_1, C_RA_4,    C_RA_4, C_RA_1, C_RA_1
-  ), // }}}
-
-  [LEDS_VELO] = LEDS_moonlander_both( // {{{ velotype
-    C_MA_1, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_5,    C_MA_5, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_1,
-    C_____, C_____, C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_____,    C_____, C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_MA_3, C_MA_3,
-    C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_____,    C_____, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2,
-    C_MA_2, C_MA_1, C_MA_2, C_MA_2, C_MA_2, C_MA_2,                    C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_MA_1, C_MA_2,
-    C_MA_3, C_MA_4, C_MA_4, C_MA_4, C_MA_4,     C_MA_5,            C_MA_5,     C_MA_4, C_MA_4, C_MA_4, C_MA_4, C_MA_3,
-                                    C_MA_2, C_MA_1, C_MA_2,    C_MA_2, C_MA_1, C_MA_2
-  ), // }}}
-
-  [LEDS_VELX] = LEDS_moonlander_both( // {{{ velotype without footpedal
-    C_MA_1, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_5,    C_MA_5, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_1,
-    C_____, C_____, C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_____,    C_____, C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_MA_3, C_MA_3,
-    C_MA_4, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2,    C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_4,
-    C_MA_2, C_MA_1, C_MA_2, C_MA_2, C_MA_2, C_MA_2,                    C_MA_2, C_MA_2, C_MA_2, C_MA_2, C_MA_1, C_MA_2,
-    C_MA_3, C_MA_4, C_MA_4, C_MA_4, C_MA_4,     C_MA_3,            C_MA_4,     C_MA_4, C_MA_4, C_MA_4, C_MA_4, C_MA_3,
-                                    C_MA_2, C_MA_1, C_MA_3,    C_MA_4, C_MA_1, C_MA_1
+  [LEDS_STEN] = LEDS_moonlander_both( // {{{ stenotype / palantype / chording
+    C_MA_4, C_____, C_____, C_____, C_____, C_____, C_MA_5,    C_MA_5, C_____, C_____, C_____, C_____, C_____, C_MA_4,
+    C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_____,    C_____, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3,
+    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_4,    C_MA_4, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2,                    C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_5, C_MA_4, C_MA_4, C_MA_4, C_MA_4,     C_MA_4,            C_MA_4,     C_MA_4, C_MA_4, C_MA_4, C_MA_4, C_MA_5,
+                                    C_MA_1, C_MA_1, C_MA_4,    C_MA_4, C_MA_1, C_MA_1
   ), // }}}
 
   [LEDS_NUM] = LEDS_moonlander_both( // {{{ numpad
@@ -609,8 +584,8 @@ const color_t PROGMEM ledmap_both[][DRIVER_LED_TOTAL] = {
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_5,    C_SU_5, C_____, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_4, C_____, C_SU_2, C_SU_1, C_SU_2, C_SU_2, C_____,    C_____, C_____, C_____, C_SU_1, C_____, C_____, C_SU_4,
     C_SU_4, C_SU_3, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_____,    C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,
-    C_SU_4, C_____, C_SU_2, C_____, C_SU_2, C_____,                    C_____, C_____, C_____, C_____, C_____, C_SU_4,
-    C_SU_4, C_SU_4, C_SU_4, C_SU_3, C_SU_3,     C_SU_5,            C_SU_5,     C_SU_3, C_SU_3, C_SU_4, C_SU_4, C_SU_4,
+    C_SU_4, C_SU_3, C_SU_2, C_____, C_SU_2, C_____,                    C_____, C_____, C_____, C_____, C_____, C_SU_4,
+    C_SU_4, C_SU_4, C_SU_4, C_____, C_SU_3,     C_SU_5,            C_SU_5,     C_SU_3, C_SU_3, C_SU_4, C_SU_4, C_SU_4,
                                     C_SU_1, C_SU_1, C_SU_1,    C_SU_3, C_SU_3, C_SU_3
   ), // }}}
 };
@@ -726,14 +701,14 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
     C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
     C_SU_4, C_____, C_SU_2, C_____, C_SU_2, C_SU_2,
     C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_____,
-                                    C_____, C_____, C_____
+                                    C_SU_2, C_SU_2, C_SU_2
   ), // }}}
 
   [LEDS_SHRT] = LEDS_moonlander_left( // {{{ shortcuts
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_5,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
+    C_SU_4, C_SU_1, C_SU_1, C_____, C_____, C_____, C_SU_4,
+    C_SU_4, C_SU_2, C_____, C_____, C_____, C_____, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2,
     C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_____,
                                     C_____, C_____, C_____
   ), // }}}
@@ -814,8 +789,6 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = { // {{{
   [L_DVK]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_DVK],  .inds = 0b000, },
   [L_QRTY]  = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_QRTY], .inds = 0b001, },
   [L_STEN]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_STEN], .inds = 0b010, },
-  [L_VELO]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_VELO], .inds = 0b010, },
-  [L_VELX]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_VELX], .inds = 0b010, },
   [L_GBA]   = { .mode = LM_LEFT,   .colors = ledmap_left[LEDS_GBA],  .inds = 0b100, },
   [L_GNU]   = { .mode = LM_RIGHT,  .colors = ledmap_right[LEDS_GNU], .inds = 0b100, },
   [L_OH]    = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OH],   .inds = 0b001, },
