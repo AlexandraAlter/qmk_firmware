@@ -98,22 +98,24 @@ LAYOUT_moonlander( \
 typedef enum layer_t {
   // base layers
   L_BASE, // base
+  L_GBA,  // gaming base
   L_DVK,  // dvorak
   L_QRTY, // qwerty
   L_STEN, // stenotype
-  L_GBA,  // gaming base
-  L_OH,   // one-handed dvorak
-  L_OHF,  // one-handed dvorak flipped
-  L_OHS,  // one-handed symbols and numpad
-  L_MUS,  // music
+  L_OH,   // one-handed
+  L_OHS,  // one-handed symbols
+  L_OHN,  // one-handed numpad
   // utility layers
   L_SYMS, // symbols
   L_NUM,  // numpad
   L_NAVI, // navigation
   L_SHRT, // shortcuts
+  // layers 16+ below this point
+  // layers below this point are not used in LT keys
+  L_MUS,  // music
   L_MOUS, // mouse
   L_MEDI, // media
-  // layers 16+ below this point
+  L_OHF,  // one-handed function keys
   L_GNU,  // gaming numpad
   // layer switching and extras
   L_LAY,  // layer switching
@@ -124,8 +126,7 @@ typedef enum layer_t {
 typedef enum custom_keycode_t { // {{{
   // pause LED animation
   RGB_SLD = ML_SAFE_RANGE,
-  // go directly to the two gaming layers
-  TO_GAME,
+  TO_GAME,  // go directly to the two gaming layers
 } custom_keycode_t; // }}}
 
 // {{{ key macros
@@ -141,23 +142,25 @@ typedef enum custom_keycode_t { // {{{
 #define TO_QRTY TO(L_QRTY)
 #define TO_STEN TO(L_STEN)
 #define TO_MUS  TO(L_MUS)
+#define TO_OHP  TO(L_OHP)
+#define TO_OH   TO(L_OH)
 
 #define MO_NAVI MO(L_NAVI)
 #define MO_CONF MO(L_CONF)
 // }}}
 
 // {{{ left basic modifiers
-#define L1(kc)  LT(L_MEDI, kc)
+#define L1(kc)  LSFT_T(kc)
 #define L2(kc)  LGUI_T(kc)
 #define L3(kc)  LCTL_T(kc)
 #define L4(kc)  LSFT_T(kc)
-#define L5(kc)  HYPR_T(kc)
+#define L5(kc)  MEH_T(kc)
 #define L6(kc)  LGUI_T(kc)
 #define L7(kc)  LCTL_T(kc)
 #define L8(kc)  LSFT_T(kc)
 #define L9(kc)  LALT_T(kc)
 #define L10(kc) LALT_T(kc)
-#define L11(kc) XXXXXXX
+#define L11(kc) LSFT_T(kc)
 
 #define KA_L1  L1(KC_NO)
 #define KA_L2  L2(KC_ESC)
@@ -169,7 +172,7 @@ typedef enum custom_keycode_t { // {{{
 #define KA_L8  L8(KC_LEFT)
 #define KA_L9  L9(KC_RGHT)
 #define KA_L10 L10(KC_LBRC)
-#define KA_L11 XXXXXXX
+#define KA_L11 L11(KC_BSLS)
 
 #define KA_LT1 LT(L_SYMS, KC_SPC)
 #define KA_LT2 LT(L_NAVI, KC_TAB)
@@ -178,7 +181,7 @@ typedef enum custom_keycode_t { // {{{
 // }}}
 
 // {{{ right basic modifiers
-#define R1(kc)  LT(L_MEDI, kc)
+#define R1(kc)  RSFT_T(kc)
 #define R2(kc)  RGUI_T(kc)
 #define R3(kc)  RCTL_T(kc)
 #define R4(kc)  RSFT_T(kc)
@@ -188,7 +191,7 @@ typedef enum custom_keycode_t { // {{{
 #define R8(kc)  RSFT_T(kc)
 #define R9(kc)  LALT_T(kc)
 #define R10(kc) LALT_T(kc)
-#define R11(kc) XXXXXXX
+#define R11(kc) RSFT_T(kc)
 
 #define KA_R1  R1(KC_NO)
 #define KA_R2  R2(KC_ESC)
@@ -200,7 +203,7 @@ typedef enum custom_keycode_t { // {{{
 #define KA_R8  R8(KC_UP)
 #define KA_R9  R9(KC_DOWN)
 #define KA_R10 R10(KC_RBRC)
-#define KA_R11 XXXXXXX
+#define KA_R11 R11(KC_BSLS)
 
 #define KA_RT1 LT(L_SYMS, KC_SPC)
 #define KA_RT2 LT(L_NUM,  KC_ENT)
@@ -208,10 +211,26 @@ typedef enum custom_keycode_t { // {{{
 #define KA_RTA TG(L_NUM)
 // }}}
 
-// {{{ one-handed modifiers
-#define KA_OHT1 LT(L_OHF,  KC_SPC)
-#define KA_OHT2 LT(L_OHS,  KC_TAB)
-#define KA_OHT3 LT(L_NAVI, KC_ENT)
+// {{{ dvorak-specific modifiers
+#define KA_DL1 LT(L_MEDI, KC_GRV)
+
+#define KA_DR1 LT(L_MEDI, KC_EQL)
+#define KA_DR2 R2(KC_SLSH)
+#define KA_DR3 R3(KC_MINS)
+// }}}
+
+// {{{ qwerty-specific modifiers
+#define KA_QL1 LT(L_MEDI, KC_GRV)
+
+#define KA_QR1 LT(L_MEDI, KC_EQL)
+#define KA_QR2 R2(KC_MINS)
+#define KA_QR3 R3(KC_QUOT)
+// }}}
+
+// {{{ one-handed-specific modifiers
+#define KA_OHT1 LT(L_OHS,  KC_SPC)
+#define KA_OHT2 LT(L_NAVI, KC_TAB)
+#define KA_OHT3 LT(L_OHN,  KC_ENT)
 // }}}
 
 // {{{ shortcuts
@@ -248,48 +267,57 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_DVK] = LAYOUT_moonlander( // {{{ dvorak
-    L1(KC_GRV), _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, R1(KC_EQL),
-    _______,    KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    TG(L_OH),    TG(L_OH),KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    R2(KC_SLSH),
-    _______,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    R3(KC_MINS),
-    _______,    KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
-    _______,    _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
-                                           _______, _______, _______,     _______, _______, _______
-  ), // }}}
-
-  [L_OH] = LAYOUT_moonlander( // {{{ one-handed dvorak
-    KA_L1,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    LAYERS,      LAYERS,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KA_R1,
-    KA_L2,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    _______,     _______, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_R2,
-    KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_R3,
-    KA_L4,   KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KA_R4,
-    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
-                                        KA_OHT1, KA_OHT2, KA_OHT3,     KA_OHT3, KA_OHT2, KA_OHT1
-  ), // }}}
-
-  [L_OHF] = LAYOUT_moonlander( // {{{ one-handed dvorak flipped
-    KA_R1,   KC_0,    KC_9,    KC_8,    KC_7,    KC_6,    LAYERS,      LAYERS,  KC_5,    KC_4,    KC_3,    KC_2,    KC_1,    KA_L1,
-    KA_R2,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    _______,     _______, KC_Y,    KC_P,    KC_DOT,  KC_COMM, KC_QUOT, KA_L2,
-    KA_R3,   KC_S,    KC_N,    KC_T,    KC_H,    KC_D,    _______,     _______, KC_I,    KC_U,    KC_E,    KC_O,    KC_A,    KA_L3,
-    KA_R4,   KC_Z,    KC_V,    KC_W,    KC_M,    KC_B,                          KC_X,    KC_K,    KC_J,    KC_Q,    KC_SCLN, KA_L4,
-    KA_R5,   KA_R6,   KA_R7,   R8(XXX), R9(XXX),      _______,             _______,      L9(XXX), L8(XXX), KA_L7,   KA_L6,   KA_L5,
-                                        _______, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, _______
-  ), // }}}
-
-  [L_OHS] = LAYOUT_moonlander( // {{{ one-handed symbols and numbers
-    KA_RALT, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   LAYERS,      LAYERS,  KC_F5,   KC_F4,   KC_F3,   KC_F2,   KC_F1,   KA_RALT,
-    _______, KC_GRV,  KC_1,    KC_2,    KC_3,    KC_LBRC, KC_RBRC,     KC_LBRC, KC_RBRC, KC_1,    KC_2,    KC_3,    KC_GRV,  _______,
-    _______, KC_SLSH, KC_4,    KC_5,    KC_6,    KC_MINS, KC_EQL,      KC_EQL,  KC_MINS, KC_4,    KC_5,    KC_6,    KC_SLSH, _______,
-    _______, KC_BSLS, KC_7,    KC_8,    KC_9,    KC_0,                          KC_0,    KC_7,    KC_8,    KC_9,    KC_BSLS, _______,
+    KA_DL1,  _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, KA_DR1,
+    _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    _______,     _______, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_DR2,
+    _______, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,     _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_DR3,
+    _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                          KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
     _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
-                                        XXXXXXX, _______, XXXXXXX,     XXXXXXX, _______, XXXXXXX
+                                        _______, _______, _______,     _______, _______, _______
+  ), // }}}
+
+  [L_OH] = LAYOUT_moonlander_mirrored( // {{{ one-handed
+    KA_L1,   KC_P,    KC_Q,    KC_J,    KC_K,    KC_X,    LAYERS,
+    KA_L2,   KC_S,    KC_N,    KC_T,    KC_H,    KC_D,    L11(KC_Y),
+    KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    L10(KC_B),
+    KA_L4,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,
+    KA_L5,   L6(KC_Z),L7(KC_V),L8(KC_W),L9(KC_M),     _______,
+                                        KA_OHT1, KA_OHT2, KA_OHT3
+  ), // }}}
+
+  [L_OHS] = LAYOUT_moonlander( // {{{ one-handed symbols
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    _______, KC_GRV,  KC_COMM, KC_DOT,  KC_LBRC, KC_RBRC, _______,     _______, KC_LBRC, KC_RBRC, KC_COMM, KC_DOT,  KC_GRV,  _______,
+    _______, XXXXXXX, KC_SCLN, KC_QUOT, KC_MINS, KC_EQL,  KA_RALT,     KA_RALT, KC_EQL,  KC_MINS, KC_QUOT, KC_SCLN, XXXXXXX, _______,
+    _______, XXXXXXX, KC_BSLS, KC_SLSH, KC_LPRN, KC_RPRN,                       KC_LPRN, KC_RPRN, KC_SLSH, KC_BSLS, XXXXXXX, _______,
+    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+                                        _______, _______, _______,     _______, _______, _______
+  ), // }}}
+
+  [L_OHN] = LAYOUT_moonlander( // {{{ one-handed numpad
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    _______, KC_PAST, KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PCMM,     KC_PCMM, KC_PAST, KC_1,    KC_2,    KC_3,    KC_PMNS, _______,
+    _______, KC_PSLS, KC_4,    KC_5,    KC_6,    KC_PPLS, KC_PDOT,     KC_PDOT, KC_PSLS, KC_4,    KC_5,    KC_6,    KC_PPLS, _______,
+    _______, KC_PENT, KC_7,    KC_8,    KC_9,    KC_0,                          KC_0,    KC_7,    KC_8,    KC_9,    KC_PENT, _______,
+    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+                                        _______, _______, _______,     _______, _______, _______
+  ), // }}}
+
+  [L_OHF] = LAYOUT_moonlander_mirrored( // {{{ one-handed function keys
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, _______,
+    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, _______,
+    _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,
+    _______, _______, _______, _______, _______,      _______,
+                                        _______, _______, _______
   ), // }}}
 
   [L_QRTY] = LAYOUT_moonlander( // {{{ qwerty
-    L1(KC_GRV), _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, R1(KC_EQL),
-    _______,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,     _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    R2(KC_MINS),
-    _______,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______,     _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, R3(KC_QUOT),
-    _______,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                          KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-    _______,    _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
-                                           _______, _______, _______,     _______, _______, _______
+    KA_QL1,  _______, _______, _______, _______, _______, LAYERS,      LAYERS,  _______, _______, _______, _______, _______, KA_QR1,
+    _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,     _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KA_QR2,
+    _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______,     _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KA_QR3,
+    _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                          KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
+    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+                                        _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_STEN] = LAYOUT_moonlander( // {{{ stenotype
@@ -306,7 +334,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,        _______, _______, _______, _______, _______, _______, _______,
     KC_LCTL, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,        _______, _______, _______, _______, _______, _______, _______,
     KC_LSFT, KC_DEL,  KC_ENT,  KC_MINS, KC_EQL,  KC_8,                          _______, _______, _______, _______, _______, _______,
-    KC_LGUI, KC_LBRC, KC_RBRC, KC_0,    KC_9,         TG(L_OH),            TG(L_GNU),    _______, _______, _______, _______, _______,
+    KC_LGUI, KC_LBRC, KC_RBRC, KC_0,    KC_9,         TG(L_OH),            _______,      _______, _______, _______, _______, _______,
                                         KC_SPC,  KC_LALT, KC_RALT,     _______, _______, _______
   ), // }}}
 
@@ -315,7 +343,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______,     KC_F5,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F12,
     _______, _______, _______, _______, _______, _______, _______,     KC_F4,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
     _______, _______, _______, _______, _______, _______,                       KC_F3,   KC_P7,   KC_P8,   KC_P9,   XXXXXXX, KC_RSFT,
-    _______, _______, _______, _______, _______,      _______,             _______,      KC_F2,   KC_F1,   XXXXXXX, KC_RALT, KC_RGUI,
+    _______, _______, _______, _______, _______,      _______,             XXXXXXX,      KC_F2,   KC_F1,   XXXXXXX, KC_RALT, KC_RGUI,
                                         _______, _______, _______,     KC_PENT, KC_PDOT, KC_P0
   ), // }}}
 
@@ -352,7 +380,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L3,   KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KA_L10,      KA_R10,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ESC,  KA_R3,
     KA_L4,   XXXXXXX, KC_BSPC, XXXXXXX, KC_DEL,  KC_ENT,                        KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  XXXXXXX, KA_R4,
     KA_L5,   KA_R6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_R9,   KA_R8,   KA_R7,   KA_L6,   KA_R5,
-                                        KC_SPC,  KC_ENT,  KC_TAB,      KC_TAB,  KC_ENT,  KC_TAB
+                                        _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_SHRT] = LAYOUT_moonlander_mirrored( // {{{ shortcuts
@@ -375,7 +403,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_LAY] = LAYOUT_moonlander_mirrored( // {{{ layer switching
     ABORT,   TO_DVK,  TO_QRTY, TO_STEN, TO_GAME, TO_MUS,  LAYERS,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO_OH,
     MO_CONF, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,
@@ -400,15 +428,6 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
                                         RGB_TLC, RGB_MOD, RGB_SLD
   ), // }}}
 };
-
-void keyboard_post_init_user(void) {
-  rgb_matrix_enable();
-}
-
-void matrix_init_user(void) {
-  layer_move(L_DVK);
-  steno_set_mode(STENO_MODE_GEMINI);
-}
 
 #define C_____ C_NONE
 
@@ -589,6 +608,8 @@ typedef enum led_maps_left_t {
   LEDS_DVK,
   LEDS_OH,
   LEDS_OHS,
+  LEDS_OHN,
+  LEDS_OHF,
   LEDS_QRTY,
   LEDS_GBA,
   LEDS_MUS,
@@ -617,8 +638,8 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
 
   [LEDS_BASE] = LEDS_moonlander_left( // {{{ base
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_5,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_2,
+    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
+    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_4, C_____, C_____, C_____, C_____, C_____,
     C_SU_4, C_SU_4, C_SU_4, C_SU_3, C_SU_3,     C_SU_5,
                                     C_SU_5, C_SU_5, C_SU_5
@@ -626,34 +647,52 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
 
   [LEDS_DVK] = LEDS_moonlander_left( // {{{ dvorak
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_5,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_5,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
     C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2,
     C_SU_4, C_SU_4, C_SU_4, C_SU_3, C_SU_3,     C_SU_5,
                                     C_SU_5, C_SU_5, C_SU_5
   ), // }}}
 
-  [LEDS_OH] = LEDS_moonlander_left( // {{{ one-handed dvorak
-    C_TO_4, C_TO_3, C_TO_3, C_TO_3, C_TO_3, C_TO_3, C_TO_5,
+  [LEDS_OH] = LEDS_moonlander_left( // {{{ one-handed
     C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_5,
-    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_5,
+    C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_3,
+    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_3,
     C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
-    C_TO_4, C_TO_4, C_TO_4, C_TO_3, C_TO_3,     C_TO_5,
+    C_TO_4, C_TO_3, C_TO_3, C_TO_3, C_TO_3,     C_TO_5,
                                     C_TO_5, C_TO_5, C_TO_5
   ), // }}}
 
-  [LEDS_OHS] = LEDS_moonlander_left( // {{{ one-handed symbols and numpad
-    C_TO_4, C_TO_3, C_TO_3, C_TO_3, C_TO_3, C_TO_3, C_TO_5,
+  [LEDS_OHS] = LEDS_moonlander_left( // {{{ one-handed symbols
+    C_TO_4, C_____, C_____, C_____, C_____, C_____, C_TO_5,
+    C_TO_4, C_TO_2, C_TO_1, C_TO_1, C_TO_2, C_TO_2, C_TO_4,
+    C_TO_4, C_____, C_TO_2, C_TO_2, C_TO_1, C_TO_2, C_TO_1,
+    C_TO_4, C_____, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
+    C_TO_4, C_TO_4, C_TO_4, C_TO_4, C_TO_4,     C_TO_5,
+                                    C_TO_5, C_TO_5, C_TO_5
+  ), // }}}
+
+  [LEDS_OHN] = LEDS_moonlander_left( // {{{ one-handed numpad
+    C_TO_4, C_____, C_____, C_____, C_____, C_____, C_TO_5,
     C_TO_4, C_TO_2, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_2,
     C_TO_4, C_TO_2, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_2,
     C_TO_4, C_TO_2, C_TO_1, C_TO_1, C_TO_1, C_TO_1,
-    C_TO_4, C_TO_4, C_TO_4, C_TO_4, C_TO_4,     C_____,
-                                    C_____, C_____, C_____
+    C_TO_4, C_TO_4, C_TO_4, C_TO_4, C_TO_4,     C_TO_5,
+                                    C_TO_5, C_TO_5, C_TO_5
+  ), // }}}
+
+  [LEDS_OHF] = LEDS_moonlander_left( // {{{ one-handed function keys
+    C_TO_4, C_____, C_____, C_____, C_____, C_____, C_TO_5,
+    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_____, C_TO_4,
+    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_____, C_TO_4,
+    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_____,
+    C_TO_4, C_TO_4, C_TO_4, C_TO_4, C_TO_4,     C_TO_5,
+                                    C_TO_5, C_TO_5, C_TO_5
   ), // }}}
 
   [LEDS_QRTY] = LEDS_moonlander_left( // {{{ qwerty
     C_DS_4, C_DS_3, C_DS_3, C_DS_3, C_DS_3, C_DS_3, C_DS_5,
-    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_____,
+    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_4,
     C_DS_4, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_2, C_DS_4,
     C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2,
     C_DS_4, C_DS_4, C_DS_4, C_DS_3, C_DS_3,     C_DS_5,
@@ -707,7 +746,7 @@ const color_t PROGMEM ledmap_left[][DRIVER_LED_TOTAL / 2] = {
 
   [LEDS_LAY] = LEDS_moonlander_left( // {{{ layer switching
     C_SU_5, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_5,
-    C_____, C_____, C_____, C_____, C_____, C_____, C_____,
+    C_____, C_____, C_____, C_____, C_____, C_____, C_SU_1,
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____,
     C_____, C_____, C_____, C_____, C_____, C_____,
     C_____, C_____, C_____, C_____, C_____,     C_____,
@@ -757,7 +796,7 @@ const color_t PROGMEM ledmap_right[][DRIVER_LED_TOTAL / 2] = {
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
             C_RU_3, C_RU_1, C_RU_1, C_RU_1, C_____, C_RU_4,
-        C_RU_5,     C_RU_3, C_RU_3, C_____, C_RU_4, C_RU_4,
+        C_____,     C_RU_3, C_RU_3, C_____, C_RU_4, C_RU_4,
     C_RU_1, C_RU_2, C_RU_1
   ), // }}}
 };
@@ -784,8 +823,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = { // {{{
   [L_GBA]   = { .mode = LM_LEFT,   .colors = ledmap_left[LEDS_GBA],  .inds = 0b100, },
   [L_GNU]   = { .mode = LM_RIGHT,  .colors = ledmap_right[LEDS_GNU], .inds = 0b100, },
   [L_OH]    = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OH],   .inds = 0b001, },
-  [L_OHF]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OH],   .inds = 0b001, },
-  [L_OHS]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OHS],  .inds = 0b001, },
+  [L_OHS]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OHS],  .inds = 0b110, },
+  [L_OHN]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OHN],  .inds = 0b011, },
+  [L_OHF]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_OHF],  .inds = 0b111, },
   [L_MUS]   = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_MUS],  .inds = 0b111, },
   [L_MOUS]  = { .mode = LM_BOTH,   .colors = ledmap_both[LEDS_MOUS], .inds = 0b100, },
   [L_SYMS]  = { .mode = LM_MIRROR, .colors = ledmap_left[LEDS_SYMS], .inds = 0b110, },
@@ -860,6 +900,15 @@ void rgb_matrix_indicators_user(void) { // {{{
   }
 } // }}}
 
+void keyboard_post_init_user(void) {
+  rgb_matrix_enable();
+}
+
+void matrix_init_user(void) {
+  layer_move(L_DVK);
+  steno_set_mode(STENO_MODE_GEMINI);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
   switch (keycode) {
     case RGB_TOG:
@@ -878,6 +927,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
         eeconfig_update_kb(keyboard_config.raw);
       }
       return false;
+
     case TOGGLE_LAYER_COLOR:
       if (record->event.pressed) {
         keyboard_config.disable_layer_led ^= 1;
@@ -885,11 +935,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
         eeconfig_update_kb(keyboard_config.raw);
       }
       break;
+
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
       }
       return false;
+
     case TO_GAME:
       if (record->event.pressed) {
         layer_move(L_GBA);
@@ -897,14 +949,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
       }
       return false;
   }
+
   return true;
 } // }}}
 
-layer_state_t layer_state_set_user(layer_state_t layer_state) { // {{{
-  layer_state_t layers = layer_state | default_layer_state;
+layer_state_t layer_state_set_user(layer_state_t state) { // {{{
+  state = update_tri_layer_state(state, L_OHN, L_NAVI, L_OHF); // one-handed function keys
+
+  layer_state_t state_with_default = state | default_layer_state;
 
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
-    if (layers & (1UL << layer)) {
+    if (state_with_default & (1UL << layer)) {
       uint8_t inds = ledmap[layer].inds;
       ML_LED_4((inds & 0b001) != 0);
       ML_LED_5((inds & 0b010) != 0);
@@ -913,7 +968,7 @@ layer_state_t layer_state_set_user(layer_state_t layer_state) { // {{{
     }
   }
 
-  return layer_state;
+  return state;
 } // }}}
 
 bool led_update_user(led_t led_state) { // {{{
