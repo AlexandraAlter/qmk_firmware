@@ -229,6 +229,8 @@ typedef enum custom_keycode_t { // {{{
 // }}}
 
 // {{{ one-handed-specific modifiers
+#define KA_OHL1 L1(KC_DOT)
+
 #define KA_OHT1 LT(L_OHS,  KC_SPC)
 #define KA_OHT2 LT(L_NAVI, KC_TAB)
 #define KA_OHT3 LT(L_OHN,  KC_ENT)
@@ -322,38 +324,38 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_OH] = LAYOUT_moonlander_mirrored( // {{{ one-handed
-    KA_L1,   KC_P,    KC_Q,    KC_J,    KC_K,    KC_X,    LAYERS,
-    KA_L2,   KC_S,    KC_N,    KC_T,    KC_H,    KC_D,    L11(KC_Y),
-    KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    L10(KC_B),
-    KA_L4,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,
-    KA_L5,   L6(KC_Z),L7(KC_V),L8(KC_W),L9(KC_M),     _______,
+    KA_OHL1, KC_COMM, KC_Q,    KC_J,    KC_K,    KC_X,    LAYERS,
+    KA_L2,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    L11(KC_QUOT),
+    KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    L10(KC_Y),
+    L4(KC_P),KC_S,    KC_N,    KC_T,    KC_H,    KC_D,
+    L5(KC_Z),L6(KC_V),L7(KC_W),L8(KC_M),L9(KC_B),     _______,
                                         KA_OHT1, KA_OHT2, KA_OHT3
   ), // }}}
 
   [L_OHS] = LAYOUT_moonlander( // {{{ one-handed symbols
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, KC_GRV,  KC_COMM, KC_DOT,  KC_LBRC, KC_RBRC, _______,     _______, KC_LBRC, KC_RBRC, KC_COMM, KC_DOT,  KC_GRV,  _______,
-    _______, XXXXXXX, KC_SCLN, KC_QUOT, KC_MINS, KC_EQL,  KA_RALT,     KA_RALT, KC_EQL,  KC_MINS, KC_QUOT, KC_SCLN, XXXXXXX, _______,
-    _______, XXXXXXX, KC_BSLS, KC_SLSH, KC_LPRN, KC_RPRN,                       KC_LPRN, KC_RPRN, KC_SLSH, KC_BSLS, XXXXXXX, _______,
-    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L1,
+    KA_L2,   KC_GRV,  KC_COMM, KC_DOT,  KC_LBRC, KC_RBRC, KA_L11,      KA_L11,  KC_LBRC, KC_RBRC, KC_COMM, KC_DOT,  KC_GRV,  KA_L2,
+    KA_L3,   XXXXXXX, KC_SCLN, KC_QUOT, KC_MINS, KC_EQL,  KA_RALT,     KA_RALT, KC_EQL,  KC_MINS, KC_QUOT, KC_SCLN, XXXXXXX, KA_L3,
+    KA_L4,   XXXXXXX, KC_BSLS, KC_SLSH, KC_LPRN, KC_RPRN,                       KC_LPRN, KC_RPRN, KC_SLSH, KC_BSLS, XXXXXXX, KA_L4,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_L9,   KA_L8,   KA_L7,   KA_L6,   KA_L5,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_OHN] = LAYOUT_moonlander( // {{{ one-handed numpad
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, KC_PAST, KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PCMM,     KC_PCMM, KC_PAST, KC_1,    KC_2,    KC_3,    KC_PMNS, _______,
-    _______, KC_PSLS, KC_4,    KC_5,    KC_6,    KC_PPLS, KC_PDOT,     KC_PDOT, KC_PSLS, KC_4,    KC_5,    KC_6,    KC_PPLS, _______,
-    _______, KC_PENT, KC_7,    KC_8,    KC_9,    KC_0,                          KC_0,    KC_7,    KC_8,    KC_9,    KC_PENT, _______,
-    _______, _______, _______, _______, _______,      _______,             _______,      _______, _______, _______, _______, _______,
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L1,
+    KA_L2,   KC_PAST, KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PCMM,     KC_PCMM, KC_PAST, KC_1,    KC_2,    KC_3,    KC_PMNS, KA_L2,
+    KA_L3,   KC_PSLS, KC_4,    KC_5,    KC_6,    KC_PPLS, KC_PDOT,     KC_PDOT, KC_PSLS, KC_4,    KC_5,    KC_6,    KC_PPLS, KA_L3,
+    KA_L4,   KC_PENT, KC_7,    KC_8,    KC_9,    KC_0,                          KC_0,    KC_7,    KC_8,    KC_9,    KC_PENT, KA_L4,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_L9,   KA_L8,   KA_L7,   KA_L6,   KA_L5,
                                         _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_OHF] = LAYOUT_moonlander_mirrored( // {{{ one-handed function keys
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,
-    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, _______,
-    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, _______,
-    _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,
-    _______, _______, _______, _______, _______,      _______,
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,
+    KA_L2,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, KA_L11,
+    KA_L3,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, KA_L10,
+    KA_L4,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,
                                         _______, _______, _______
   ), // }}}
 
