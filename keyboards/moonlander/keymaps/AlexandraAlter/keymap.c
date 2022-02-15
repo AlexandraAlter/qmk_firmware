@@ -337,7 +337,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
     XXXXXXX,  KC_CAPS,  KC_NLCK,  KC_SLCK,  XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  XXXXXXX,  TO(L_DV), TO(L_ST), TO_G,     TG(L_MS), XXXXXXX,
+    XXXXXXX,  XXXXXXX,  TO(L_DV), TO(L_ST), TO_G,     TO(L_MS), XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_OH), XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
                                             XXXXXXX,  MO_MEDI,  MO_CONF
@@ -714,7 +714,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_____, C_____, C_SU_1, C_SU_1, C_____, C_____, C_____,
     C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
     C_____, C_____, C_SU_1, C_____, C_____, C_____,
-    C_SU_1, C_____, C_____, C_____, C_____,     C_SU_5,
+    C_____, C_____, C_____, C_____, C_____,     C_SU_5,
                                     C_____, C_SU_5, C_SU_5
   ), }, // }}}
 
