@@ -343,9 +343,9 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_FUNC] = LAYOUT_moonlander( // {{{ function keys
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______,    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, _______,
-    _______, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______,    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, _______,
-    _______, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,                       KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, _______,
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, _______,    _______, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______,
+    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, _______,    _______, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______,
+    _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,                      XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
     _______, _______, _______, _______, _______,      _______,            _______,      _______, _______, _______, _______, _______,
                                         _______, _______, _______,    _______, _______, _______
   ), // }}}
@@ -718,9 +718,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
 
   [L_FUNC] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_3, C_____, C_____, C_____, C_____, C_____, C_SU_3,
-    C_SU_3, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_3,
-    C_SU_3, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_3,
-    C_SU_3, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1,
+    C_SU_3, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
+    C_SU_3, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
+    C_SU_3, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
     C_SU_3, C_SU_3, C_MA_3, C_MA_3, C_MA_3,     C_SU_5,
                                     C_____, C_____, C_____
   ), }, // }}}
