@@ -282,9 +282,9 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_O_SY] = LAYOUT_moonlander( // {{{ symbols overlay
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,    _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    _______, _______, _______, _______, _______, _______, _______,    _______, KC_LCBR, KC_RCBR, KC_EXLM, KC_AT,   KC_HASH, KC_F12,
-    _______, _______, _______, _______, _______, _______, _______,    _______, KC_LT,   KC_GT,   KC_DLR,  KC_PERC, KC_CIRC, XXXXXXX,
-    _______, _______, _______, _______, _______, _______,                      KC_SCLN, KC_COLN, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+    _______, _______, _______, _______, _______, _______, _______,    _______, KC_LCBR, KC_EXLM, KC_AT,   KC_HASH, KC_RCBR, KC_F12,
+    _______, _______, _______, _______, _______, _______, _______,    _______, KC_LT,   KC_DLR,  KC_PERC, KC_CIRC, KC_GT,   XXXXXXX,
+    _______, _______, _______, _______, _______, _______,                      KC_SCLN, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_COLN,
     _______, _______, _______, _______, _______,      _______,            _______,      _______, _______, _______, _______, _______,
                                         _______, _______, _______,    _______, _______, _______
   ), // }}}
@@ -337,7 +337,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
     XXXXXXX,  KC_CAPS,  KC_NLCK,  KC_SLCK,  XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  XXXXXXX,  TO(L_DV), TO(L_ST), TO_G,     TG(L_MS), XXXXXXX,
+    XXXXXXX,  XXXXXXX,  TO(L_DV), TO(L_ST), TO_G,     TO(L_MS), XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_OH), XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
                                             XXXXXXX,  MO_MEDI,  MO_CONF
@@ -657,9 +657,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
 
   [L_O_SY] = { .mode = LM_RIGHT, .leds = 0b011, .colors = LEDS_moonlander_right( // {{{
     C_SU_3, C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,
-    C_SU_3, C_SU_2, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
-    C_SU_3, C_SU_2, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_3,
-            C_SU_1, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_1,
+    C_SU_3, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
+    C_SU_3, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_____,
+            C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2,
          C_____,    C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
     C_____, C_____, C_____
   ), }, // }}}
@@ -714,7 +714,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_____, C_____, C_SU_1, C_SU_1, C_____, C_____, C_____,
     C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
     C_____, C_____, C_SU_1, C_____, C_____, C_____,
-    C_SU_1, C_____, C_____, C_____, C_____,     C_SU_5,
+    C_____, C_____, C_____, C_____, C_____,     C_SU_5,
                                     C_____, C_SU_5, C_SU_5
   ), }, // }}}
 
