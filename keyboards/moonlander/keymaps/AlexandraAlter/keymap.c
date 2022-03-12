@@ -88,11 +88,11 @@ META_KEY(L8, KC_LSFT, KC_LEFT);
 #define L9(kc) (LALT_T(kc))
 META_KEY(L9, KC_LALT, KC_RIGHT);
 #define L10(kc) (LALT_T(kc))
-META_KEY(L10, KC_LALT, KC_MINS);
+META_KEY(L10, KC_LALT, KC_LBRC);
 #define L11(kc) (LSFT_T(kc))
-META_KEY(L11, KC_LSFT, KC_SLSH);
-#define L12(kc) (LSFT_T(kc))
-META_KEY(L12, KC_LSFT, KC_EQL);
+META_KEY(L11, KC_LSFT, KC_MINS);
+#define L12(kc) (LCTL_T(kc))
+META_KEY(L12, KC_LCTL, KC_SLSH);
 
 // normal right modifiers
 #define R1(kc) (LALT_T(kc))
@@ -104,21 +104,21 @@ META_KEY(R3, KC_RCTL, KC_MINS);
 #define R4(kc) (RSFT_T(kc))
 META_PLAINKEY(R4, KC_RSFT, KC_RSPC);
 #define R5(kc) (RALT_T(kc))
-META_KEY(R5, KC_RALT, KC_BSLS);
+META_KEY(R5, KC_RALT, KC_EQL);
 #define R6(kc) (RGUI_T(kc))
-META_KEY(R6, KC_RGUI, KC_RBRC);
+META_KEY(R6, KC_RGUI, KC_SLSH);
 #define R7(kc) (RCTL_T(kc))
-META_KEY(R7, KC_RCTL, KC_LBRC);
+META_KEY(R7, KC_RCTL, KC_MINS);
 #define R8(kc) (RSFT_T(kc))
 META_KEY(R8, KC_RSFT, KC_UP);
 #define R9(kc) (LALT_T(kc))
 META_KEY(R9, KC_LALT, KC_DOWN);
 #define R10(kc) (LALT_T(kc))
-META_KEY(R10, KC_LALT, KC_MINS);
+META_KEY(R10, KC_LALT, KC_RBRC);
 #define R11(kc) (RSFT_T(kc))
 META_KEY(R11, KC_RSFT, KC_BSLS);
-#define R12(kc) (RSFT_T(kc))
-META_KEY(R12, KC_RSFT, KC_GRV);
+#define R12(kc) (RCTL_T(kc))
+META_KEY(R12, KC_RCTL, KC_GRV);
 
 // thumb keys
 #define KA_LT1 LT(L_SYMS, KC_SPC)
