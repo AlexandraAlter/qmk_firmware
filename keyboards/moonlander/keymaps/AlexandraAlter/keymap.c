@@ -19,6 +19,7 @@ typedef enum layer_t {
   // layers 0-11 above this line can be used in LT keys
   L_MS,   // core: mouse
   L_G_NU, // core: gaming numpad
+  L_O_ST, // overlay: stenotype overlay
   L_O_GA, // overlay: gaming overlay
   L_O_SY, // overlay: symbols overlay
   L_O_NU, // overlay: numpad overlay
@@ -32,7 +33,8 @@ typedef enum layer_t {
 typedef enum custom_keycode_t { // {{{
   RGB_SLD = ML_SAFE_RANGE,      // pause LED animation
   TO_G,                         // go directly to the three gaming layers
-  G_DV,                         // toggle dvorak and the gaming numpad
+  TG_G_DV,                      // toggle dvorak and the gaming numpad
+  TO_ST_O,                      // go directly to steno with overlay
 } custom_keycode_t;             // }}}
 
 // {{{ layout key meta-def
@@ -213,8 +215,17 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  XXXXXXX,    XXXXXXX, STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
     STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, STN_N2,     STN_NB,  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                      STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    MO_NAVI, STN_PWR, STN_PWR, STN_N1,  STN_N1,       STN_RE1,            STN_RE2,      STN_NC,  STN_NC,  STN_DR,  STN_DR,  MO_NAVI,
+    MO_NAVI, STN_PWR, STN_PWR, STN_N1,  STN_N1,       _______,            _______,      STN_NC,  STN_NC,  STN_DR,  STN_DR,  MO_NAVI,
                                         STN_A,   STN_O,   STN_RE1,    STN_RE2, STN_E,   STN_U
+  ), // }}}
+
+  [L_O_ST] = LAYOUT_moonlander( // {{{ stenotype overlay
+    _______, _______, _______, _______, _______, _______, TG(L_HUB), TG(L_HUB),_______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,      STN_RE1,            STN_RE2,      _______, _______, _______, _______, _______,
+                                        _______, _______, _______,    _______, _______, _______
   ), // }}}
 
   [L_OH] = LAYOUT_moonlander_mirrored( // {{{ one-handed
@@ -249,7 +260,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______,      TG(L_OH),           G_DV,         _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,      TG(L_OH),           TG_G_DV,      _______, _______, _______, _______, _______,
                                         _______, _______, _______,    _______, _______, _______
   ), // }}}
 
@@ -336,8 +347,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
     XXXXXXX,  KC_CAPS,  KC_NLCK,  KC_SLCK,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  XXXXXXX,  TO(L_DV), TO(L_ST), TO_G,     TO(L_MS), XXXXXXX,
+    XXXXXXX,  XXXXXXX,  TO(L_QT), TO_ST_O,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  TO(L_DV), TO(L_ST), TO(L_MS), TO_G,     XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_OH), XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
                                             XXXXXXX,  MO_MEDI,  MO_CONF
@@ -604,9 +615,11 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_____,   C_____, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3,
     C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_3,   C_MA_3, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
     C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2,                   C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
-    C_MA_5, C_MA_4, C_MA_4, C_____, C_____,     C_MA_4,           C_MA_4,     C_MA_3, C_MA_3, C_MA_1, C_MA_1, C_MA_5,
+    C_MA_5, C_MA_4, C_MA_4, C_____, C_____,     C_MA_5,           C_MA_5,     C_MA_3, C_MA_3, C_MA_1, C_MA_1, C_MA_5,
                                     C_MA_1, C_MA_1, C_MA_4,   C_MA_4, C_MA_1, C_MA_1
   ), }, // }}}
+
+  [L_O_ST] = { .mode = LM_NONE, .leds = 0b000, .colors = {}, },
 
   [L_GAME] = { .mode = LM_LEFT, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
     C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,
@@ -841,45 +854,50 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
 
   case TO_G:
     if (record->event.pressed) {
-      layer_move(L_GAME);
-      layer_on(L_G_NU);
+      layer_move(L_O_GA);
+      layer_on(L_GAME);
     }
     return false;
 
-  case G_DV:
+  case TG_G_DV:
     if (record->event.pressed) {
-      layer_invert(L_G_NU);
+      layer_invert(L_GAME);
       layer_invert(L_DV);
     }
+    return false;
 
+  case TO_ST_O:
+    if (record->event.pressed) {
+      layer_move(L_ST);
+      layer_on(L_O_ST);
+    }
     return false;
   }
 
   return true;
 } // }}}
 
-layer_state_t update_overlay_layer_state(layer_state_t state, bool enabled, uint8_t source, uint8_t overlay) {
+layer_state_t update_bi_layer_state(layer_state_t state, uint8_t source, uint8_t dest) {
   layer_state_t s_mask = ((layer_state_t)1 << source);
-  layer_state_t o_mask = (layer_state_t)1 << overlay;
+  layer_state_t d_mask = (layer_state_t)1 << dest;
   bool s_active = (state & s_mask) == s_mask;
-  return (enabled && s_active) ? (state | o_mask) : (state & ~o_mask);
+  return (s_active) ? (state | d_mask) : (state & ~d_mask);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
-  // if we're not in one-handed mode, we can add extras to the right-hand side
-  bool overlays_enabled = !layer_state_cmp(state, L_OH);
-  state = update_overlay_layer_state(state, overlays_enabled, L_SYMS, L_O_SY);
-  state = update_overlay_layer_state(state, overlays_enabled, L_NUM, L_O_NU);
-  state = update_overlay_layer_state(state, overlays_enabled, L_MS, L_O_MO);
-
-  // if we're in one-handed mode, we can use tri layer states
   if (IS_LAYER_ON_STATE(state, L_OH)) {
+    // if we're in one-handed mode, we can use tri layer states
     state = update_tri_layer_state(state, L_SYMS, L_NUM, L_FUNC); // function keys
     state = update_tri_layer_state(state, L_NUM, L_NAVI, L_FUNC); // function keys
+  } else {
+    // if we're not in one-handed mode, we can add extras to the right-hand side
+    state = update_bi_layer_state(state, L_SYMS, L_O_SY);
+    state = update_bi_layer_state(state, L_NUM, L_O_NU);
+    state = update_bi_layer_state(state, L_MS, L_O_MO);
   }
 
   // always activate the gaming overlay if needed
-  state = update_overlay_layer_state(state, true, L_GAME, L_O_GA);
+  state = update_bi_layer_state(state, L_GAME, L_G_NU);
 
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
     if ((state | default_layer_state) & (1UL << layer)) {
