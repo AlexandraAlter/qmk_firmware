@@ -811,7 +811,7 @@ void rgb_matrix_indicators_user(void) { // {{{
 } // }}}
 
 void keyboard_post_init_user(void) {
-  rgb_matrix_enable();
+  rgb_matrix_enable_noeeprom();
   steno_set_mode(STENO_MODE_GEMINI);
   layer_move(L_DV);
 }
