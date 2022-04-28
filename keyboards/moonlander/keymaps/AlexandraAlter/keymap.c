@@ -341,12 +341,12 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_OHF] = LAYOUT_moonlander_mirrored( // {{{ one-handed function keys
-    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,
-    KA_L2,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, KA_L11,
-    KA_L3,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, KA_L10,
-    KA_L4,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,
-    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,
-                                        _______, _______, _______
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LAYERS,      LAYERS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L1,
+    KA_L2,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, KA_L11,      KA_L11,  XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KA_L2,
+    KA_L3,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, KA_L10,      KA_L10,  XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KA_L3,
+    KA_L4,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,                       XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KA_L4,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,             _______,      KA_L9,   KA_L8,   KA_L7,   KA_L6,   KA_L5,
+                                        _______, _______, _______,     _______, _______, _______
   ), // }}}
 
   [L_SYMS] = LAYOUT_moonlander( // {{{ symbols
