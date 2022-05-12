@@ -117,7 +117,7 @@ META_KEY(R11, KC_RSFT, KC_BSLS);
 META_KEY(R12, KC_RCTL, KC_GRV);
 
 // thumb keys
-#define KA_APP TT(L_HUB)
+#define KA_APP MO(L_HUB)
 
 #define KA_LT1 LT(L_SYM, KC_SPC)
 #define KA_LT2 LT(L_NAV, KC_TAB)
@@ -207,7 +207,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_ST] = LAYOUT_moonlander( // {{{ stenotype
-    STN_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_APP,     KA_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, STN_PWR,
+    STN_PWR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(L_HUB),TG(L_HUB), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, STN_PWR,
     STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  XXXXXXX,    XXXXXXX, STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
     STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, XXXXXXX,    XXXXXXX, STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                      STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
@@ -216,7 +216,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_O_ST] = LAYOUT_moonlander( // {{{ stenotype overlay
-    _______, _______, _______, _______, _______, _______, KA_APP,     KA_APP,  _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, TG(L_HUB),TG(L_HUB), _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
