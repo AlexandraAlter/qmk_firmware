@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_LWR] = LAYOUT_planck_grid( // {{{
       _______, KC_QUOT, KC_COMM, KC_DOT,  XXXXXXX, XXXXXXX, XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, XXXXXXX, _______,
       _______, KC_GRV,  KC_MINS, KC_EQL,  KC_SLSH, XXXXXXX, XXXXXXX, KC_DLR,  KC_PERC, KC_CIRC, XXXXXXX, _______,
-      _______, KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS, XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
+      _______, KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS, KC_RALT, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
       _______, _______, _______, _______, _______, MA_SPS,  MA_SPS,  KA_RAI,  KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
@@ -379,7 +379,7 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   [L_LWR] = { // {{{
     C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____, C_SU_4,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_SU_4,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_4, C_____, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_SU_4,
     C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
   }, // }}}
 
