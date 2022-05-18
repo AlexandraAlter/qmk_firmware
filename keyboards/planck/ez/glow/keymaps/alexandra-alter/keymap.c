@@ -157,30 +157,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ), // }}}
 
   [L_LWR] = LAYOUT_planck_grid( // {{{
-      _______, KC_QUOT, KC_COMM, KC_DOT,  XXXXXXX, XXXXXXX, XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, XXXXXXX, _______,
-      _______, KC_GRV,  KC_MINS, KC_EQL,  KC_SLSH, XXXXXXX, XXXXXXX, KC_DLR,  KC_PERC, KC_CIRC, XXXXXXX, _______,
-      _______, KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS, KC_RALT, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
+      _______, KC_QUOT, KC_COMM, KC_DOT,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, _______,
+      _______, KC_GRV,  KC_MINS, KC_EQL,  KC_SLSH, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, _______,
+      MA_L3,   KC_SCLN, KC_LBRC, KC_RBRC, KC_BSLS, KC_RALT, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_0,    MA_R3,
       _______, _______, _______, _______, _______, MA_SPS,  MA_SPS,  KA_RAI,  KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
   [L_RAI] = LAYOUT_planck_grid( // {{{
-      _______, KC_DQUO, KC_LT,   KC_GT,   XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, _______,
-      _______, KC_TILD, KC_UNDS, KC_PLUS, KC_QUES, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, _______,
-      _______, KC_COLN, KC_LCBR, KC_RCBR, KC_PIPE, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_0,    _______,
+      _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_SCRL, XXXXXXX, _______,
+      _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_INS,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NUM,  KC_PSCR, _______,
+      MA_L3,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, KC_PAUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MA_R3,
       _______, _______, _______, _______, KA_LWR,  MA_SPS,  MA_SPS,  _______, KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
   [L_ADJ] = LAYOUT_planck_grid( // {{{
-      _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_SCRL, XXXXXXX, _______,
-      _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_INS,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NUM,  KC_PSCR, _______,
-      _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, KC_PAUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+      _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  XXXXXXX, KC_BRIU, KC_VOLU, KC_MPRV, KC_MNXT, KC_MSEL, _______,
+      _______, KC_F17,  KC_F18,  KC_F19,  KC_F20,  XXXXXXX, KC_BRID, KC_VOLD, KC_MSTP, KC_MPLY, XXXXXXX, _______,
+      _______, KC_F21,  KC_F22,  KC_F23,  KC_F24,  XXXXXXX, XXXXXXX, KC_MUTE, KC_MRWD, KC_MFFD, XXXXXXX, _______,
       _______, _______, _______, _______, _______, MA_SPS,  MA_SPS,  _______, KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
   [L_SYS] = LAYOUT_planck_grid( // {{{
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LED_CYC, RESET,
-      XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),XXXXXXX, TO(L_MS),XXXXXXX, RGB_TLC, RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
-      KC_LSFT, XXXXXXX, TO(L_QT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, RESET,
+      XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),XXXXXXX, TO(L_MS),XXXXXXX, NK_ON,   RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
+      KC_LSFT, XXXXXXX, TO(L_QT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NK_OFF,  RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
       ), // }}}
 };
@@ -377,30 +377,30 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   }, // }}}
 
   [L_LWR] = { // {{{
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____, C_SU_4,
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____, C_SU_4,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_4, C_____, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_SU_4,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_____, C_SU_3, C_SU_3, C_SU_3, C_____, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_SU_3, C_SU_3, C_SU_3, C_____, C_SU_4,
+    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_4, C_____, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,
     C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
   }, // }}}
 
   [L_RAI] = { // {{{
-    C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_____, C_____, C_____, C_RU_1, C_RU_1, C_RU_1, C_____, C_SU_4,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_RU_1, C_RU_1, C_RU_1, C_____, C_SU_4,
-    C_SU_4, C_SU_3, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_SU_4,
-    C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
-  }, // }}}
-
-  [L_ADJ] = { // {{{
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_____, C_SU_2, C_SU_2, C_____, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_____, C_____, C_____, C_SU_2, C_SU_2, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_2, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
   }, // }}}
 
+  [L_ADJ] = { // {{{
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_RU_3, C_RU_2, C_RU_3, C_RU_3, C_RU_1, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_____, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_1, C_RU_4, C_RU_4, C_____, C_SU_4,
+    C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
+  }, // }}}
+
   [L_SYS] = { // {{{
-    C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_2, C_SU_1,
-    C_____, C_SU_5, C_SU_5, C_SU_5, C_____, C_SU_5, C_____, C_SU_2, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
-    C_SU_3, C_____, C_SU_5, C_____, C_____, C_____, C_____, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
+    C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
+    C_____, C_SU_5, C_SU_5, C_SU_5, C_____, C_SU_5, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
+    C_SU_3, C_____, C_SU_5, C_____, C_____, C_____, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_____, C_____, C_____, C_____
   }, // }}}
 };
