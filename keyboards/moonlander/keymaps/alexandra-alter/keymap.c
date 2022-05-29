@@ -18,12 +18,12 @@ typedef enum layer_t {
   // L_,
   // layers 0-11 above this line can be used in LT keys
   L_MS,   // core: mouse
+  L_G_NU, // core: gaming numpad
   L_O_GA, // overlay: gaming overlay
   L_O_ST, // overlay: stenotype overlay
   L_O_SY, // overlay: symbols overlay
   L_O_NU, // overlay: numpad overlay
   L_O_MS, // overlay: mouse overlay
-  L_G_NU, // core: gaming numpad
   L_HUB,  // utils: hub
   L_MED,  // utils: media
   L_CNF,  // utils: config
@@ -347,7 +347,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  TO(L_OH), TO(L_DV), TO(L_ST), TO_G,     TO(L_MS), XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
-                                            XXXXXXX,  MO(L_MED), MO(L_CNF)
+                                            MO(L_MED),MO(L_CNF),XXXXXXX
   ), // }}}
 
   [L_MED] = LAYOUT_moonlander_mirrored( // {{{ media
@@ -725,7 +725,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
     C_____, C_____, C_SU_1, C_____, C_____, C_____,
     C_____, C_____, C_____, C_____, C_____,     C_SU_5,
-                                    C_____, C_SU_5, C_SU_5
+                                    C_SU_5, C_SU_5, C_____
   ), }, // }}}
 
   [L_MED] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
@@ -734,7 +734,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_____, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,
     C_____, C_SU_1, C_SU_2, C_SU_2, C_____, C_____,
     C_____, C_____, C_____, C_____, C_____,     C_SU_5,
-                                    C_____, C_SU_5, C_____
+                                    C_SU_5, C_____, C_____
   ), }, // }}}
 
   [L_CNF] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
@@ -743,7 +743,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_RU_1, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_____,
     C_____, C_____, C_____, C_____, C_____, C_____,
     C_SU_1, C_SU_2, C_____, C_____, C_____,     C_SU_5,
-                                    C_____, C_____, C_SU_5
+                                    C_____, C_SU_5, C_____
   ), }, // }}}
 };
 // clang-format on
