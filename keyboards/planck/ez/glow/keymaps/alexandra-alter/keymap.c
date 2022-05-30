@@ -150,9 +150,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ), // }}}
 
   [L_NAV] = LAYOUT_planck_grid( // {{{
-      KA_L1,   KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_BTN3, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, KC_ACL0,
-      KA_L2,   XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_ACL1,
-      KA_L3,   KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  KC_APP,  KC_BTN2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX, KC_ACL2,
+      KA_L1,   KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_BTN3, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, KA_R1,
+      KA_L2,   XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KA_R2,
+      KA_L3,   KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  KC_APP,  KC_BTN2, KC_WH_L, XXXXXXX, KC_WH_R, KC_ACL2, KA_R3,
       KA_L4,   KA_L5,   KA_L6,   KA_L7,   MA_SPS,  _______, _______, MA_SPS,  KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
@@ -363,16 +363,16 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   }, // }}}
 
   [L_MS] = { // {{{
-    C_CC_4, C_CC_2, C_CC_2, C_CC_1, C_CC_2, C_CC_3, C_____, C_____, C_CC_1, C_____, C_____, C_CC_4,
-    C_CC_4, C_CC_2, C_CC_1, C_CC_1, C_CC_1, C_CC_3, C_____, C_CC_1, C_CC_1, C_CC_1, C_____, C_CC_4,
-    C_CC_4, C_CC_2, C_CC_3, C_____, C_CC_3, C_____, C_____, C_CC_2, C_CC_2, C_CC_2, C_____, C_CC_4,
-    C_CC_5, C_CC_4, C_CC_4, C_CC_4, C_CC_1,     C_CC_1,     C_CC_1, C_CC_4, C_CC_4, C_CC_4, C_CC_4
+    C_CC_4, C_CC_4, C_CC_2, C_CC_3, C_CC_2, C_CC_1, C_____, C_____, C_CC_1, C_____, C_____, C_CC_4,
+    C_CC_4, C_CC_4, C_CC_3, C_CC_3, C_CC_3, C_CC_1, C_____, C_CC_1, C_CC_1, C_CC_1, C_____, C_CC_4,
+    C_CC_4, C_CC_4, C_CC_1, C_____, C_CC_1, C_____, C_____, C_CC_4, C_CC_4, C_CC_4, C_____, C_CC_4,
+    C_CC_5, C_CC_4, C_CC_4, C_CC_4, C_CC_2,     C_CC_2,     C_CC_2, C_CC_4, C_CC_4, C_CC_4, C_CC_4
   }, // }}}
 
   [L_NAV] = { // {{{
-    C_SU_4, C_SU_3, C_SU_2, C_SU_1, C_SU_2, C_SU_2, C_CC_1, C_CC_2, C_CC_1, C_CC_2, C_CC_3, C_CC_2,
-    C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_CC_1, C_CC_1, C_CC_1, C_CC_1, C_CC_3, C_CC_2,
-    C_SU_4, C_SU_3, C_SU_3, C_____, C_SU_3, C_SU_1, C_CC_1, C_CC_3, C_____, C_CC_3, C_____, C_CC_2,
+    C_SU_4, C_SU_3, C_SU_2, C_SU_1, C_SU_2, C_SU_2, C_CC_2, C_CC_2, C_CC_3, C_CC_2, C_CC_1, C_SU_4,
+    C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_CC_2, C_CC_3, C_CC_3, C_CC_3, C_CC_1, C_SU_4,
+    C_SU_4, C_SU_3, C_SU_3, C_____, C_SU_3, C_SU_1, C_CC_2, C_CC_1, C_____, C_CC_1, C_CC_4, C_SU_4,
     C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_5,     C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2
   }, // }}}
 
