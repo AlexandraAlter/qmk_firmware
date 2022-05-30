@@ -13,6 +13,7 @@ typedef enum layer_t {
   L_OHA, // one-handed alt
   L_ST,  // stenotype
   L_STA, // stenotype alt
+  L_GA,  // gaming
   L_MS,  // mouse
   L_NAV, // navigation
   L_LWR, // lower
@@ -140,6 +141,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KA_L2,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KA_R2,
       KA_L3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KA_R3,
       KA_L4,   KA_L5,   KA_L6,   KA_L7,   MA_SPS,  MA_SPS,  MA_SPS,  MA_SPS,  KA_R7,   KA_R6,   KA_R5,   _______
+      ), // }}}
+
+  [L_GA] = LAYOUT_planck_grid( // {{{
+      KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, MA_R1,
+      MA_L2,   KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, MA_R2,
+      MA_L3,   KC_DEL,  KC_ENT,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_7,    KC_8,    KC_9,    KC_0,    MA_R3,
+      _______, MA_L5,   MA_L6,   MA_L7,   XXXXXXX, KC_SPC,  KC_SPC,  XXXXXXX, MA_R7,   MA_R6,   MA_R5,   MA_R4,
       ), // }}}
 
   [L_MS] = LAYOUT_planck_grid( // {{{
@@ -360,6 +368,13 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
     C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_4,     C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_5
+  }, // }}}
+
+  [L_GA] = { // {{{
+    C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_____, C_RU_3, C_RU_3, C_RU_3, C_____, C_RU_4,
+    C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_____, C_RU_3, C_RU_3, C_RU_3, C_____, C_RU_4,
+    C_RU_4, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_4,
+    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_____,     C_RU_2,     C_____, C_RU_4, C_RU_4, C_RU_4, C_RU_4
   }, // }}}
 
   [L_MS] = { // {{{
