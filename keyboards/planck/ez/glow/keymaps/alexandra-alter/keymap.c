@@ -172,16 +172,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ), // }}}
 
   [L_RAI] = LAYOUT_planck_grid( // {{{
-      _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_SCRL, XXXXXXX, _______,
+      _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_SYRQ, XXXXXXX, XXXXXXX, KC_CAPS, KC_SCRL, XXXXXXX, _______,
       _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_INS,  XXXXXXX, XXXXXXX, XXXXXXX, KC_NUM,  KC_PSCR, _______,
-      MA_L3,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, KC_PAUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MA_R3,
+      MA_L3,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, KC_BRK,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MA_R3,
       _______, _______, _______, _______, KA_LWR,  MA_SPS,  MA_SPS,  _______, KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
   [L_ADJ] = LAYOUT_planck_grid( // {{{
-      _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  XXXXXXX, KC_BRIU, KC_VOLU, KC_MPRV, KC_MNXT, KC_MSEL, _______,
-      _______, KC_F17,  KC_F18,  KC_F19,  KC_F20,  XXXXXXX, KC_BRID, KC_VOLD, KC_MSTP, KC_MPLY, XXXXXXX, _______,
-      _______, KC_F21,  KC_F22,  KC_F23,  KC_F24,  XXXXXXX, XXXXXXX, KC_MUTE, KC_MRWD, KC_MFFD, XXXXXXX, _______,
+      _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  XXXXXXX, KC_BRIU, KC_VOLU, KC_MPRV, KC_MNXT, KC_MSEL, KC_PWR,
+      _______, KC_F17,  KC_F18,  KC_F19,  KC_F20,  XXXXXXX, KC_BRID, KC_VOLD, KC_MSTP, KC_MPLY, XXXXXXX, KC_SLEP,
+      _______, KC_F21,  KC_F22,  KC_F23,  KC_F24,  XXXXXXX, XXXXXXX, KC_MUTE, KC_MRWD, KC_MFFD, XXXXXXX, KC_WAKE,
       _______, _______, _______, _______, _______, MA_SPS,  MA_SPS,  _______, KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
       ), // }}}
 
@@ -399,16 +399,16 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   }, // }}}
 
   [L_RAI] = { // {{{
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_____, C_SU_2, C_SU_2, C_____, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_____, C_____, C_SU_2, C_SU_2, C_____, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_____, C_____, C_____, C_SU_2, C_SU_2, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_2, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
   }, // }}}
 
   [L_ADJ] = { // {{{
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_RU_3, C_RU_2, C_RU_3, C_RU_3, C_RU_1, C_SU_4,
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_____, C_SU_4,
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_1, C_RU_4, C_RU_4, C_____, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_RU_3, C_RU_2, C_RU_3, C_RU_3, C_RU_1, C_SU_1,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_____, C_SU_1,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_1, C_RU_4, C_RU_4, C_____, C_SU_1,
     C_SU_5, C_SU_4, C_SU_4, C_SU_4, C_SU_5,     C_SU_4,     C_SU_5, C_SU_2, C_SU_2, C_SU_2, C_SU_2
   }, // }}}
 
