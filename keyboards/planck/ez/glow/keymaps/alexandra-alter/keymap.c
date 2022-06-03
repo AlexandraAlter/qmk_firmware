@@ -187,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_SYS] = LAYOUT_planck_grid( // {{{
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, RESET,
-      XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),XXXXXXX, TO(L_MS),XXXXXXX, NK_ON,   RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
+      XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),TO(L_GA),TO(L_MS),XXXXXXX, NK_ON,   RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
       KC_LSFT, XXXXXXX, TO(L_QT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NK_OFF,  RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
       ), // }}}
@@ -414,7 +414,7 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
 
   [L_SYS] = { // {{{
     C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
-    C_____, C_SU_5, C_SU_5, C_SU_5, C_____, C_SU_5, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
+    C_____, C_SU_5, C_SU_5, C_SU_5, C_SU_5, C_SU_5, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_SU_3, C_____, C_SU_5, C_____, C_____, C_____, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_____, C_____, C_____, C_____
   }, // }}}
