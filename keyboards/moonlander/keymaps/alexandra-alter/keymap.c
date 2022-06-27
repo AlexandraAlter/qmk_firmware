@@ -597,14 +597,13 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_DS_5, C_DS_5, C_DS_5
   ), }, // }}}
 
-  // TODO this seems backwards
   [L_OH] = { .mode = LM_BOTH, .leds = 0b001, .colors = LEDS_moonlander_mirrored( // {{{
-    C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_5,
-    C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_3,
-    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_3,
-            C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
-        C_TO_4,     C_TO_3, C_TO_3, C_TO_3, C_TO_3, C_TO_5,
-    C_TO_5, C_TO_5, C_TO_5
+    C_TO_3, C_TO_3, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_3,
+    C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
+    C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_2,
+    C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
+    C_TO_3, C_TO_2, C_TO_2, C_TO_2, C_TO_2,     C_TO_5,
+                                    C_TO_5, C_TO_5, C_TO_5
   ), }, // }}}
 
   [L_ST] = { .mode = LM_BOTH, .leds = 0b010, .colors = LEDS_moonlander_both( // {{{
