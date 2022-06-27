@@ -874,17 +874,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
 } // }}}
 
 layer_state_t update_bi_layer_state(layer_state_t state, uint8_t source, uint8_t dest) {
-  layer_state_t s_mask = ((layer_state_t)1 << source);
+  layer_state_t s_mask = (layer_state_t)1 << source;
   layer_state_t d_mask = (layer_state_t)1 << dest;
   bool s_active = (state & s_mask) == s_mask;
-  return (s_active) ? (state | d_mask) : (state & ~d_mask);
+  return s_active ? (state | d_mask) : (state & ~d_mask);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
   if (IS_LAYER_ON_STATE(state, L_OH)) {
     // if we're in one-handed mode, we can use tri layer states
     state = update_tri_layer_state(state, L_SYM, L_NUM, L_FUNC); // function keys
-    state = update_tri_layer_state(state, L_NUM, L_NAV, L_FUNC); // function keys
+    state = update_tri_layer_state(state, L_NUM, L_NAV, L_SHRT); // shortcut keys
   } else {
     // if we're not in one-handed mode, we can add extras to the right-hand side
     state = update_bi_layer_state(state, L_SYM, L_O_SY);
