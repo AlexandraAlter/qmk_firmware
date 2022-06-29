@@ -59,7 +59,7 @@ typedef enum custom_keycode_t { // {{{
 #define MO_WEB MO(L_WEB)
 #define MO_SYS MO(L_SYS)
 
-#define TG_OH  TG(L_OH)
+#define TG_OH TG(L_OH)
 #define TG_HUB TG(L_HUB)
 
 #define TO_OH TO(L_OH)
