@@ -49,9 +49,8 @@ typedef enum custom_keycode_t { // {{{
 // }}}
 
 // {{{ layout key defs
+// moonlander keys
 #define RGB_TLC TOGGLE_LAYER_COLOR
-#define XXX KC_NO
-#define ___ KC_TRNS
 
 // layer keys
 #define MO_NAV MO(L_NAV)

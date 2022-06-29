@@ -40,9 +40,6 @@ typedef enum custom_keycode_t { // {{{
 // }}}
 
 // {{{ layout key defs
-#define XXX KC_NO
-#define ___ KC_TRNS
-
 #define L1(kc) (LGUI_T(kc))
 META_KEY(L1, KC_LGUI, KC_ESC);
 #define L2(kc) (LCTL_T(kc))
