@@ -930,9 +930,9 @@ layer_state_t layer_state_set_user(layer_state_t state) { // {{{
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
     if ((state | default_layer_state) & (1UL << layer)) {
       uint8_t leds = ledmap[layer].leds;
-      ML_LED_4((leds & 0b001) != 0);
+      ML_LED_4((leds & 0b100) != 0);
       ML_LED_5((leds & 0b010) != 0);
-      ML_LED_6((leds & 0b100) != 0);
+      ML_LED_6((leds & 0b001) != 0);
       break;
     }
   }
