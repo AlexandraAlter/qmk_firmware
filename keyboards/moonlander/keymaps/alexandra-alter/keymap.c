@@ -611,7 +611,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_SU_5, C_SU_5, C_SU_5
   ), }, // }}}
 
-  [L_QT] = { .mode = LM_BOTH, .leds = 0b001, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_QT] = { .mode = LM_BOTH, .leds = 0b000, .colors = LEDS_moonlander_mirrored( // {{{
     C_DS_4, C_DS_3, C_DS_3, C_DS_3, C_DS_3, C_DS_3, C_DS_4,
     C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_4,
     C_DS_4, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_2, C_DS_4,
@@ -620,7 +620,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_DS_5, C_DS_5, C_DS_5
   ), }, // }}}
 
-  [L_OH] = { .mode = LM_BOTH, .leds = 0b001, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_OH] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
     C_TO_3, C_TO_3, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_3,
     C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
     C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_2,
@@ -640,7 +640,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
 
   [L_O_ST] = { .mode = LM_NONE, .leds = 0b000, .colors = {}, },
 
-  [L_GAME] = { .mode = LM_LEFT, .leds = 0b100, .colors = LEDS_moonlander_left( // {{{
+  [L_GAME] = { .mode = LM_LEFT, .leds = 0b010, .colors = LEDS_moonlander_left( // {{{
     C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,
     C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3,
     C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
@@ -649,7 +649,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_RU_2, C_RU_4, C_RU_4
   ), }, // }}}
 
-  [L_G_NU] = { .mode = LM_RIGHT, .leds = 0b100, .colors = LEDS_moonlander_right( // {{{
+  [L_G_NU] = { .mode = LM_RIGHT, .leds = 0b010, .colors = LEDS_moonlander_right( // {{{
     C_RU_5, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
@@ -660,7 +660,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
 
   [L_O_GA] = { .mode = LM_NONE, .leds = 0b000, .colors = {}, },
 
-  [L_MS] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_MS] = { .mode = LM_BOTH, .leds = 0b010, .colors = LEDS_moonlander_mirrored( // {{{
     C_SO_4, C_____, C_____, C_____, C_____, C_____, C_SO_4,
     C_SO_4, C_SO_3, C_SO_2, C_SO_1, C_SO_2, C_SO_2, C_SO_4,
     C_SO_4, C_SO_3, C_SO_1, C_SO_1, C_SO_1, C_SO_2, C_SO_4,
@@ -669,7 +669,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_SO_1, C_SO_1, C_SO_1
   ), }, // }}}
 
-  [L_O_MS] = { .mode = LM_RIGHT, .leds = 0b100, .colors = LEDS_moonlander_right( // {{{
+  [L_O_MS] = { .mode = LM_RIGHT, .leds = 0b010, .colors = LEDS_moonlander_right( // {{{
     C_SO_4, C_____, C_____, C_____, C_____, C_____, C_SO_4,
     C_SO_4, C_____, C_____, C_SO_2, C_____, C_____, C_SO_4,
     C_SO_4, C_____, C_SO_2, C_SO_2, C_SO_2, C_____, C_SO_4,
@@ -678,7 +678,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_SO_3, C_SO_3, C_SO_3
   ), }, // }}}
 
-  [L_SYM] = { .mode = LM_BOTH, .leds = 0b110, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_SYM] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,
@@ -687,7 +687,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_O_SY] = { .mode = LM_BOTH, .leds = 0b110, .colors = LEDS_moonlander_both( // {{{
+  [L_O_SY] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,   C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
     C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,   C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
     C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,   C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,
@@ -696,7 +696,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____,   C_____, C_____, C_____
   ), }, // }}}
 
-  [L_NUM] = { .mode = LM_BOTH, .leds = 0b011, .colors = LEDS_moonlander_both( // {{{
+  [L_NUM] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,   C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,   C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
     C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,   C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
@@ -705,7 +705,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____,   C_____, C_____, C_____
   ), }, // }}}
 
-  [L_O_NU] = { .mode = LM_BOTH, .leds = 0b011, .colors = LEDS_moonlander_both( // {{{
+  [L_O_NU] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,   C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
     C_SU_4, C_____, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,   C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_3,
     C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,   C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
@@ -714,7 +714,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____,   C_____, C_____, C_____
   ), }, // }}}
 
-  [L_NAV] = { .mode = LM_BOTH, .leds = 0b101, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_NAV] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_RU_1, C_____, C_RU_3, C_____, C_RU_3, C_SU_5,
     C_SU_4, C_SU_2, C_SU_2, C_SU_1, C_SU_2, C_SU_2, C_RU_1,
     C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_RU_1,
@@ -723,7 +723,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_FUNC] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_FUNC] = { .mode = LM_BOTH, .leds = 0b101, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_3, C_____, C_____, C_____, C_____, C_____, C_SU_3,
     C_SU_3, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
     C_SU_3, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
@@ -732,7 +732,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_SHRT] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_SHRT] = { .mode = LM_BOTH, .leds = 0b101, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_____, C_____, C_MA_3, C_MA_2, C_MA_2, C_____,
     C_SU_4, C_SU_1, C_SU_2, C_MA_1, C_MA_2, C_MA_2, C_____,
     C_SU_4, C_SU_2, C_____, C_MA_1, C_MA_3, C_MA_3, C_SU_5,
@@ -741,7 +741,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_SYS] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_SYS] = { .mode = LM_BOTH, .leds = 0b011, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____,
     C_SU_4, C_____, C_____, C_____, C_____, C_SU_1, C_____,
     C_SU_4, C_SU_3, C_SU_4, C_SU_4, C_SU_4, C_SU_2, C_____,
@@ -750,7 +750,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_WEB] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_WEB] = { .mode = LM_BOTH, .leds = 0b101, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____,
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____,
     C_SU_4, C_SU_1, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_____,
@@ -759,7 +759,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_LED] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_LED] = { .mode = LM_BOTH, .leds = 0b101, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_____, C_____, C_____, C_DS_1, C_DS_2, C_____,
     C_SU_4, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_____,
     C_SU_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_SU_5,
