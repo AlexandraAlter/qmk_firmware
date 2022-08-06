@@ -638,9 +638,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_MA_1, C_MA_1, C_MA_4,   C_MA_4, C_MA_1, C_MA_1
   ), }, // }}}
 
-  [L_O_ST] = { .mode = LM_NONE, .leds = 0b000, .colors = {}, },
+  [L_O_ST] = { .mode = LM_NONE, .leds = 0, .colors = {}, },
 
-  [L_GAME] = { .mode = LM_LEFT, .leds = 0b010, .colors = LEDS_moonlander_left( // {{{
+  [L_GAME] = { .mode = LM_LEFT, .leds = 0b100, .colors = LEDS_moonlander_left( // {{{
     C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,
     C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3,
     C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
@@ -649,7 +649,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_RU_2, C_RU_4, C_RU_4
   ), }, // }}}
 
-  [L_G_NU] = { .mode = LM_RIGHT, .leds = 0b010, .colors = LEDS_moonlander_right( // {{{
+  [L_G_NU] = { .mode = LM_RIGHT, .leds = 0, .colors = LEDS_moonlander_right( // {{{
     C_RU_5, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
@@ -658,9 +658,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_RU_1, C_RU_2, C_RU_1
   ), }, // }}}
 
-  [L_O_GA] = { .mode = LM_NONE, .leds = 0b000, .colors = {}, },
+  [L_O_GA] = { .mode = LM_NONE, .leds = 0, .colors = {}, },
 
-  [L_MS] = { .mode = LM_BOTH, .leds = 0b010, .colors = LEDS_moonlander_mirrored( // {{{
+  [L_MS] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
     C_SO_4, C_____, C_____, C_____, C_____, C_____, C_SO_4,
     C_SO_4, C_SO_3, C_SO_2, C_SO_1, C_SO_2, C_SO_2, C_SO_4,
     C_SO_4, C_SO_3, C_SO_1, C_SO_1, C_SO_1, C_SO_2, C_SO_4,
@@ -669,7 +669,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_SO_1, C_SO_1, C_SO_1
   ), }, // }}}
 
-  [L_O_MS] = { .mode = LM_RIGHT, .leds = 0b010, .colors = LEDS_moonlander_right( // {{{
+  [L_O_MS] = { .mode = LM_RIGHT, .leds = 0, .colors = LEDS_moonlander_right( // {{{
     C_SO_4, C_____, C_____, C_____, C_____, C_____, C_SO_4,
     C_SO_4, C_____, C_____, C_SO_2, C_____, C_____, C_SO_4,
     C_SO_4, C_____, C_SO_2, C_SO_2, C_SO_2, C_____, C_SO_4,
@@ -928,13 +928,15 @@ layer_state_t layer_state_set_user(layer_state_t state) { // {{{
   state = update_bi_layer_state(state, L_GAME, L_G_NU);
 
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
-    if ((state | default_layer_state) & (1UL << layer)) {
-      uint8_t leds = ledmap[layer].leds;
-      ML_LED_4((leds & 0b100) != 0);
-      ML_LED_5((leds & 0b010) != 0);
-      ML_LED_6((leds & 0b001) != 0);
-      break;
-    }
+    if (!((state | default_layer_state) & (1UL << layer)))
+      continue;
+    if (ledmap[layer].mode == LM_NONE || ledmap[layer].mode == LM_RIGHT)
+      continue;
+    uint8_t leds = ledmap[layer].leds;
+    ML_LED_4((leds & 0b100) != 0);
+    ML_LED_5((leds & 0b010) != 0);
+    ML_LED_6((leds & 0b001) != 0);
+    break;
   }
 
   return state;
