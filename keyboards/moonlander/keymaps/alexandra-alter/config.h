@@ -1,8 +1,6 @@
 #pragma once
 
+#define LAYER_STATE_32BIT
 #define FORCE_NKRO
-
-#define RGB_MATRIX_STARTUP_SPD 60
+#define PERMISSIVE_HOLD
 #define MOONLANDER_USER_LEDS
-
-#define TAPPING_TOGGLE 1

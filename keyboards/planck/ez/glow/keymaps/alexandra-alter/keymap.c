@@ -149,9 +149,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_MS] = LAYOUT_planck_grid( // {{{ mouse
-    _______, KC_ACL0, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, _______,
-    _______, KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, _______,
-    _______, KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX, XXXXXXX, KC_ACL2, KC_ACL1, KC_ACL0, XXXXXXX, _______,
+    _______, KC_ACL0, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, KC_BTN6, _______,
+    _______, KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_BTN7, _______,
+    _______, KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX, XXXXXXX, KC_ACL2, KC_ACL1, KC_ACL0, KC_BTN8, _______,
     _______, _______, _______, _______, KC_BTN2, KC_BTN1, KC_BTN1, KC_BTN3, _______, _______, _______, _______
   ), // }}}
 
@@ -184,7 +184,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, RESET,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, QK_BOOT,
     XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),TO(L_GA),TO(L_MS),XXXXXXX, NK_ON,   RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
     MA_L3,   XXXXXXX, TO(L_QT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NK_OFF,  RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -376,9 +376,9 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   }, // }}}
 
   [L_MS] = { // {{{
-    C_CC_4, C_CC_4, C_CC_2, C_CC_3, C_CC_2, C_CC_1, C_____, C_____, C_CC_1, C_____, C_____, C_CC_4,
-    C_CC_4, C_CC_4, C_CC_3, C_CC_3, C_CC_3, C_CC_1, C_____, C_CC_1, C_CC_1, C_CC_1, C_____, C_CC_4,
-    C_CC_4, C_CC_4, C_CC_1, C_____, C_CC_1, C_____, C_____, C_CC_4, C_CC_4, C_CC_4, C_____, C_CC_4,
+    C_CC_4, C_CC_4, C_CC_2, C_CC_3, C_CC_2, C_CC_1, C_____, C_____, C_CC_1, C_____, C_CC_2, C_CC_4,
+    C_CC_4, C_CC_4, C_CC_3, C_CC_3, C_CC_3, C_CC_1, C_____, C_CC_1, C_CC_1, C_CC_1, C_CC_2, C_CC_4,
+    C_CC_4, C_CC_4, C_CC_1, C_____, C_CC_1, C_____, C_____, C_CC_4, C_CC_4, C_CC_4, C_CC_2, C_CC_4,
     C_CC_5, C_CC_4, C_CC_4, C_CC_4, C_CC_2,     C_CC_2,     C_CC_2, C_CC_4, C_CC_4, C_CC_4, C_CC_4
   }, // }}}
 

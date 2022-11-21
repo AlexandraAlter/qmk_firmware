@@ -164,6 +164,7 @@ LAYOUT_moonlander(                                                        \
                       k50, k51, k52,   k52, k51, k50)
 
 // mirrored layout, save for the 3x3 'inner' area centred on the middle finger
+// we flip row 0 too, because of the mouse buttons in L_MS
 #define LAYOUT_moonlander_mirrored_outer(                                 \
   k00, k01, k02, k03, k04, k05, k06,                                      \
   k10, k11, k12, k13, k14, k15, k16,                                      \
@@ -173,7 +174,7 @@ LAYOUT_moonlander(                                                        \
                       k50, k51, k52                                       \
 )                                                                         \
 LAYOUT_moonlander(                                                        \
-  k00, k01, k02, k03, k04, k05, k06,   k06, k05, k04, k03, k02, k01, k00, \
+  k00, k01, k02, k03, k04, k05, k06,   k06, k05, k02, k03, k04, k01, k00, \
   k10, k11, k12, k13, k14, k15, k16,   k16, k15, k12, k13, k14, k11, k10, \
   k20, k21, k22, k23, k24, k25, k26,   k26, k25, k22, k23, k24, k21, k20, \
   k30, k31, k32, k33, k34, k35,             k35, k32, k33, k34, k31, k30, \
@@ -275,7 +276,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_MS] = LAYOUT_moonlander_mirrored_outer( // {{{ mouse
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    _______, XXXXXXX, KC_BTN6, KC_BTN7, KC_BTN8, XXXXXXX, _______,
     _______, KC_ACL0, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, _______,
     _______, KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______,
     _______, KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,
@@ -383,7 +384,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
-    RESET,   XXXXXXX, KC_CAPS, KC_NLCK, KC_SLCK, XXXXXXX, TG_HUB,
+    QK_BOOT, XXXXXXX, KC_CAPS, KC_NLCK, KC_SLCK, XXXXXXX, TG_HUB,
     AU_TOG,  XXXXXXX, XXXXXXX, TO_ST_O, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, TO_OH,   TO_DV,   TO_ST,   TO_G,    TO_MS,   XXXXXXX,
     XXXXXXX, XXXXXXX, TO_QT,   XXXXXXX, XXXXXXX, XXXXXXX,
@@ -661,7 +662,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
   [L_O_GA] = { .mode = LM_NONE, .leds = 0, .colors = {}, },
 
   [L_MS] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
-    C_SO_4, C_____, C_____, C_____, C_____, C_____, C_SO_4,
+    C_SO_4, C_____, C_SO_2, C_SO_2, C_SO_2, C_____, C_SO_4,
     C_SO_4, C_SO_3, C_SO_2, C_SO_1, C_SO_2, C_SO_2, C_SO_4,
     C_SO_4, C_SO_3, C_SO_1, C_SO_1, C_SO_1, C_SO_2, C_SO_4,
     C_SO_4, C_SO_3, C_SO_2, C_____, C_SO_2, C_____,
