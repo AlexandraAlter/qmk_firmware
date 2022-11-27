@@ -1,22 +1,22 @@
 #include QMK_KEYBOARD_H
-#include "keymap_steno.h"
-#include "keymap_us_international.h"
 #include "version.h"
+#include "keymap_steno.h"
 
 typedef enum layer_t {
   L_BASE, // base
   L_GAME, // core: gaming base
+  L_OH,   // core: one-handed
   L_DV,   // core: dvorak
   L_QT,   // core: qwerty
   L_ST,   // core: stenotype
-  L_OH,   // core: one-handed
   L_MS,   // core: mouse
+  L_OHN,  // utils: one-handed numbers
   L_SYM,  // utils: symbols
   L_NUM,  // utils: numpad
   L_NAV,  // utils: navigation
   L_FUNC, // utils: function keys
   L_SHRT, // utils: shortcuts
-  // layers 0-11 above this line can be used in LT keys
+  // layers above this point must be in the 0-15 range, as they are used in LM/LT
   L_G_NU, // core: gaming numpad
   L_O_GA, // overlay: gaming overlay
   L_O_ST, // overlay: stenotype overlay
@@ -32,9 +32,9 @@ typedef enum layer_t {
 
 typedef enum custom_keycode_t { // {{{
   RGB_SLD = ML_SAFE_RANGE,      // pause LED animation
-  TO_G,                         // go directly to the three gaming layers
+  TO_GAME,                      // go directly to the three gaming layers
   TG_G_DV,                      // toggle dvorak and gaming
-  TO_ST_O,                      // go directly to steno with overlay
+  TO_ST2,                       // go directly to steno with overlay
 } custom_keycode_t;             // }}}
 
 // {{{ layout key meta-def
@@ -60,12 +60,6 @@ typedef enum custom_keycode_t { // {{{
 
 #define TG_OH TG(L_OH)
 #define TG_HUB TG(L_HUB)
-
-#define TO_OH TO(L_OH)
-#define TO_DV TO(L_DV)
-#define TO_QT TO(L_QT)
-#define TO_ST TO(L_ST)
-#define TO_MS TO(L_MS)
 
 // shortcut keys
 #define KA_UNDO LCTL(KC_Z)
@@ -142,8 +136,8 @@ META_KEY(R12, KC_RCTL, KC_GRV);
 #define KA_RT3 LT(L_MS, KC_TAB)
 
 #define KA_OHT1 LT(L_SYM, KC_SPC)
-#define KA_OHT2 LT(L_NUM, KC_TAB)
-#define KA_OHT3 LT(L_NAV, KC_ENT)
+#define KA_OHT2 LT(L_NAV, KC_TAB)
+#define KA_OHT3 LT(L_OHN, KC_ENT)
 // }}}
 
 // {{{ layout convenience defs
@@ -194,31 +188,32 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______,    _______, _______, _______
   ), */ // }}}
 
+  // this layer is largely a duplicate of L_DV
   [L_BASE] = LAYOUT_moonlander( // {{{ base
     KA_L1,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KA_L12,     KA_R12,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KA_R1,
-    KA_L2,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L11,     KA_R11,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R2,
-    KA_L3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L10,     KA_R10,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R3,
-    KA_L4,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_R4,
+    KA_L2,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KA_L11,     KA_R11,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_R2,
+    KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KA_L10,     KA_R10,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_R3,
+    KA_L4,   KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        KA_APP,             KA_APP,       KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         KA_LT1,  KA_LT2,  KA_LT3,     KA_RT3,  KA_RT2,  KA_RT1
   ), // }}}
 
   [L_DV] = LAYOUT_moonlander( // {{{ dvorak
-    _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
-    _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    _______,    _______, KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    _______,
-    _______, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    _______,    _______, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    _______,
-    _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
-    _______, _______, _______, _______, _______,      _______,            _______,      _______, _______, _______, _______, _______,
-                                        _______, _______, _______,    _______, _______, _______
+    KA_L1,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KA_L12,     KA_R12,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KA_R1,
+    KA_L2,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KA_L11,     KA_R11,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_R2,
+    KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KA_L10,     KA_R10,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_R3,
+    KA_L4,   KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KA_R4,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        KA_APP,             KA_APP,       KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
+                                        KA_LT1,  KA_LT2,  KA_LT3,     KA_RT3,  KA_RT2,  KA_RT1
   ), // }}}
 
   [L_QT] = LAYOUT_moonlander( // {{{ qwerty
-    _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
-    _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,    _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    R2(KC_MINS),
-    _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______,    _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, R3(KC_QUOT),
-    _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-    _______, _______, _______, _______, _______,      _______,            _______,      _______, _______, _______, _______, _______,
-                                        _______, _______, _______,    _______, _______, _______
+    KA_L1,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KA_L12,     KA_R12,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KA_R1,
+    KA_L2,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KA_L11,     KA_R11,  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KA_R2,
+    KA_L3,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KA_L10,     KA_R10,  KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KA_R3,
+    KA_L4,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KA_R4,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        KA_APP,             KA_APP,       KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
+                                        KA_LT1,  KA_LT2,  KA_LT3,     KA_RT3,  KA_RT2,  KA_RT1
   ), // }}}
 
   [L_ST] = LAYOUT_moonlander( // {{{ stenotype
@@ -240,12 +235,21 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_OH] = LAYOUT_moonlander_mirrored( // {{{ one-handed
-    L1(KC_DOT), KC_COMM, KC_Q,    KC_J,    KC_K,    KC_X,    L12(KC_SCLN),
-    KA_L2,      KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    L11(KC_Y),
-    KA_L3,      KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    L10(KC_B),
-    L4(KC_P),   KC_S,    KC_N,    KC_T,    KC_H,    KC_D,
-    L5(KC_QUOT),L6(KC_Z),L7(KC_V),L8(KC_W),L9(KC_M),     _______,
-                                           KA_OHT1, KA_OHT2, KA_OHT3
+    L1(KC_DOT),  KC_COMM,  KC_Q,     KC_J,     KC_K,     KC_X,     L12(KC_SCLN),
+    KA_L2,       KC_L,     KC_R,     KC_C,     KC_G,     KC_F,     L11(KC_Y),
+    KA_L3,       KC_A,     KC_O,     KC_E,     KC_U,     KC_I,     L10(KC_B),
+    L4(KC_P),    KC_S,     KC_N,     KC_T,     KC_H,     KC_D,
+    L5(KC_QUOT), L6(KC_Z), L7(KC_V), L8(KC_W), L9(KC_M),      _______,
+                                               KA_OHT1,  KA_OHT2,  KA_OHT3
+  ), // }}}
+
+  [L_OHN] = LAYOUT_moonlander_mirrored_outer( // {{{ one-handed numbers
+    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KA_L12,
+    KA_L2,   XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX, KA_L11,
+    KA_L3,   XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX, KA_L10,
+    KA_L4,   XXXXXXX, KC_7,    KC_8,    KC_9,    KC_0,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,
+                                        _______, _______, _______
   ), // }}}
 
   [L_GAME] = LAYOUT_moonlander( // {{{ gaming base
@@ -384,12 +388,12 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
-    QK_BOOT, XXXXXXX, KC_CAPS, KC_NLCK, KC_SLCK, XXXXXXX, TG_HUB,
-    AU_TOG,  XXXXXXX, XXXXXXX, TO_ST_O, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, TO_OH,   TO_DV,   TO_ST,   TO_G,    TO_MS,   XXXXXXX,
-    XXXXXXX, XXXXXXX, TO_QT,   XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      _______,
-                                        XXXXXXX, XXXXXXX, XXXXXXX
+    QK_BOOT,  XXXXXXX,  KC_CAPS,  KC_NLCK,  KC_SLCK,  XXXXXXX,  TG_HUB,
+    AU_TOG,   XXXXXXX,  XXXXXXX,  TO_ST2,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  TO(L_OH), TO(L_DV), TO(L_ST), TO_GAME,  TO(L_MS), XXXXXXX,
+    XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
+                                            XXXXXXX,  XXXXXXX,  XXXXXXX
   ), // }}}
 };
 
@@ -596,9 +600,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
 
   [L_BASE] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_SU_4,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_4,
+    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_2,
     C_SU_4, C_SU_4, C_SU_4, C_SU_3, C_SU_3,     C_SU_5,
                                     C_SU_5, C_SU_5, C_SU_5
   ), }, // }}}
@@ -627,6 +631,15 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_2,
     C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2,
     C_TO_3, C_TO_2, C_TO_2, C_TO_2, C_TO_2,     C_TO_5,
+                                    C_TO_5, C_TO_5, C_TO_5
+  ), }, // }}}
+
+  [L_OHN] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
+    C_TO_3, C_____, C_____, C_____, C_____, C_____, C_TO_3,
+    C_TO_3, C_____, C_TO_1, C_TO_1, C_TO_1, C_____, C_TO_3,
+    C_TO_3, C_____, C_TO_1, C_TO_1, C_TO_1, C_____, C_TO_3,
+    C_TO_3, C_____, C_TO_1, C_TO_1, C_TO_1, C_TO_1,
+    C_TO_3, C_TO_3, C_TO_3, C_TO_3, C_TO_3,     C_TO_5,
                                     C_TO_5, C_TO_5, C_TO_5
   ), }, // }}}
 
@@ -881,21 +894,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
     }
     return false;
 
-  case TO_G:
+  case TO_GAME:
     if (record->event.pressed) {
-      layer_move(L_O_GA);
-      layer_on(L_GAME);
+      layer_move(L_GAME);
+      layer_on(L_G_NU);
     }
     return false;
 
   case TG_G_DV:
     if (record->event.pressed) {
-      layer_invert(L_GAME);
+      layer_invert(L_G_NU);
       layer_invert(L_DV);
     }
     return false;
 
-  case TO_ST_O:
+  case TO_ST2:
     if (record->event.pressed) {
       layer_move(L_ST);
       layer_on(L_O_ST);
@@ -913,20 +926,25 @@ layer_state_t update_bi_layer_state(layer_state_t state, uint8_t source, uint8_t
   return s_active ? (state | d_mask) : (state & ~d_mask);
 }
 
+// when we're detecting whether OH mode is on, we only care about layers in this mask
+// this is because, if DV or QT are on, we're not in OH mode
+static layer_state_t oh_detection_mask = (1 << L_DV) | (1 << L_QT) | (1 << L_OH);
+static layer_state_t oh_mask = (1 << L_OH);
+
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
-  if (IS_LAYER_ON_STATE(state, L_OH)) {
+  if ((state & oh_detection_mask) == oh_mask) {
     // if we're in one-handed mode, we can use tri layer states
-    state = update_tri_layer_state(state, L_SYM, L_NUM, L_FUNC); // function keys
-    state = update_tri_layer_state(state, L_NUM, L_NAV, L_SHRT); // shortcut keys
+    state = update_tri_layer_state(state, L_SYM, L_NAV, L_FUNC); // function keys
+    state = update_tri_layer_state(state, L_NAV, L_OHN, L_SHRT); // shortcut keys
   } else {
-    // if we're not in one-handed mode, we can add extras to the right-hand side
+    // if we're not in one-handed mode, we can add overlays to some modes
     state = update_bi_layer_state(state, L_SYM, L_O_SY);
     state = update_bi_layer_state(state, L_NUM, L_O_NU);
     state = update_bi_layer_state(state, L_MS, L_O_MS);
   }
 
   // always activate the gaming overlay if needed
-  state = update_bi_layer_state(state, L_GAME, L_G_NU);
+  state = update_bi_layer_state(state, L_GAME, L_O_GA);
 
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
     if (!((state | default_layer_state) & (1UL << layer)))
