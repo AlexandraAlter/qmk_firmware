@@ -256,17 +256,17 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,    XXXXXXX, _______, _______, _______, _______, _______, _______,
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       _______, _______, _______, _______, _______, _______, _______,
     KC_LCTL, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       _______, _______, _______, _______, _______, _______, _______,
-    KC_LSFT, KC_DEL,  KC_ENT,  KC_MINS, KC_EQL,  KC_8,                         _______, _______, _______, _______, _______, _______,
-    KC_LGUI, KC_LBRC, KC_RBRC, KC_0,    KC_9,         _______,            _______,      _______, _______, _______, _______, _______,
-                                        KC_SPC,  KC_LALT, KC_RALT,    _______, _______, _______
+    KC_LSFT, KC_ENT,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC,                      _______, _______, _______, _______, _______, _______,
+    KC_LGUI, KC_DEL,  KC_0,    KC_9,    KC_8,         _______,            _______,      _______, _______, _______, _______, _______,
+                                        KC_SPC,  KC_LALT, KC_LCTL,    _______, _______, _______
   ), // }}}
 
   [L_G_NU] = LAYOUT_moonlander( // {{{ gaming numpad
     _______, _______, _______, _______, _______, _______, XXXXXXX,    XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
     _______, _______, _______, _______, _______, _______, _______,    KC_F5,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F12,
     _______, _______, _______, _______, _______, _______, _______,    KC_F4,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
-    _______, _______, _______, _______, _______, _______,                      KC_F3,   KC_P7,   KC_P8,   KC_P9,   XXXXXXX, KC_RSFT,
-    _______, _______, _______, _______, _______,      _______,            _______,      KC_F2,   KC_F1,   XXXXXXX, KC_RALT, KC_RGUI,
+    _______, _______, _______, _______, _______, _______,                      XXXXXXX, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, KC_RSFT,
+    _______, _______, _______, _______, _______,      _______,            _______,      KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
                                         _______, _______, _______,    KC_PENT, KC_PDOT, KC_P0
   ), // }}}
 
@@ -658,8 +658,8 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,
     C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3,
     C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
-    C_RU_4, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_3,
-    C_RU_4, C_RU_2, C_RU_2, C_RU_3, C_RU_3,     C_RU_5,
+    C_RU_4, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_2,
+    C_RU_4, C_RU_2, C_RU_3, C_RU_3, C_RU_3,     C_RU_5,
                                     C_RU_2, C_RU_4, C_RU_4
   ), }, // }}}
 
@@ -667,8 +667,8 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_RU_5, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
     C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
-            C_RU_3, C_RU_1, C_RU_1, C_RU_1, C_____, C_RU_4,
-        C_RU_5,     C_RU_3, C_RU_3, C_____, C_RU_4, C_RU_4,
+            C_____, C_RU_1, C_RU_1, C_RU_1, C_____, C_RU_4,
+        C_RU_5,     C_RU_3, C_RU_3, C_RU_3, C_RU_4, C_RU_4,
     C_RU_1, C_RU_2, C_RU_1
   ), }, // }}}
 
