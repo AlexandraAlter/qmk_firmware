@@ -272,9 +272,9 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_G_KB] = LAYOUT_moonlander( // {{{ gaming rts base
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,    XXXXXXX, _______, _______, _______, _______, _______, _______,
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       _______, _______, _______, _______, _______, _______, _______,
-    KC_LCTL, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       _______, _______, _______, _______, _______, _______, _______,
-    KC_LSFT, KC_ENT,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC,                      _______, _______, _______, _______, _______, _______,
-    KC_LGUI, KC_LALT, KC_0,    KC_9,    KC_8,         _______,            _______,      _______, _______, _______, _______, _______,
+    KC_LCTL, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       _______, _______, _______, _______, _______, _______, _______,
+    KC_LSFT, KC_ENT,  KC_BSPC, KC_INS,  XXXXXXX, KC_PAUS,                      _______, _______, _______, _______, _______, _______,
+    KC_LGUI, KC_DEL,  KC_0,    KC_9,    KC_8,         _______,            _______,      _______, _______, _______, _______, _______,
                                         KC_SPC,  KA_G_K1, KA_G_K2,    _______, _______, _______
   ), // }}}
 
@@ -289,8 +289,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_G_K2] = LAYOUT_moonlander_mirrored( // {{{ gaming letters 2
     MA_L1,      KC_F1,      KC_F2,      KC_F3,     KC_F4,     KC_F5, _______,
-    MA_L2,      KC_QUOT,    KC_COMM,    KC_DOT,    KC_V,      KC_Z,  L11(KC_F6),
-    MA_L3,      KC_P,       KC_Y,       KC_W,      KC_M,      KC_B,  L10(KC_F7),
+    MA_L2,      KC_QUOT,    KC_COMM,    KC_DOT,    KC_P,      KC_Y,  L11(KC_F6),
+    MA_L3,      KC_Z,       KC_V,       KC_W,      KC_M,      KC_B,  L10(KC_F7),
     MA_L4,      KC_SCLN,    KC_Q,       KC_J,      KC_K,      KC_X,
     L5(KC_F12), L6(KC_F11), L7(KC_F10), L8(KC_F9), L9(KC_F8),      _______,
                                         _______,   _______,   _______
@@ -701,9 +701,9 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
   [L_G_KB] = { .mode = LM_LEFT, .leds = 0b100, .colors = LEDS_moonlander_left( // {{{
     C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,
     C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3,
-    C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
-    C_RU_4, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_2,
-    C_RU_4, C_RU_4, C_RU_3, C_RU_3, C_RU_3,     C_RU_5,
+    C_RU_4, C_RU_4, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
+    C_RU_4, C_RU_2, C_RU_2, C_RU_2, C_____, C_RU_1,
+    C_RU_4, C_RU_2, C_RU_3, C_RU_3, C_RU_3,     C_RU_5,
                                     C_RU_2, C_RU_5, C_RU_5
   ), }, // }}}
 
