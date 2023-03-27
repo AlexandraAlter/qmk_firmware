@@ -6,6 +6,7 @@ typedef enum layer_t {
   L_BASE, // base
   L_GAME, // core: gaming base
   L_G_KB, // core: gaming rts base
+  L_G_HB, // core: gaming hitbox base
   L_OH,   // core: one-handed
   L_DV,   // core: dvorak
   L_QT,   // core: qwerty
@@ -37,6 +38,7 @@ typedef enum custom_keycode_t { // {{{
   RGB_SLD = ML_SAFE_RANGE,      // pause LED animation
   TO_GAME,                      // go directly to L_GAME and L_G_NU
   TO_G_KB,                      // go directly to L_G_KB and L_G_NU
+  TO_G_HB,                      // go directly to L_G_HB
   TG_G_DV,                      // toggle dvorak and gaming
   TO_ST2,                       // go directly to steno with overlay
 } custom_keycode_t;             // }}}
@@ -278,6 +280,15 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
                                         KC_SPC,  KA_G_K1, KA_G_K2,    _______, _______, _______
   ), // }}}
 
+  [L_G_HB] = LAYOUT_moonlander( // {{{ gaming hitbox base
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,    XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+    KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       KC_F5,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F12,
+    KC_LCTL, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       KC_F4,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
+    KC_LSFT, KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PENT, KC_P7,   KC_P8,   KC_P9,   KC_PDOT, KC_RSFT,
+    KC_LGUI, XXXXXXX, KC_0,    KC_9,    KC_8,         _______,            _______,      KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
+                                        KC_HOME, KC_UP,   KC_END,     KC_PGDN, KC_P0,   KC_PGUP
+  ), // }}}
+
   [L_G_K1] = LAYOUT_moonlander_mirrored( // {{{ gaming letters 1
     MA_L1,   KC_GRV,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______,
     MA_L2,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    L11(KC_SLSH),
@@ -424,7 +435,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
 
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
     QK_BOOT,  XXXXXXX,  KC_CAPS,  KC_NLCK,  KC_SLCK,  XXXXXXX,  TG_HUB,
-    AU_TOG,   XXXXXXX,  XXXXXXX,  TO_ST2,   XXXXXXX,  XXXXXXX,  XXXXXXX,
+    AU_TOG,   XXXXXXX,  XXXXXXX,  TO_ST2,   TO_G_HB,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  TO(L_OH), TO(L_DV), TO(L_ST), TO_GAME,  TO(L_MS), XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  TO_G_KB,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
@@ -707,6 +718,15 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_RU_2, C_RU_5, C_RU_5
   ), }, // }}}
 
+  [L_G_HB] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
+    C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,   C_RU_5, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
+    C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3,   C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
+    C_RU_4, C_RU_4, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,   C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
+    C_RU_4, C_RU_2, C_____, C_____, C_____, C_____,                   C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_4,
+    C_RU_4, C_____, C_RU_3, C_RU_3, C_RU_3,     C_RU_5,           C_RU_5,     C_RU_3, C_RU_3, C_RU_3, C_RU_4, C_RU_4,
+                                    C_RU_2, C_RU_1, C_RU_2,   C_RU_2, C_RU_1, C_RU_2
+  ), }, // }}}
+
   [L_G_K1] = { .mode = LM_LEFT, .leds = 0b100, .colors = LEDS_moonlander_left( // {{{
     C_RU_4, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_2, C_RU_5,
     C_RU_4, C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_2,
@@ -970,9 +990,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
     }
     return false;
 
+  case TO_G_HB:
+    if (record->event.pressed) {
+      layer_move(L_G_HB);
+    }
+    return false;
+
   case TG_G_DV:
     if (record->event.pressed) {
-      layer_invert(L_G_NU);
+      if (layer_state & game_numpad_detection_mask != 0)
+        layer_invert(L_G_NU);
       layer_invert(L_DV);
     }
     return false;
@@ -1001,7 +1028,8 @@ static layer_state_t oh_detection_mask = (1 << L_DV) | (1 << L_QT) | (1 << L_OH)
 static layer_state_t oh_mask = (1 << L_OH);
 
 // when we're detecting whether GAME mode is on, we check both layers
-static layer_state_t game_detection_mask = (1 << L_GAME) | (1 << L_G_KB);
+static layer_state_t game_detection_mask = (1 << L_GAME) | (1 << L_G_KB) | (1 << L_G_HB);
+static layer_state_t game_numpad_detection_mask = (1 << L_GAME) | (1 << L_G_KB);
 static layer_state_t game_overlay_mask = (1 << L_O_GA);
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
