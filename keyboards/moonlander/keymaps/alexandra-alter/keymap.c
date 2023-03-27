@@ -36,10 +36,6 @@ typedef enum layer_t {
 
 typedef enum custom_keycode_t { // {{{
   RGB_SLD = ML_SAFE_RANGE,      // pause LED animation
-  TO_GAME,                      // go directly to L_GAME and L_G_NU
-  TO_G_KB,                      // go directly to L_G_KB and L_G_NU
-  TO_G_HB,                      // go directly to L_G_HB
-  TG_G_DV,                      // toggle dvorak and gaming
   TO_ST2,                       // go directly to steno with overlay
 } custom_keycode_t;             // }}}
 
@@ -64,8 +60,13 @@ typedef enum custom_keycode_t { // {{{
 #define MO_WEB MO(L_WEB)
 #define MO_SYS MO(L_SYS)
 
-#define TG_OH TG(L_OH)
 #define TG_HUB TG(L_HUB)
+#define TG_DV TG(L_DV)
+#define TG_OH TG(L_OH)
+
+#define TO_GAME TO(L_GAME)
+#define TO_G_KB TO(L_G_KB)
+#define TO_G_HB TO(L_G_HB)
 
 // shortcut keys
 #define KA_UNDO LCTL(KC_Z)
@@ -317,7 +318,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_O_GA] = LAYOUT_moonlander( // {{{ gaming overlay
-    _______, _______, _______, _______, _______, _______, TG_OH,      TG_G_DV, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, TG_OH,      TG_DV,   _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
@@ -866,7 +867,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
 
   [L_HUB] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_1, C_____, C_SU_3, C_SU_3, C_SU_3, C_____, C_SU_5,
-    C_SU_4, C_____, C_____, C_SU_2, C_____, C_____, C_____,
+    C_SU_4, C_____, C_____, C_SU_2, C_SU_2, C_____, C_____,
     C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
     C_____, C_____, C_SU_2, C_____, C_SU_2, C_____,
     C_____, C_____, C_____, C_____, C_____,     C_SU_5,
@@ -976,34 +977,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
     }
     return false;
 
-  case TO_GAME:
-    if (record->event.pressed) {
-      layer_move(L_GAME);
-      layer_on(L_G_NU);
-    }
-    return false;
-
-  case TO_G_KB:
-    if (record->event.pressed) {
-      layer_move(L_G_KB);
-      layer_on(L_G_NU);
-    }
-    return false;
-
-  case TO_G_HB:
-    if (record->event.pressed) {
-      layer_move(L_G_HB);
-    }
-    return false;
-
-  case TG_G_DV:
-    if (record->event.pressed) {
-      if (layer_state & game_numpad_detection_mask != 0)
-        layer_invert(L_G_NU);
-      layer_invert(L_DV);
-    }
-    return false;
-
   case TO_ST2:
     if (record->event.pressed) {
       layer_move(L_ST);
@@ -1029,8 +1002,10 @@ static layer_state_t oh_mask = (1 << L_OH);
 
 // when we're detecting whether GAME mode is on, we check both layers
 static layer_state_t game_detection_mask = (1 << L_GAME) | (1 << L_G_KB) | (1 << L_G_HB);
-static layer_state_t game_numpad_detection_mask = (1 << L_GAME) | (1 << L_G_KB);
 static layer_state_t game_overlay_mask = (1 << L_O_GA);
+static layer_state_t gnum_detection_mask = (1 << L_GAME) | (1 << L_G_KB);
+static layer_state_t gnum_anti_detection_mask = (1 << L_DV);
+static layer_state_t gnum_mask = (1 << L_G_NU);
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
   if ((state & oh_detection_mask) == oh_mask) {
@@ -1049,6 +1024,13 @@ layer_state_t layer_state_set_user(layer_state_t state) { // {{{
     state = state | game_overlay_mask;
   } else {
     state = state & ~game_overlay_mask;
+  }
+
+  // always activate the gaming numpad if needed
+  if ((state & gnum_detection_mask) != 0 && (state & gnum_anti_detection_mask) == 0) {
+    state = state | gnum_mask;
+  } else {
+    state = state & ~gnum_mask;
   }
 
   for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
