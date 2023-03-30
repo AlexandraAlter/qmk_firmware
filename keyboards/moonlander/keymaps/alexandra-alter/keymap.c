@@ -285,9 +285,9 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,    XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       KC_F5,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F12,
     KC_LCTL, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       KC_F4,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
-    KC_LSFT, KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PENT, KC_P7,   KC_P8,   KC_P9,   KC_PDOT, KC_RSFT,
+    KC_LSFT, KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PDOT, KC_P7,   KC_P8,   KC_P9,   KC_P0,   KC_RSFT,
     KC_LGUI, XXXXXXX, KC_0,    KC_9,    KC_8,         _______,            _______,      KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
-                                        KC_HOME, KC_UP,   KC_END,     KC_PGDN, KC_P0,   KC_PGUP
+                                        KC_HOME, KC_UP,   KC_END,     KC_PGDN, KC_UP,   KC_PGUP
   ), // }}}
 
   [L_G_K1] = LAYOUT_moonlander_mirrored( // {{{ gaming letters 1
@@ -723,7 +723,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_5,   C_RU_5, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3,   C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,
     C_RU_4, C_RU_4, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3,   C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_4,
-    C_RU_4, C_RU_2, C_____, C_____, C_____, C_____,                   C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_4,
+    C_RU_4, C_RU_2, C_____, C_____, C_____, C_____,                   C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_1, C_RU_4,
     C_RU_4, C_____, C_RU_3, C_RU_3, C_RU_3,     C_RU_5,           C_RU_5,     C_RU_3, C_RU_3, C_RU_3, C_RU_4, C_RU_4,
                                     C_RU_2, C_RU_1, C_RU_2,   C_RU_2, C_RU_1, C_RU_2
   ), }, // }}}
