@@ -126,9 +126,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_OHA] = LAYOUT_planck_grid( // {{{ one-handed alt
-    _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_BTN3, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, _______,
-    _______, KC_Z,    KC_V,    KC_W,    KC_M,    KC_B,    KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______,
-    _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_BTN2, KC_WH_L, XXXXXXX, KC_WH_R, KC_ACL2, _______,
+    _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______,
+    _______, KC_Z,    KC_V,    KC_W,    KC_M,    KC_B,    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______,
+    _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
   ), // }}}
 
