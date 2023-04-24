@@ -8,6 +8,7 @@ extern keyboard_config_t keyboard_config;
 typedef enum layer_t {
   L_BASE, // base
   L_GA,   // gaming
+  L_GH,   // gaming hitbox
   L_DV,   // dvorak
   L_QT,   // qwerty
   L_OH,   // one-handed
@@ -160,6 +161,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, MA_L5,   MA_L6,   MA_L7,   KA_GLWR, KC_SPC,  KC_SPC,  KA_GRAI, KC_P0,   XXXXXXX, KC_PDOT, XXXXXXX
   ), // }}}
 
+  [L_GH] = LAYOUT_planck_grid( // {{{ gaming hitbox
+    KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_GRV,  KC_PSLS, KC_P1,   KC_P2,   KC_P3,   KC_PMNS,
+    MA_L2,   KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSLS, KC_PAST, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+    MA_L3,   KC_DEL,  KC_ENT,  KC_MINS, KC_EQL,  KC_SLSH, KC_LBRC, KC_RBRC, KC_P7,   KC_P8,   KC_P9,   KC_PENT,
+    _______, MA_L5,   MA_L6,   MA_L7,   KC_HOME, KC_UP,   KC_UP,   KC_END,  KC_P0,   XXXXXXX, KC_PDOT, XXXXXXX
+  ), // }}}
+
   [L_GLWR] = LAYOUT_planck_grid( // {{{ gaming lower
     _______, KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,
     _______, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,
@@ -203,7 +211,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, QK_BOOT,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(L_GH),XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, QK_BOOT,
     XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),TO(L_GA),TO(L_MS),XXXXXXX, NK_ON,   RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
     MA_L3,   XXXXXXX, TO(L_QT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NK_OFF,  RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -394,6 +402,13 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
     C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_RU_1, C_____, C_RU_1, C_____
   }, // }}}
 
+  [L_GH] = { // {{{
+    C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2,
+    C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2,
+    C_RU_4, C_RU_2, C_RU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_1, C_RU_1, C_RU_1, C_RU_3,
+    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_2,     C_RU_1,     C_RU_2, C_RU_1, C_____, C_RU_1, C_____
+  }, // }}}
+
   [L_GLWR] = { // {{{
     C_RU_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____,
     C_RU_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____,
@@ -444,9 +459,9 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   }, // }}}
 
   [L_HUB] = { // {{{
-    C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
-    C_____, C_SU_5, C_SU_5, C_SU_5, C_SU_5, C_SU_5, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
-    C_SU_3, C_____, C_SU_5, C_____, C_____, C_____, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
+    C_____, C_____, C_____, C_____, C_SU_2, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
+    C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
+    C_SU_3, C_____, C_SU_2, C_____, C_____, C_____, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_____, C_____, C_____, C_____
   }, // }}}
 };
