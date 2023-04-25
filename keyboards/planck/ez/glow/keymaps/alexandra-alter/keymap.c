@@ -8,7 +8,6 @@ extern keyboard_config_t keyboard_config;
 typedef enum layer_t {
   L_BASE, // base
   L_GA,   // gaming
-  L_GH,   // gaming hitbox
   L_DV,   // dvorak
   L_QT,   // qwerty
   L_OH,   // one-handed
@@ -19,6 +18,7 @@ typedef enum layer_t {
   L_NAV,  // navigation
   L_GLWR, // gaming lower
   L_GRAI, // gaming raise
+  L_GADJ, // gaming adjust
   L_LWR,  // lower
   L_RAI,  // raise
   L_ADJ,  // adjust
@@ -29,6 +29,8 @@ typedef enum layer_t {
 typedef enum custom_keycode_t { // {{{
   RGB_TLC = EZ_SAFE_RANGE,      // toggle layer color
   LED_CYC,                      // cycle led level
+  G_SPC,                        // gaming space bar
+  G_S_CY,                       // gaming space bar cycle
 } custom_keycode_t;             // }}}
 
 // {{{ layout key meta-def
@@ -49,14 +51,10 @@ META_KEY(L1, KC_LGUI, KC_ESC);
 META_KEY(L2, KC_LCTL, KC_BSPC);
 #define L3(kc) (LSFT_T(kc))
 META_KEY(L3, KC_LSFT, KC_TAB);
-#define L4(kc) (LT(L_HUB, kc))
-META_KEY(L4, MO(L_HUB), KC_BSLS);
-#define L5(kc) (LGUI_T(kc))
-META_KEY(L5, KC_LGUI, KC_SLSH);
-#define L6(kc) (LCTL_T(kc))
-META_KEY(L6, KC_LCTL, KC_MINS);
-#define L7(kc) (LALT_T(kc))
-META_KEY(L7, KC_LALT, KC_EQL);
+#define MA_L4 (MO(L_HUB))
+#define MA_L5 (KC_LGUI)
+#define MA_L6 (KC_LCTL)
+#define MA_L7 (KC_LALT)
 
 #define SPC(kc) (LT(L_NAV, kc))
 META_KEY(SPC, MO(L_NAV), KC_SPC);
@@ -102,28 +100,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L1,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_R1,
     KA_L2,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_R2,
     KA_L3,   KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_DV] = LAYOUT_planck_grid( // {{{ dvorak
     KA_L1,   KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KA_R1,
     KA_L2,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KA_R2,
     KA_L3,   KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_QT] = LAYOUT_planck_grid( // {{{ qwerty
     KA_L1,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KA_R1,
     KA_L2,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KA_R2,
     KA_L3,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_OH] = LAYOUT_planck_grid( // {{{ one-handed
     KA_L1,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    KA_R1,   KC_1,    KC_2,    KC_3,    XXXXXXX, KA_R1,
     KA_L2,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KA_R2,   KC_4,    KC_5,    KC_6,    XXXXXXX, KA_R2,
     KA_L3,   KC_S,    KC_N,    KC_T,    KC_H,    KC_D,    KA_R3,   KC_7,    KC_8,    KC_9,    KC_0,    KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KA_OLWR, KA_OSPC, KA_OSPC, KA_ORAI, KA_R7,   KA_R6,   KA_R5,   KA_R4
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_OLWR, KA_OSPC, KA_OSPC, KA_ORAI, KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_OHA] = LAYOUT_planck_grid( // {{{ one-handed alt
@@ -144,49 +142,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KA_R1,
     KA_L2,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KA_R2,
     KA_L3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   SPC_SFT, SPC_SFT, SPC_SFT, SPC_SFT, KA_R7,   KA_R6,   KA_R5,   _______
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   SPC_SFT, SPC_SFT, SPC_SFT, SPC_SFT, KA_R7,   KA_R6,   KA_R5,   _______
   ), // }}}
 
   [L_MS] = LAYOUT_planck_grid( // {{{ mouse
     KA_L1,   KC_ACL0, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, KC_BTN6, KA_L1,
     KA_L2,   KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_BTN7, KA_L2,
     KA_L3,   KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX, XXXXXXX, KC_ACL2, KC_ACL1, KC_ACL0, KC_BTN8, KA_L3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KC_BTN2, KC_BTN1, KC_BTN1, KC_BTN3, KA_R7,   KA_R6,   KA_R5,   KA_R4
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KC_BTN2, KC_BTN1, KC_BTN1, KC_BTN3, KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_GA] = LAYOUT_planck_grid( // {{{ gaming
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_GRV,  KC_PSLS, KC_P1,   KC_P2,   KC_P3,   KC_PMNS,
     MA_L2,   KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSLS, KC_PAST, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
     MA_L3,   KC_DEL,  KC_ENT,  KC_MINS, KC_EQL,  KC_SLSH, KC_LBRC, KC_RBRC, KC_P7,   KC_P8,   KC_P9,   KC_PENT,
-    _______, MA_L5,   MA_L6,   MA_L7,   KA_GLWR, KC_SPC,  KC_SPC,  KA_GRAI, KC_P0,   XXXXXXX, KC_PDOT, XXXXXXX
-  ), // }}}
-
-  [L_GH] = LAYOUT_planck_grid( // {{{ gaming hitbox
-    KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_GRV,  KC_PSLS, KC_P1,   KC_P2,   KC_P3,   KC_PMNS,
-    MA_L2,   KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BSLS, KC_PAST, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-    MA_L3,   KC_DEL,  KC_ENT,  KC_MINS, KC_EQL,  KC_SLSH, KC_LBRC, KC_RBRC, KC_P7,   KC_P8,   KC_P9,   KC_PENT,
-    _______, MA_L5,   MA_L6,   MA_L7,   KC_HOME, KC_UP,   KC_UP,   KC_END,  KC_P0,   XXXXXXX, KC_PDOT, XXXXXXX
+    _______, MA_L5,   MA_L6,   MA_L7,   KA_GLWR, G_SPC,   G_SPC,   KA_GRAI, KC_P0,   XXXXXXX, KC_PDOT, XXXXXXX
   ), // }}}
 
   [L_GLWR] = LAYOUT_planck_grid( // {{{ gaming lower
     _______, KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,
     _______, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,
     _______, KC_S,    KC_N,    KC_T,    KC_H,    KC_D,    XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_0,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, _______, _______, _______, KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_GRAI] = LAYOUT_planck_grid( // {{{ gaming raise
     _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,
     _______, KC_Z,    KC_V,    KC_W,    KC_M,    KC_B,    XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,
     _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, _______, _______, _______, KA_R7,   KA_R6,   KA_R5,   KA_R4
+  ), // }}}
+
+  [L_GADJ] = LAYOUT_planck_grid( // {{{ gaming adjust
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, G_S_CY,  XXXXXXX, KC_NUM,  XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, _______, _______, _______, _______, _______, _______, _______, KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
   [L_NAV] = LAYOUT_planck_grid( // {{{ navigation
     KA_L1,   KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_BTN3, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, KA_R1,
     KA_L2,   KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KA_R2,
     KA_L3,   KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  KC_APP,  KC_BTN2, KC_WH_L, XXXXXXX, KC_WH_R, KC_ACL2, KA_R3,
-    KA_L4,   KA_L5,   KA_L6,   KA_L7,   KA_LWR,  _______, _______, KA_RAI,  KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_LWR,  _______, _______, KA_RAI,  KA_R7A,  KA_R6A,  KA_R5A,  KA_R4A
   ), // }}}
 
   [L_LWR] = LAYOUT_planck_grid( // {{{ lower
@@ -211,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(L_GH),XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, QK_BOOT,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TLC, RGB_MOD, LED_CYC, QK_BOOT,
     XXXXXXX, TO(L_OH),TO(L_DV),TO(L_ST),TO(L_GA),TO(L_MS),XXXXXXX, NK_ON,   RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI,
     MA_L3,   XXXXXXX, TO(L_QT),XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NK_OFF,  RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -402,25 +400,25 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
     C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_RU_1, C_____, C_RU_1, C_____
   }, // }}}
 
-  [L_GH] = { // {{{
-    C_RU_2, C_RU_2, C_RU_2, C_RU_1, C_RU_2, C_RU_2, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2,
-    C_RU_4, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2, C_RU_3, C_RU_2, C_RU_1, C_RU_1, C_RU_1, C_RU_2,
-    C_RU_4, C_RU_2, C_RU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_RU_1, C_RU_1, C_RU_1, C_RU_3,
-    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_2,     C_RU_1,     C_RU_2, C_RU_1, C_____, C_RU_1, C_____
-  }, // }}}
-
   [L_GLWR] = { // {{{
     C_RU_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____,
     C_RU_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_____,
     C_RU_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_____, C_____, C_RU_2, C_RU_2, C_RU_2, C_RU_2,
-    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_____, C_____, C_____, C_____
+    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_4
   }, // }}}
 
   [L_GRAI] = { // {{{
     C_RU_2, C_TO_3, C_TO_3, C_TO_3, C_TO_2, C_TO_2, C_____, C_____, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_RU_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_____, C_____, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_RU_4, C_TO_3, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_____, C_____, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
-    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_____, C_____, C_____, C_____
+    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_4
+  }, // }}}
+
+  [L_GADJ] = { // {{{
+    C_RU_2, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____,
+    C_RU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_1, C_____, C_RU_1, C_____, C_____,
+    C_RU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____,
+    C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_5,     C_RU_2,     C_RU_5, C_RU_4, C_RU_4, C_RU_4, C_RU_4
   }, // }}}
 
   [L_MS] = { // {{{
@@ -459,7 +457,7 @@ const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
   }, // }}}
 
   [L_HUB] = { // {{{
-    C_____, C_____, C_____, C_____, C_SU_2, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
+    C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
     C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_SU_3, C_____, C_SU_2, C_____, C_____, C_____, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_____, C_____, C_____, C_____
@@ -496,6 +494,7 @@ void rgb_matrix_indicators_user(void) { // {{{
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
   state = update_tri_layer_state(state, L_LWR, L_RAI, L_ADJ);
+  state = update_tri_layer_state(state, L_GLWR, L_GRAI, L_GADJ);
 
   if (IS_LAYER_ON_STATE(state, L_LWR))
     planck_ez_left_led_on();
@@ -508,6 +507,9 @@ layer_state_t layer_state_set_user(layer_state_t state) { // {{{
 
   return state;
 } // }}}
+
+static uint16_t g_spc_kc = KC_SPC;
+static uint16_t g_spc_last = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
   switch (keycode) {
@@ -530,6 +532,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
       planck_ez_left_led_level((uint8_t)keyboard_config.led_level * 255 / 4);
       eeconfig_update_kb(keyboard_config.raw);
       layer_state_set_kb(layer_state);
+    }
+    return false;
+
+  case G_SPC:
+    if (record->event.pressed) {
+      g_spc_last = g_spc_kc;
+      register_code(g_spc_last);
+    } else {
+      if (g_spc_last != 0) {
+        unregister_code(g_spc_last);
+        g_spc_last = 0;
+      }
+    }
+    return false;
+
+  case G_S_CY:
+    if (record->event.pressed) {
+      if (g_spc_last != 0) {
+        unregister_code(g_spc_last);
+        g_spc_last = 0;
+      }
+      switch (g_spc_kc) {
+      case KC_SPC:
+        g_spc_kc = KC_UP;
+        break;
+      case KC_UP:
+        g_spc_kc = KC_SPC;
+        break;
+      }
     }
     return false;
   }
