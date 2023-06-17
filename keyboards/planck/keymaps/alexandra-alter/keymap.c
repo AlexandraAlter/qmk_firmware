@@ -87,7 +87,7 @@ META_KEY(R7, KC_LALT, KC_LEFT);
 
 #define KA_OSPC (LT(L_OHA, KC_SPC))
 #define KA_OLWR (LT(L_LWR, KC_TAB))
-#define KA_ORAI (LT(L_RAI, KC_ENT))
+#define KA_ORAI (LT(L_NAV, KC_ENT))
 
 #define KA_GLWR (MO(L_GLWR))
 #define KA_GRAI (MO(L_GRAI))
