@@ -1,6 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "keymap_steno.h"
-#include "keymap_us_international.h"
 #include "version.h"
 
 extern keyboard_config_t keyboard_config;
@@ -28,7 +26,7 @@ typedef enum layer_t {
 } layer_t;
 
 typedef enum custom_keycode_t { // {{{
-  RGB_TLC = EZ_SAFE_RANGE,      // toggle layer color
+  RGB_TLC = SAFE_RANGE,         // toggle layer color
   LED_CYC,                      // cycle led level
   G_SPC,                        // gaming space bar
   G_S_CY,                       // gaming space bar cycle
@@ -351,7 +349,7 @@ const uint8_t PROGMEM color_map[C_MAX][3] = {
 }; // }}}
 
 // clang-format off
-const color_t PROGMEM ledmap[L_MAX][DRIVER_LED_TOTAL] = {
+const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
   [L_BASE] = { // {{{
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_4,
     C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_4,
@@ -495,16 +493,18 @@ void set_led_color(int led, color_t col) { // {{{
   }
 } // }}}
 
-void rgb_matrix_indicators_user(void) { // {{{
+bool rgb_matrix_indicators_user(void) { // {{{
   if (rgb_matrix_get_suspend_state() || keyboard_config.disable_layer_led)
-    return;
+    return false;
 
   layer_state_t layers = layer_state | default_layer_state;
   uint8_t layer = get_highest_layer(layers);
   const color_t *colors = ledmap[layer];
 
-  for (uint8_t i = 0; i <= DRIVER_LED_TOTAL; i++)
+  for (uint8_t i = 0; i <= RGB_MATRIX_LED_COUNT; i++)
     set_led_color(i, colors[i]);
+
+  return false;
 } // }}}
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{

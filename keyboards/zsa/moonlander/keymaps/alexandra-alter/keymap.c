@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "keymap_steno.h"
 
 typedef enum layer_t {
   L_BASE, // base
@@ -35,7 +34,7 @@ typedef enum layer_t {
 } layer_t;
 
 typedef enum custom_keycode_t { // {{{
-  RGB_SLD = ML_SAFE_RANGE,      // pause LED animation
+  RGB_SLD = SAFE_RANGE,         // pause LED animation
   TO_ST2,                       // go directly to steno with overlay
 } custom_keycode_t;             // }}}
 
@@ -87,7 +86,7 @@ META_KEY(L2, KC_LGUI, KC_ESC);
 #define L3(kc) (LCTL_T(kc))
 META_KEY(L3, KC_LCTL, KC_BSPC);
 #define L4(kc) (LSFT_T(kc))
-META_PLAINKEY(L4, KC_LSFT, KC_LSPO);
+META_PLAINKEY(L4, KC_LSFT, SC_LSPO);
 #define L5(kc) (RALT_T(kc))
 META_KEY(L5, KC_RALT, KC_DEL);
 #define L6(kc) (LGUI_T(kc))
@@ -113,7 +112,7 @@ META_KEY(R2, KC_RGUI, KC_SLSH);
 #define R3(kc) (RCTL_T(kc))
 META_KEY(R3, KC_RCTL, KC_MINS);
 #define R4(kc) (RSFT_T(kc))
-META_PLAINKEY(R4, KC_RSFT, KC_RSPC);
+META_PLAINKEY(R4, KC_RSFT, SC_RSPC);
 #define R5(kc) (RALT_T(kc))
 META_KEY(R5, KC_RALT, KC_EQL);
 #define R6(kc) (RGUI_T(kc))
@@ -435,8 +434,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
-    QK_BOOT,  XXXXXXX,  KC_CAPS,  KC_NLCK,  KC_SLCK,  XXXXXXX,  TG_HUB,
-    AU_TOG,   XXXXXXX,  XXXXXXX,  TO_ST2,   TO_G_HB,  XXXXXXX,  XXXXXXX,
+    QK_BOOT,  XXXXXXX,  KC_CAPS,  KC_NUM,   KC_SCRL,  XXXXXXX,  TG_HUB,
+    AU_TOGG,  XXXXXXX,  XXXXXXX,  TO_ST2,   TO_G_HB,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  TO(L_OH), TO(L_DV), TO(L_ST), TO_GAME,  TO(L_MS), XXXXXXX,
     XXXXXXX,  XXXXXXX,  TO(L_QT), XXXXXXX,  TO_G_KB,  XXXXXXX,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
@@ -579,7 +578,7 @@ typedef enum led_mode_t {
 typedef struct layer_led_config_t {
   led_mode_t mode;
   const uint8_t leds; // last three LED indicators of the board
-  const color_t colors[DRIVER_LED_TOTAL];
+  const color_t colors[RGB_MATRIX_LED_COUNT];
 } layer_led_config_t;
 
 // {{{ led convenience defs
@@ -897,14 +896,15 @@ void set_led_colors(int first_led, int last_led, const color_t *colors) { // {{{
   }
 } // }}}
 
-void rgb_matrix_indicators_user(void) { // {{{
+bool rgb_matrix_indicators_user(void) { // {{{
   if (rgb_matrix_get_suspend_state() || keyboard_config.disable_layer_led)
-    return;
+    return false;
 
   int first_l_led = 0;
-  int last_l_led = (DRIVER_LED_TOTAL / 2) - 1;
-  int first_r_led = DRIVER_LED_TOTAL / 2;
-  int last_r_led = DRIVER_LED_TOTAL - 1;
+  int total_leds = RGB_MATRIX_LED_COUNT;
+  int last_l_led = (total_leds / 2) - 1;
+  int first_r_led = total_leds / 2;
+  int last_r_led = total_leds - 1;
 
   bool left_leds_set = false, right_leds_set = false;
   layer_state_t layers = layer_state | default_layer_state;
@@ -928,13 +928,15 @@ void rgb_matrix_indicators_user(void) { // {{{
       }
 
       if (right_leds_set && left_leds_set)
-        return;
+        return false;
     }
   }
 
   if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
     rgb_matrix_set_color_all(0, 0, 0);
   }
+
+  return false;
 } // }}}
 
 void keyboard_post_init_user(void) {
