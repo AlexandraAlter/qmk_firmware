@@ -11,7 +11,7 @@ typedef enum layer_t {
   L_OH,   // one-handed
   L_OHA,  // one-handed alt
   L_ST,   // stenotype
-  L_STA,  // stenotype alt
+  L_STC,  // stenotype comfort
   L_MS,   // mouse
   L_NP,   // number pad
   L_NAV,  // navigation
@@ -90,7 +90,7 @@ META_KEY(R7, KC_LALT, KC_LEFT);
 #define KA_GLWR (MO(L_GLWR))
 #define KA_GRAI (MO(L_GRAI))
 
-#define MO_STA (MO(L_STA))
+#define MO_MS (MO(L_MS))
 // }}}
 
 // clang-format off
@@ -131,17 +131,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_ST] = LAYOUT_planck_grid( // {{{ stenotype
-    STN_PWR, STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_PWR,
+    STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
     STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    _______, STN_N1,  STN_RE1, STN_A,   STN_O,   MA_SPC,  MA_SPC,  STN_E,   STN_U,   STN_RE2, STN_NC,  MO_STA
+    _______, STN_PWR, STN_RE1, STN_A,   STN_O,   MO_MS,   MO_MS,   STN_E,   STN_U,   STN_RE2, STN_PWR, MO_MS
   ), // }}}
 
-  [L_STA] = LAYOUT_planck_grid( // {{{ stenotype alt
-    KA_L1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KA_R1,
-    KA_L2,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KA_R2,
-    KA_L3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KA_R3,
-    MA_L4,   MA_L5,   MA_L6,   MA_L7,   SPC_SFT, SPC_SFT, SPC_SFT, SPC_SFT, KA_R7,   KA_R6,   KA_R5,   _______
+  [L_STC] = LAYOUT_planck_grid( // {{{ stenotype comfort
+    STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
+    STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, STN_FN,  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, STN_FN,  STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+    _______, STN_PWR, STN_RE1, STN_A,   STN_O,   STN_E,   STN_E,   STN_U,   STN_RE2, STN_RE2, STN_PWR, MO_MS
   ), // }}}
 
   [L_MS] = LAYOUT_planck_grid( // {{{ mouse
@@ -217,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TO(L_NP), XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_TLC,  RGB_MOD,  LED_CYC,  QK_BOOT,
     XXXXXXX,  TO(L_GA), TO(L_DV), TO(L_ST), TO(L_OH), XXXXXXX,  NK_ON,    RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  XXXXXXX,
-    MA_L3,    XXXXXXX,  TO(L_QT), XXXXXXX,  TO(L_MS), XXXXXXX,  NK_OFF,   RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  MA_R3,
+    MA_L3,    XXXXXXX,  TO(L_QT), TO(L_STC),TO(L_MS), XXXXXXX,  NK_OFF,   RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  MA_R3,
     _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
   ), // }}}
 };
@@ -386,17 +386,17 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
   }, // }}}
 
   [L_ST] = { // {{{
-    C_MA_2, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_2,
+    C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3,
     C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
     C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
-    C_MA_5, C_MA_3, C_MA_4, C_MA_1, C_MA_1,     C_MA_5,     C_MA_1, C_MA_1, C_MA_4, C_MA_3, C_MA_5
+    C_MA_5, C_MA_4, C_MA_3, C_MA_1, C_MA_1,     C_MA_5,     C_MA_1, C_MA_1, C_MA_3, C_MA_4, C_MA_5
   }, // }}}
 
-  [L_STA] = { // {{{
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
-    C_SU_4, C_____, C_____, C_____, C_____, C_____, C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
-    C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_4,     C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_5
+  [L_STC] = { // {{{
+    C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3,
+    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_5, C_MA_4, C_MA_3, C_MA_1, C_MA_1,     C_MA_5,     C_MA_1, C_MA_1, C_MA_3, C_MA_4, C_MA_5
   }, // }}}
 
   [L_GA] = { // {{{
@@ -472,7 +472,7 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
   [L_HUB] = { // {{{
     C_____, C_____, C_____, C_____, C_SU_2, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
     C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_____,
-    C_SU_3, C_____, C_SU_2, C_____, C_SU_1, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_SU_3,
+    C_SU_3, C_____, C_SU_2, C_SU_2, C_SU_1, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_SU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_____, C_____, C_____, C_____
   }, // }}}
 };
