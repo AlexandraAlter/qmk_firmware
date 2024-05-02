@@ -26,8 +26,8 @@ typedef enum layer_t {
 } layer_t;
 
 typedef enum custom_keycode_t { // {{{
-  RGB_TLC = SAFE_RANGE,         // toggle layer color
-  LED_CYC,                      // cycle led level
+  LED_CYC = SAFE_RANGE,         // cycle led level
+  RGB_SLD,                      // pause LED animation
   G_SPC,                        // gaming space bar
   G_S_CY,                       // gaming space bar cycle
 } custom_keycode_t;             // }}}
@@ -44,6 +44,8 @@ typedef enum custom_keycode_t { // {{{
 // }}}
 
 // {{{ layout key defs
+#define RGB_TLC TOGGLE_LAYER_COLOR
+
 #define L1(kc) (LGUI_T(kc))
 META_KEY(L1, KC_LGUI, KC_ESC);
 #define L2(kc) (LCTL_T(kc))
@@ -215,10 +217,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  TO(L_NP), XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_TLC,  RGB_MOD,  LED_CYC,  QK_BOOT,
-    XXXXXXX,  TO(L_GA), TO(L_DV), TO(L_ST), TO(L_OH), XXXXXXX,  NK_ON,    RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  XXXXXXX,
-    MA_L3,    XXXXXXX,  TO(L_QT), TO(L_STC),TO(L_MS), XXXXXXX,  NK_OFF,   RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  MA_R3,
-    _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DF(L_NP), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LED_CYC,  QK_BOOT,
+    XXXXXXX,  DF(L_GA), DF(L_DV), DF(L_ST), DF(L_OH), XXXXXXX,  XXXXXXX,  RGB_TLC,  RGB_TOG,  RGB_SAI,  RGB_HUI,  XXXXXXX,
+    MA_L3,    XXXXXXX,  DF(L_QT), DF(L_STC),DF(L_MS), XXXXXXX,  XXXXXXX,  RGB_SLD,  RGB_MOD,  RGB_SPI,  RGB_VAI,  MA_R3,
+    _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  AU_TOGG,  NK_TOGG,  XXXXXXX,  XXXXXXX
   ), // }}}
 };
 // clang-format on
@@ -470,10 +472,10 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
   }, // }}}
 
   [L_HUB] = { // {{{
-    C_____, C_____, C_____, C_____, C_SU_2, C_____, C_____, C_____, C_RU_2, C_RU_3, C_RU_2, C_SU_1,
-    C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_1, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_____,
-    C_SU_3, C_____, C_SU_2, C_SU_2, C_SU_1, C_____, C_SU_2, C_RU_3, C_RU_3, C_RU_3, C_RU_3, C_SU_3,
-    C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_____, C_____, C_____, C_____
+    C_____, C_____, C_____, C_____, C_SU_2, C_____, C_____, C_____, C_____, C_____, C_RU_3, C_SU_1,
+    C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_1, C_RU_1, C_RU_2, C_RU_2, C_____,
+    C_SU_3, C_____, C_SU_2, C_SU_2, C_SU_1, C_____, C_____, C_RU_3, C_RU_1, C_RU_2, C_RU_2, C_SU_3,
+    C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_SU_1, C_SU_1, C_____, C_____
   }, // }}}
 };
 // clang-format on
@@ -528,25 +530,19 @@ static uint16_t g_spc_last = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
   switch (keycode) {
-  case RGB_TLC:
-    if (record->event.pressed) {
-      keyboard_config.disable_layer_led ^= 1;
-      if (keyboard_config.disable_layer_led)
-        rgb_matrix_set_color_all(0, 0, 0);
-      eeconfig_update_kb(keyboard_config.raw);
-    }
-    return false;
 
   case LED_CYC:
     if (record->event.pressed) {
-      keyboard_config.led_level++;
-      if (keyboard_config.led_level > 4) {
-        keyboard_config.led_level = 0;
-      }
+      keyboard_config.led_level = (keyboard_config.led_level + 1) % 4;
       planck_ez_right_led_level((uint8_t)keyboard_config.led_level * 255 / 4);
       planck_ez_left_led_level((uint8_t)keyboard_config.led_level * 255 / 4);
-      eeconfig_update_kb(keyboard_config.raw);
       layer_state_set_kb(layer_state);
+    }
+    return false;
+
+  case RGB_SLD:
+    if (record->event.pressed) {
+      rgblight_mode(1);
     }
     return false;
 
@@ -575,6 +571,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
       case KC_UP:
         g_spc_kc = KC_SPC;
         break;
+      default:
+        g_spc_kc = KC_SPC;
+        break;
       }
     }
     return false;
@@ -583,10 +582,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
   return true;
 } // }}}
 
+layer_state_t default_layer_state_set_user(layer_state_t state) { // {{{
+  layer_clear();
+
+  return state;
+} // }}}
+
 void keyboard_post_init_user(void) { // {{{
   rgb_matrix_enable();
   steno_set_mode(STENO_MODE_GEMINI);
-  layer_move(L_DV);
+  default_layer_set(1 << L_DV);
+  layer_clear();
 } // }}}
 
 /* vim: set foldmethod=marker shiftwidth=2 : */
