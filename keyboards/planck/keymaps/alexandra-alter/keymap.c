@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "shavian.h"
 
 extern keyboard_config_t keyboard_config;
 
@@ -8,6 +9,7 @@ typedef enum layer_t {
   L_GA,   // gaming
   L_DV,   // dvorak
   L_QT,   // qwerty
+  L_SHV,  // shavian
   L_OH,   // one-handed
   L_OHA,  // one-handed alt
   L_ST,   // stenotype
@@ -31,6 +33,16 @@ typedef enum custom_keycode_t { // {{{
   G_SPC,                        // gaming space bar
   G_S_CY,                       // gaming space bar cycle
 } custom_keycode_t;             // }}}
+
+// {{{ unicode defs
+typedef enum unicode_names {
+  SHAVIAN_UNICODE_NAMES()
+} unicode_names;
+
+const uint32_t PROGMEM unicode_map[] = {
+  SHAVIAN_UNICODE_MAP()
+};
+// }}}
 
 // {{{ layout key meta-def
 // we assume that name(kc) is a macro that creates a mod-tap key
@@ -115,6 +127,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L1,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KA_R1,
     KA_L2,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KA_R2,
     KA_L3,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KA_R3,
+    MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
+  ), // }}}
+
+  [L_SHV] = LAYOUT_planck_grid( // {{{ shavian
+    KA_L1,   SHV_1_0, SHV_1_1, SHV_1_2, SHV_1_3, SHV_1_4, SHV_1_5, SHV_1_6, SHV_1_7, SHV_1_8, SHV_1_9, KA_R1,
+    KA_L2,   SHV_2_0, SHV_2_1, SHV_2_2, SHV_2_3, SHV_2_4, SHV_2_5, SHV_2_6, SHV_2_7, SHV_2_8, SHV_2_9, KA_R2,
+    KA_L3,   SHV_3_0, SHV_3_1, SHV_3_2, SHV_3_3, SHV_3_4, SHV_3_5, SHV_3_6, SHV_3_7, SHV_3_8, SHV_3_9, KA_R3,
     MA_L4,   MA_L5,   MA_L6,   MA_L7,   KA_LWR,  KA_SPC,  KA_SPC,  KA_RAI,  KA_R7,   KA_R6,   KA_R5,   KA_R4
   ), // }}}
 
@@ -217,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DF(L_NP), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LED_CYC,  QK_BOOT,
+    XXXXXXX,  XXXXXXX,  DF(L_SHV),XXXXXXX,  DF(L_NP), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LED_CYC,  QK_BOOT,
     XXXXXXX,  DF(L_GA), DF(L_DV), DF(L_ST), DF(L_OH), XXXXXXX,  XXXXXXX,  RGB_TLC,  RGB_TOG,  RGB_SAI,  RGB_HUI,  XXXXXXX,
     MA_L3,    XXXXXXX,  DF(L_QT), DF(L_STC),DF(L_MS), XXXXXXX,  XXXXXXX,  RGB_SLD,  RGB_MOD,  RGB_SPI,  RGB_VAI,  MA_R3,
     _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  AU_TOGG,  NK_TOGG,  XXXXXXX,  XXXXXXX
@@ -289,8 +308,7 @@ typedef enum color_t { // {{{
   C_MAX,
 } color_t; // }}}
 
-const uint8_t PROGMEM color_map[C_MAX][3] = {
-    // {{{
+const uint8_t PROGMEM color_map[C_MAX][3] = { // {{{
     [C_NONE] = {0, 0, 0},
 
     // sunset

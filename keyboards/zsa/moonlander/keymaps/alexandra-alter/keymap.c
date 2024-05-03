@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "shavian.h"
 
 typedef enum layer_t {
   L_GAME, // core: gaming base
@@ -41,118 +42,11 @@ typedef enum custom_keycode_t { // {{{
 
 // {{{ unicode defs
 typedef enum unicode_names {
-  SHV_PEEP,    // 𐑐
-  SHV_BIB,     // 𐑚
-  SHV_TOT,     // 𐑑
-  SHV_DEAD,    // 𐑛
-  SHV_KICK,    // 𐑒
-  SHV_GAG,     // 𐑜
-  SHV_FEE,     // 𐑓
-  SHV_VOW,     // 𐑝
-  SHV_THIGH,   // 𐑔
-  SHV_THEY,    // 𐑞
-  SHV_SO,      // 𐑕
-  SHV_ZOO,     // 𐑟
-  SHV_SURE,    // 𐑖
-  SHV_MEASURE, // 𐑠
-  SHV_CHURCH,  // 𐑗
-  SHV_JUDGE,   // 𐑡
-  SHV_YEA,     // 𐑘
-  SHV_WOE,     // 𐑢
-  SHV_HUNG,    // 𐑙
-  SHV_HAHA,    // 𐑣
-  SHV_LOLL,    // 𐑤
-  SHV_ROAR,    // 𐑮
-  SHV_MINE,    // 𐑥
-  SHV_NUN,     // 𐑯
-  SHV_IF,      // 𐑦
-  SHV_EAT,     // 𐑰
-  SHV_EGG,     // 𐑧
-  SHV_AGE,     // 𐑱
-  SHV_ASH,     // 𐑨
-  SHV_ICE,     // 𐑲
-  SHV_ADO,     // 𐑩
-  SHV_UP,      // 𐑳
-  SHV_ON,      // 𐑪
-  SHV_OAK,     // 𐑴
-  SHV_WOOL,    // 𐑫
-  SHV_OOZE,    // 𐑵
-  SHV_OUT,     // 𐑬
-  SHV_OIL,     // 𐑶
-  SHV_AH,      // 𐑭
-  SHV_AWE,     // 𐑷
-  SHV_ARE,     // 𐑸
-  SHV_OR,      // 𐑹
-  SHV_AIR,     // 𐑺
-  SHV_ERR,     // 𐑻
-  SHV_ARRAY,   // 𐑼
-  SHV_EAR,     // 𐑽
-  SHV_IAN,     // 𐑾
-  SHV_YEW,     // 𐑿
-  SHV_NAME,    // ·
-  SHV_ABBRV,   // ⸰
-
-  UM_SPACE,
+  SHAVIAN_UNICODE_NAMES()
 } unicode_names;
 
 const uint32_t PROGMEM unicode_map[] = {
-  [SHV_PEEP]    = 0x10450,
-  [SHV_TOT]     = 0x10451,
-  [SHV_KICK]    = 0x10452,
-  [SHV_FEE]     = 0x10453,
-  [SHV_THIGH]   = 0x10454,
-  [SHV_SO]      = 0x10455,
-  [SHV_SURE]    = 0x10456,
-  [SHV_CHURCH]  = 0x10457,
-  [SHV_YEA]     = 0x10458,
-  [SHV_HUNG]    = 0x10459,
-
-  [SHV_BIB]     = 0x1045a,
-  [SHV_DEAD]    = 0x1045b,
-  [SHV_GAG]     = 0x1045c,
-  [SHV_VOW]     = 0x1045d,
-  [SHV_THEY]    = 0x1045e,
-  [SHV_ZOO]     = 0x1045f,
-  [SHV_MEASURE] = 0x10460,
-  [SHV_JUDGE]   = 0x10461,
-  [SHV_WOE]     = 0x10462,
-  [SHV_HAHA]    = 0x10463,
-
-  [SHV_LOLL]    = 0x10464,
-  [SHV_MINE]    = 0x10465,
-  [SHV_IF]      = 0x10466,
-  [SHV_EGG]     = 0x10467,
-  [SHV_ASH]     = 0x10468,
-  [SHV_ADO]     = 0x10469,
-  [SHV_ON]      = 0x1046a,
-  [SHV_WOOL]    = 0x1046b,
-  [SHV_OUT]     = 0x1046c,
-  [SHV_AH]      = 0x1046d,
-
-  [SHV_ROAR]    = 0x1046e,
-  [SHV_NUN]     = 0x1046f,
-  [SHV_EAT]     = 0x10470,
-  [SHV_AGE]     = 0x10471,
-  [SHV_ICE]     = 0x10472,
-  [SHV_UP]      = 0x10473,
-  [SHV_OAK]     = 0x10474,
-  [SHV_OOZE]    = 0x10475,
-  [SHV_OIL]     = 0x10476,
-  [SHV_AWE]     = 0x10477,
-
-  [SHV_ARE]     = 0x10478,
-  [SHV_OR]      = 0x10479,
-  [SHV_AIR]     = 0x1047a,
-  [SHV_ERR]     = 0x1047b,
-  [SHV_ARRAY]   = 0x1047c,
-  [SHV_EAR]     = 0x1047d,
-  [SHV_IAN]     = 0x1047e,
-  [SHV_YEW]     = 0x1047f,
-
-  [SHV_NAME]    = 0x00b7,
-  [SHV_ABBRV]   = 0x2e30,
-
-  [UM_SPACE]   = 0x20,
+  SHAVIAN_UNICODE_MAP()
 };
 // }}}
 
@@ -201,58 +95,6 @@ const uint32_t PROGMEM unicode_map[] = {
 
 #define KA_QUIT LCTL(KC_Q)
 #define KA_CLOS LCTL(KC_W)
-
-// {{{ shavian
-#define SHV_1_0 UP(SHV_NAME,   SHV_ABBRV)
-#define SHV_1_1 UP(SHV_OIL,    UM_SPACE)
-#define SHV_1_2 UP(SHV_OUT,    UM_SPACE)
-#define SHV_1_3 UP(SHV_WOOL,   UM_SPACE)
-#define SHV_1_4 UP(SHV_GAG,    UM_SPACE)
-#define SHV_1_5 UP(SHV_SURE,   UM_SPACE)
-#define SHV_1_6 UP(SHV_CHURCH, UM_SPACE)
-#define SHV_1_7 UP(SHV_HUNG,   UM_SPACE)
-#define SHV_1_8 UP(SHV_YEA,    UM_SPACE)
-#define SHV_1_9 UP(SHV_JUDGE,  UM_SPACE)
-#define SHV_1_A UP(SHV_THIGH,  UM_SPACE)
-
-#define SHV_2_1 UP(SHV_AH,      SHV_ARE)
-#define SHV_2_2 UP(SHV_AWE,     SHV_OR)
-#define SHV_2_3 UP(SHV_WOOL,    SHV_YEW)
-#define SHV_2_4 UP(SHV_AGE,     SHV_AIR)
-#define SHV_2_5 UP(SHV_UP,      SHV_ERR)
-#define SHV_2_6 UP(SHV_FEE,     UM_SPACE)
-#define SHV_2_7 UP(SHV_THEY,    UM_SPACE)
-#define SHV_2_8 UP(SHV_LOLL,    UM_SPACE)
-#define SHV_2_9 UP(SHV_MINE,    UM_SPACE)
-#define SHV_2_A UP(SHV_KICK,    UM_SPACE)
-#define SHV_2_B UP(SHV_WOE,     UM_SPACE)
-#define SHV_2_C UP(SHV_HAHA,    UM_SPACE)
-#define SHV_2_D UP(SHV_MEASURE, UM_SPACE)
-
-#define SHV_3_1 UP(SHV_ON,   UM_SPACE)
-#define SHV_3_2 UP(SHV_ASH,  UM_SPACE)
-#define SHV_3_3 UP(SHV_IF,   UM_SPACE)
-#define SHV_3_4 UP(SHV_ADO,  SHV_ARRAY)
-#define SHV_3_5 UP(SHV_EGG,  UM_SPACE)
-#define SHV_3_6 UP(SHV_PEEP, UM_SPACE)
-#define SHV_3_7 UP(SHV_NUN,  UM_SPACE)
-#define SHV_3_8 UP(SHV_TOT,  UM_SPACE)
-#define SHV_3_9 UP(SHV_ROAR, UM_SPACE)
-#define SHV_3_A UP(SHV_SO,   UM_SPACE)
-#define SHV_3_B UP(SHV_DEAD, UM_SPACE)
-
-#define SHV_4_1 UP(SHV_IAN,  SHV_EAR)
-#define SHV_4_2 UP(SHV_ICE,  UM_SPACE)
-#define SHV_4_3 UP(SHV_OAK,  UM_SPACE)
-#define SHV_4_4 UP(SHV_EAT,  UM_SPACE)
-#define SHV_4_5 UP(SHV_BIB,  UM_SPACE)
-#define SHV_4_6 UP(SHV_VOW,  UM_SPACE)
-#define SHV_4_7 UP(SHV_ZOO,  UM_SPACE)
-#define SHV_4_8 UP(SHV_TOT,  UM_SPACE)
-#define SHV_4_9 UP(SHV_ROAR, UM_SPACE)
-#define SHV_4_A UP(SHV_SO,   UM_SPACE)
-#define SHV_4_B UP(SHV_DEAD, UM_SPACE)
-// }}}
 
 // normal left modifiers
 #define L1(kc) (LALT_T(kc))
@@ -393,10 +235,10 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_SHV] = LAYOUT_moonlander( // {{{ shavian
-    SHV_1_0, SHV_1_1, SHV_1_2, SHV_1_3, SHV_1_4, SHV_1_5, KA_L12,     KA_R12,  SHV_1_6, SHV_1_7, SHV_1_8, SHV_1_9, SHV_1_A, SHV_2_C,
-    KA_L2,   SHV_2_1, SHV_2_2, SHV_2_3, SHV_2_4, SHV_2_5, KA_L11,     KA_R11,  SHV_2_6, SHV_2_7, SHV_2_8, SHV_2_9, SHV_2_A, SHV_2_B,
-    KA_L3,   SHV_3_1, SHV_3_2, SHV_3_3, SHV_3_4, SHV_3_5, KA_L10,     KA_R10,  SHV_3_6, SHV_3_7, SHV_3_8, SHV_3_9, SHV_3_A, SHV_3_B,
-    KA_L4,   SHV_4_1, SHV_4_2, SHV_4_3, SHV_4_4, SHV_4_5,                      SHV_4_6, SHV_4_7, KC_COMM, KC_DOT,  KC_SLSH, SHV_2_D,
+    KA_L1,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KA_L12,     KA_R12,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KA_R1,
+    KA_L2,   SHV_1_0, SHV_1_1, SHV_1_2, SHV_1_3, SHV_1_4, KA_L11,     KA_R11,  SHV_1_5, SHV_1_6, SHV_1_7, SHV_1_8, SHV_1_9, KA_R2,
+    KA_L3,   SHV_2_0, SHV_2_1, SHV_2_2, SHV_2_3, SHV_2_4, KA_L10,     KA_R10,  SHV_2_5, SHV_2_6, SHV_2_7, SHV_2_8, SHV_2_9, KA_R3,
+    KA_L4,   SHV_3_0, SHV_3_1, SHV_3_2, SHV_3_3, SHV_3_4,                      SHV_3_5, SHV_3_6, SHV_3_7, SHV_3_8, SHV_3_9, KA_R4,
     KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        KA_APP,             KA_APP,       KA_R9,   KA_R8,   KA_R7,   KA_R6,   KA_R5,
                                         KA_LT1,  KA_LT2,  KA_LT3,     KA_RT3,  KA_RT2,  KA_RT1
   ), // }}}
