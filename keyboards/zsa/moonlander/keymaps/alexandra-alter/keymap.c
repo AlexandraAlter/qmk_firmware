@@ -14,8 +14,8 @@ typedef enum layer_t {
   L_ST,   // core: stenotype
   L_MS,   // core: mouse
   L_SYM,  // utils: symbols
-  L_NUM,  // utils: numpad
   L_NAV,  // utils: navigation
+  L_NUM,  // utils: numpad
   L_FUNC, // utils: function keys
   L_SHRT, // utils: shortcuts
   // layers above this point must be in the 0-15 range, as they are used in LM/LT
@@ -248,7 +248,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,  XXXXXXX,    XXXXXXX, STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
     STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, XXXXXXX,    XXXXXXX, STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     STN_FN,  STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                      STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    MO_NAV,  STN_N1,  STN_N1,  STN_N2,  STN_N2,       _______,            _______,      STN_NB,  STN_NB,  STN_NC,  STN_NC,  MO_NAV,
+    MO_NAV,  STN_N1,  STN_N1,  STN_N2,  STN_N2,       KA_APP,             KA_APP,       STN_NB,  STN_NB,  STN_NC,  STN_NC,  MO_NAV,
                                         STN_A,   STN_O,   STN_RE1,    STN_RE2, STN_E,   STN_U
   ), // }}}
 
@@ -266,7 +266,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KA_L2,   KC_L,    KC_R,    KC_C,    KC_G,    KC_F,    KA_L11,
     KA_L3,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KA_L10,
     KA_L4,   KC_S,    KC_N,    KC_T,    KC_H,    KC_D,
-    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,
+    KA_L5,   KA_L6,   KA_L7,   KA_L8,   KA_L9,        KA_APP,
                                         KA_OHT1, KA_OHT2,  KA_OHT3
   ), // }}}
 
@@ -284,7 +284,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       _______, _______, _______, _______, _______, _______, _______,
     KC_LCTL, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       _______, _______, _______, _______, _______, _______, _______,
     KC_LSFT, KC_ENT,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC,                      _______, _______, _______, _______, _______, _______,
-    KC_LGUI, KC_DEL,  KC_0,    KC_9,    KC_8,         _______,            _______,      _______, _______, _______, _______, _______,
+    KC_LGUI, KC_DEL,  KC_0,    KC_9,    KC_8,         KA_APP,             KA_APP,       _______, _______, _______, _______, _______,
                                         KC_SPC,  KC_LALT, KC_LCTL,    _______, _______, _______
   ), // }}}
 
@@ -293,7 +293,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       _______, _______, _______, _______, _______, _______, _______,
     KC_LCTL, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       _______, _______, _______, _______, _______, _______, _______,
     KC_LSFT, KC_ENT,  KC_BSPC, KC_INS,  XXXXXXX, KC_PAUS,                      _______, _______, _______, _______, _______, _______,
-    KC_LGUI, KC_DEL,  KC_0,    KC_9,    KC_8,         _______,            _______,      _______, _______, _______, _______, _______,
+    KC_LGUI, KC_DEL,  KC_0,    KC_9,    KC_8,         KA_APP,             KA_APP,       _______, _______, _______, _______, _______,
                                         KC_SPC,  KA_G_K1, KA_G_K2,    _______, _______, _______
   ), // }}}
 
@@ -302,7 +302,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_6,       KC_F5,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F12,
     KC_LCTL, KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_7,       KC_F4,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
     KC_LSFT, KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC,                       KC_PDOT, KC_P7,   KC_P8,   KC_P9,   KC_P0,   KC_RSFT,
-    KC_LGUI, XXXXXXX, KC_0,    KC_9,    KC_8,         _______,            _______,      KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
+    KC_LGUI, XXXXXXX, KC_0,    KC_9,    KC_8,         KA_APP,             KA_APP,       KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
                                         KC_HOME, KC_UP,   KC_END,     KC_PGDN, KC_UP,   KC_PGUP
   ), // }}}
 
@@ -329,7 +329,7 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______,    KC_F5,   KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, KC_F12,
     _______, _______, _______, _______, _______, _______, _______,    KC_F4,   KC_PSLS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_RCTL,
     _______, _______, _______, _______, _______, _______,                      XXXXXXX, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, KC_RSFT,
-    _______, _______, _______, _______, _______,      _______,            _______,      KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
+    _______, _______, _______, _______, _______,      _______,            KA_APP,       KC_F3,   KC_F2,   KC_F1,   KC_RALT, KC_RGUI,
                                         _______, _______, _______,    KC_PENT, KC_PDOT, KC_P0
   ), // }}}
 
@@ -338,25 +338,25 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______,      _______,            _______,      _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,      KA_APP,             KA_APP,       _______, _______, _______, _______, _______,
                                         _______, _______, _______,    _______, _______, _______
   ), // }}}
 
   [L_MS] = LAYOUT_moonlander_mirrored_outer( // {{{ mouse
-    _______, XXXXXXX, KC_BTN6, KC_BTN7, KC_BTN8, XXXXXXX, _______,
-    _______, KC_ACL0, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, _______,
-    _______, KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______,
-    _______, KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,
-    _______, _______, _______, _______, _______,      _______,
+    MA_L1,   XXXXXXX, KC_BTN6, KC_BTN7, KC_BTN8, XXXXXXX, MA_L12,
+    MA_L2,   KC_ACL0, KC_BTN4, KC_MS_U, KC_BTN5, KC_WH_U, MA_L11,
+    MA_L3,   KC_ACL1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, MA_L10,
+    MA_L4,   KC_ACL2, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX,
+    MA_L5,   MA_L6,   MA_L7,   MA_L8,   MA_L9,        KA_APP,
                                         KC_BTN1, KC_BTN2, KC_BTN3
   ), // }}}
 
   [L_O_MS] = LAYOUT_moonlander( // {{{ mouse overlay
-    _______, _______, _______, _______, _______, _______, _______,    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, _______, _______, _______, _______, _______, _______,    _______, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, _______,
-    _______, _______, _______, _______, _______, _______, _______,    _______, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, _______,
-    _______, _______, _______, _______, _______, _______,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, _______, _______, _______, _______,      _______,            _______,      _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______,    MA_R12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MA_R1,
+    _______, _______, _______, _______, _______, _______, _______,    MA_R11,  XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, MA_R2,
+    _______, _______, _______, _______, _______, _______, _______,    MA_R10,  XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, XXXXXXX, MA_R3,
+    _______, _______, _______, _______, _______, _______,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MA_R4,
+    _______, _______, _______, _______, _______,      _______,            KA_APP,       MA_R9,   MA_R8,   MA_R7,   MA_R6,   MA_R5,
                                         _______, _______, _______,    KC_ACL0, KC_ACL1, KC_ACL2
   ), // }}}
 
@@ -378,6 +378,15 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______,    _______, _______, _______
   ), // }}}
 
+  [L_NAV] = LAYOUT_moonlander_mirrored_outer( // {{{ navigation
+    _______, KC_INS,  XXXXXXX, KC_PSCR, XXXXXXX, KC_PAUS, _______,
+    _______, KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, _______,
+    _______, KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
+    _______, KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  KC_APP,
+    _______, _______, _______, _______, _______,      _______,
+                                        _______, _______, _______
+  ), // }}}
+
   [L_NUM] = LAYOUT_moonlander( // {{{ numpad
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     _______, KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, _______,    _______, KC_PAST, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, _______,
@@ -394,15 +403,6 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_SCLN, KC_D,    KC_E,    KC_F,    KC_X,                         _______, _______, _______, _______, _______, _______,
     _______, KA_L6,   KA_L7,   KA_L8,   KA_L9,        _______,            _______,      _______, _______, _______, _______, _______,
                                         _______, _______, _______,    _______, _______, _______
-  ), // }}}
-
-  [L_NAV] = LAYOUT_moonlander_mirrored_outer( // {{{ navigation
-    _______, KC_INS,  XXXXXXX, KC_PSCR, XXXXXXX, KC_PAUS, _______,
-    _______, KC_TAB,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, _______,
-    _______, KC_ESC,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
-    _______, KC_ENT,  KC_BSPC, XXXXXXX, KC_DEL,  KC_APP,
-    _______, _______, _______, _______, _______,      _______,
-                                        _______, _______, _______
   ), // }}}
 
   [L_FUNC] = LAYOUT_moonlander( // {{{ function keys
@@ -680,12 +680,12 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
   ), }, // }}}
 
   [L_SHV] = { .mode = LM_BOTH, .leds = 0b010, .colors = LEDS_moonlander_both( // {{{
-    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_4,   C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2,
-    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_4,   C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2,
-    C_DS_4, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_2, C_DS_4,   C_DS_4, C_DS_2, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_2,
-    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2,                   C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2,
-    C_DS_4, C_DS_4, C_DS_4, C_DS_3, C_DS_3,     C_DS_5,           C_DS_5,     C_DS_4, C_DS_4, C_DS_4, C_DS_4, C_DS_4,
-                                    C_DS_5, C_DS_5, C_DS_5,   C_DS_5, C_DS_5, C_DS_5
+    C_SO_4, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_4,   C_SO_4, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2,
+    C_SO_4, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_4,   C_SO_4, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2,
+    C_SO_4, C_SO_1, C_SO_1, C_SO_1, C_SO_1, C_SO_2, C_SO_4,   C_SO_4, C_SO_2, C_SO_1, C_SO_1, C_SO_1, C_SO_1, C_SO_2,
+    C_SO_4, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2,                   C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2, C_SO_2,
+    C_SO_4, C_SO_4, C_SO_4, C_SO_3, C_SO_3,     C_SO_5,           C_SO_5,     C_SO_4, C_SO_4, C_SO_4, C_SO_4, C_SO_4,
+                                    C_SO_5, C_SO_5, C_SO_5,   C_SO_5, C_SO_5, C_SO_5
   ), }, // }}}
 
   [L_OH] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
@@ -778,7 +778,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_SO_4, C_SO_3, C_SO_2, C_SO_1, C_SO_2, C_SO_2, C_SO_4,
     C_SO_4, C_SO_3, C_SO_1, C_SO_1, C_SO_1, C_SO_2, C_SO_4,
     C_SO_4, C_SO_3, C_SO_2, C_____, C_SO_2, C_____,
-    C_SO_4, C_SO_4, C_SO_4, C_SO_3, C_SO_3,     C_SO_5,
+    C_SO_4, C_SO_4, C_SO_4, C_SO_4, C_SO_4,     C_SO_5,
                                     C_SO_1, C_SO_1, C_SO_1
   ), }, // }}}
 
@@ -787,7 +787,7 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
     C_SO_4, C_____, C_____, C_SO_2, C_____, C_____, C_SO_4,
     C_SO_4, C_____, C_SO_2, C_SO_2, C_SO_2, C_____, C_SO_4,
             C_____, C_____, C_____, C_____, C_____, C_SO_4,
-         C_SO_5,    C_SO_3, C_SO_3, C_SO_4, C_SO_4, C_SO_4,
+         C_SO_5,    C_SO_4, C_SO_4, C_SO_4, C_SO_4, C_SO_4,
     C_SO_3, C_SO_3, C_SO_3
   ), }, // }}}
 
@@ -800,13 +800,22 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____
   ), }, // }}}
 
-  [L_O_SY] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
-    C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,   C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,   C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
-    C_SU_4, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,   C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,
-    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_____,                   C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
-    C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_5,           C_SU_5,     C_SU_3, C_SU_3, C_SU_4, C_SU_4, C_SU_4,
-                                    C_____, C_____, C_____,   C_____, C_____, C_____
+  [L_O_SY] = { .mode = LM_RIGHT, .leds = 0b100, .colors = LEDS_moonlander_right( // {{{
+    C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
+    C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_3,
+    C_SU_4, C_____, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,
+            C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
+        C_SU_5,     C_SU_3, C_SU_3, C_SU_4, C_SU_4, C_SU_4,
+    C_____, C_____, C_____
+  ), }, // }}}
+
+  [L_NAV] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
+    C_SU_4, C_RU_1, C_____, C_RU_3, C_____, C_RU_3, C_SU_5,
+    C_SU_4, C_SU_2, C_SU_2, C_SU_1, C_SU_2, C_SU_2, C_RU_1,
+    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_RU_1,
+    C_SU_4, C_SU_2, C_SU_2, C_____, C_SU_2, C_SU_1,
+    C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_5,
+                                    C_____, C_____, C_____
   ), }, // }}}
 
   [L_NUM] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
@@ -818,20 +827,11 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
                                     C_____, C_____, C_____,   C_____, C_____, C_____
   ), }, // }}}
 
-  [L_O_NU] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_both( // {{{
-    C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,   C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3,
-    C_SU_4, C_____, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,   C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_3,
-    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,   C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_SU_4,
-    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_1,                   C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_4,
-    C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_5,           C_SU_5,     C_SU_2, C_SU_2, C_SU_2, C_SU_2, C_SU_4,
-                                    C_____, C_____, C_____,   C_____, C_____, C_____
-  ), }, // }}}
-
-  [L_NAV] = { .mode = LM_BOTH, .leds = 0b100, .colors = LEDS_moonlander_mirrored( // {{{
-    C_SU_4, C_RU_1, C_____, C_RU_3, C_____, C_RU_3, C_SU_5,
-    C_SU_4, C_SU_2, C_SU_2, C_SU_1, C_SU_2, C_SU_2, C_RU_1,
-    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_2, C_RU_1,
-    C_SU_4, C_SU_2, C_SU_2, C_____, C_SU_2, C_SU_1,
+  [L_O_NU] = { .mode = LM_LEFT, .leds = 0b100, .colors = LEDS_moonlander_left( // {{{
+    C_SU_4, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_3, C_SU_4,
+    C_SU_4, C_____, C_SU_2, C_SU_2, C_____, C_____, C_SU_4,
+    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_____, C_SU_4,
+    C_SU_4, C_SU_2, C_SU_1, C_SU_1, C_SU_1, C_SU_1,
     C_SU_4, C_SU_4, C_SU_4, C_SU_4, C_SU_4,     C_SU_5,
                                     C_____, C_____, C_____
   ), }, // }}}
@@ -960,7 +960,7 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable_noeeprom();
   steno_set_mode(STENO_MODE_GEMINI);
   default_layer_set(1 << L_DV);
-  layer_move(L_DV);
+  layer_clear();
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) { // {{{
@@ -1035,7 +1035,9 @@ static layer_state_t gnum_anti_detection_mask = (1 << L_DV);
 static layer_state_t gnum_mask = (1 << L_G_NU);
 
 layer_state_t layer_state_set_user(layer_state_t state) { // {{{
-  if ((state & oh_detection_mask) == oh_mask) {
+  layer_state_t overall_state = default_layer_state | state;
+
+  if ((overall_state & oh_detection_mask) == oh_mask) {
     // if we're in one-handed mode, we can use tri layer states
     state = update_tri_layer_state(state, L_OHA, L_NAV, L_NUM);  // number keys
     state = update_tri_layer_state(state, L_NAV, L_SYM, L_FUNC); // function keys
@@ -1047,30 +1049,26 @@ layer_state_t layer_state_set_user(layer_state_t state) { // {{{
   }
 
   // always activate the gaming overlay if needed
-  if ((state & game_detection_mask) != 0) {
+  if ((overall_state & game_detection_mask) != 0) {
     state = state | game_overlay_mask;
   } else {
     state = state & ~game_overlay_mask;
   }
 
   // always activate the gaming numpad if needed
-  if ((state & gnum_detection_mask) != 0 && (state & gnum_anti_detection_mask) == 0) {
+  if ((overall_state & gnum_detection_mask) != 0 && (overall_state & gnum_anti_detection_mask) == 0) {
     state = state | gnum_mask;
   } else {
     state = state & ~gnum_mask;
   }
 
-  for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
-    if (!((state | default_layer_state) & (1UL << layer)))
-      continue;
-    if (ledmap[layer].mode == LM_NONE || ledmap[layer].mode == LM_RIGHT)
-      continue;
-    uint8_t leds = ledmap[layer].leds;
-    ML_LED_4((leds & 0b100) != 0);
-    ML_LED_5((leds & 0b010) != 0);
-    ML_LED_6((leds & 0b001) != 0);
-    break;
-  }
+  return state;
+} // }}}
+
+layer_state_t default_layer_state_set_user(layer_state_t state) { // {{{
+  layer_clear();
+
+  state = update_bi_layer_state(state, L_MS, L_O_MS);
 
   return state;
 } // }}}
@@ -1087,6 +1085,19 @@ bool led_update_user(led_t led_state) { // {{{
     ML_LED_2(true);
     ML_LED_3(true);
   }
+
+  for (int8_t layer = MAX_LAYER - 1; layer >= 0; layer--) {
+    if (!((layer_state | default_layer_state) & (1UL << layer)))
+      continue;
+    if (ledmap[layer].mode == LM_NONE || ledmap[layer].mode == LM_RIGHT)
+      continue;
+    uint8_t leds = ledmap[layer].leds;
+    ML_LED_4((leds & 0b100) != 0);
+    ML_LED_5((leds & 0b010) != 0);
+    ML_LED_6((leds & 0b001) != 0);
+    break;
+  }
+
   return true;
 } // }}}
 
