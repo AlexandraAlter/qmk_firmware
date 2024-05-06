@@ -236,9 +236,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ), // }}}
 
   [L_HUB] = LAYOUT_planck_grid( // {{{ hub
-    XXXXXXX,  XXXXXXX,  DF(L_SHV),XXXXXXX,  DF(L_NP), XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LED_CYC,  QK_BOOT,
-    XXXXXXX,  DF(L_GA), DF(L_DV), DF(L_ST), DF(L_OH), XXXXXXX,  XXXXXXX,  RGB_TLC,  RGB_TOG,  RGB_SAI,  RGB_HUI,  XXXXXXX,
-    MA_L3,    XXXXXXX,  DF(L_QT), DF(L_STC),DF(L_MS), XXXXXXX,  XXXXXXX,  RGB_SLD,  RGB_MOD,  RGB_SPI,  RGB_VAI,  MA_R3,
+    XXXXXXX,  DF(L_NP), DF(L_SHV),XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  LED_CYC,  QK_BOOT,
+    XXXXXXX,  DF(L_OH), DF(L_DV), DF(L_ST), DF(L_GA), XXXXXXX,  XXXXXXX,  RGB_TLC,  RGB_TOG,  RGB_SAI,  RGB_HUI,  XXXXXXX,
+    MA_L3,    DF(L_MS), DF(L_QT), DF(L_STC),XXXXXXX,  XXXXXXX,  XXXXXXX,  RGB_SLD,  RGB_MOD,  RGB_SPI,  RGB_VAI,  MA_R3,
     _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  AU_TOGG,  NK_TOGG,  XXXXXXX,  XXXXXXX
   ), // }}}
 };
@@ -490,9 +490,9 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
   }, // }}}
 
   [L_HUB] = { // {{{
-    C_____, C_____, C_____, C_____, C_SU_2, C_____, C_____, C_____, C_____, C_____, C_RU_3, C_SU_1,
+    C_____, C_SU_2, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_3, C_SU_1,
     C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_1, C_RU_1, C_RU_2, C_RU_2, C_____,
-    C_SU_3, C_____, C_SU_2, C_SU_2, C_SU_1, C_____, C_____, C_RU_3, C_RU_1, C_RU_2, C_RU_2, C_SU_3,
+    C_SU_3, C_SU_1, C_SU_2, C_SU_2, C_____, C_____, C_____, C_RU_3, C_RU_1, C_RU_2, C_RU_2, C_SU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_SU_1, C_SU_1, C_____, C_____
   }, // }}}
 };

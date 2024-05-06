@@ -453,8 +453,8 @@ const uint16_t PROGMEM keymaps[L_MAX][MATRIX_ROWS][MATRIX_COLS] = {
   [L_HUB] = LAYOUT_moonlander_mirrored( // {{{ hub
     QK_BOOT,  XXXXXXX,  KC_CAPS,  KC_NUM,   KC_SCRL,  XXXXXXX,  TG_HUB,
     XXXXXXX,  XXXXXXX,  DF_SHV,   DF_ST2,   DF_G_HB,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  DF(L_OH), DF(L_DV), DF(L_ST), DF_GAME,  DF(L_MS), XXXXXXX,
-    XXXXXXX,  XXXXXXX,  DF(L_QT), XXXXXXX,  DF_G_KB,  XXXXXXX,
+    XXXXXXX,  DF(L_OH), DF(L_DV), DF(L_ST), DF_GAME,  XXXXXXX,  XXXXXXX,
+    XXXXXXX,  DF(L_MS), DF(L_QT), XXXXXXX,  DF_G_KB,  XXXXXXX,
     AU_TOGG,  UC_NEXT,  XXXXXXX,  XXXXXXX,  XXXXXXX,       _______,
                                             XXXXXXX,  XXXXXXX,  XXXXXXX
   ), // }}}
@@ -884,8 +884,8 @@ const layer_led_config_t PROGMEM ledmap[L_MAX] = {
   [L_HUB] = { .mode = LM_BOTH, .leds = 0b111, .colors = LEDS_moonlander_mirrored( // {{{
     C_SU_1, C_____, C_SU_3, C_SU_3, C_SU_3, C_____, C_SU_5,
     C_____, C_____, C_SU_2, C_SU_2, C_SU_2, C_____, C_____,
-    C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____,
-    C_____, C_____, C_SU_2, C_____, C_SU_2, C_____,
+    C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____,
+    C_____, C_SU_1, C_SU_2, C_____, C_SU_2, C_____,
     C_SU_4, C_SU_4, C_____, C_____, C_____,     C_SU_5,
                                     C_____, C_____, C_____
   ), }, // }}}
