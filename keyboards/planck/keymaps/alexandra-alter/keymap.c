@@ -391,6 +391,13 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
     C_DS_5, C_DS_4, C_DS_4, C_DS_4, C_DS_5,     C_DS_5,     C_DS_5, C_DS_4, C_DS_4, C_DS_4, C_DS_4
   }, // }}}
 
+  [L_SHV] = { // {{{
+    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_4,
+    C_DS_4, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_2, C_DS_2, C_DS_1, C_DS_1, C_DS_1, C_DS_1, C_DS_4,
+    C_DS_4, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_2, C_DS_4,
+    C_DS_5, C_DS_4, C_DS_4, C_DS_4, C_DS_5,     C_DS_5,     C_DS_5, C_DS_4, C_DS_4, C_DS_4, C_DS_4
+  }, // }}}
+
   [L_OH] = { // {{{
     C_TO_4, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_2, C_TO_4, C_____, C_____, C_____, C_____, C_TO_4,
     C_TO_4, C_TO_1, C_TO_1, C_TO_1, C_TO_1, C_TO_2, C_TO_4, C_____, C_____, C_____, C_____, C_TO_4,
@@ -414,9 +421,9 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
 
   [L_STC] = { // {{{
     C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3, C_MA_3,
-    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
-    C_MA_4, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
-    C_MA_5, C_MA_4, C_MA_3, C_MA_1, C_MA_1,     C_MA_5,     C_MA_1, C_MA_1, C_MA_3, C_MA_4, C_MA_5
+    C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_4, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_2, C_MA_4, C_MA_2, C_MA_1, C_MA_1, C_MA_1, C_MA_1, C_MA_1,
+    C_MA_5, C_MA_4, C_MA_3, C_MA_1, C_MA_1,     C_MA_1,     C_MA_1, C_MA_3, C_MA_3, C_MA_4, C_MA_5
   }, // }}}
 
   [L_GA] = { // {{{
@@ -490,7 +497,7 @@ const color_t PROGMEM ledmap[L_MAX][RGB_MATRIX_LED_COUNT] = {
   }, // }}}
 
   [L_HUB] = { // {{{
-    C_____, C_SU_2, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_3, C_SU_1,
+    C_____, C_SU_2, C_SU_2, C_____, C_____, C_____, C_____, C_____, C_____, C_____, C_RU_3, C_SU_1,
     C_____, C_SU_1, C_SU_1, C_SU_1, C_SU_1, C_____, C_____, C_RU_1, C_RU_1, C_RU_2, C_RU_2, C_____,
     C_SU_3, C_SU_1, C_SU_2, C_SU_2, C_____, C_____, C_____, C_RU_3, C_RU_1, C_RU_2, C_RU_2, C_SU_3,
     C_SU_5, C_____, C_____, C_____, C_____,     C_____,     C_____, C_SU_1, C_SU_1, C_____, C_____
